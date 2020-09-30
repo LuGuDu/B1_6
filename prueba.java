@@ -76,7 +76,7 @@ public class prueba extends JPanel {
    
    
    public static void main(String[] args) {
-      JFrame frame = new JFrame();
+      JFrame frame = new JFrame("Laberinto");
       frame.getContentPane().add(new prueba());
 
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
