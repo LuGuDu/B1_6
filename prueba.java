@@ -55,7 +55,7 @@ public class prueba extends JPanel {
 	   //East Neighbour
 	   g.drawLine(((row+1)*50), (col*50), ((row+1)*50), ((col+1)*50));
 	   //South Neighbour
-	   g.drawLine(((row+1)*50), (col*50), ((row+1)*50), ((col+1)*50));
+	   g.drawLine(((row+1)*50), (col*50), (row*50), ((col+1)*50));
 	   return image;
    }
    
