@@ -70,6 +70,14 @@ public class Labyrinth {
 		this.id_mov = id_mov;
 	}
 
+	public Map<String, Cell> getCells() {
+		return cells;
+	}
+	
+	public void setCells (Map<String, Cell> cells) {
+		this.cells = cells;
+	}
+	
 	@Override
 	public String toString() {
 		return "Labyrinth [rows=" + rows + ", cols=" + cols + ", max_n=" + max_n + ", mov=" + Arrays.toString(mov)
