@@ -15,10 +15,11 @@ public class Principal2 {
 		boolean[] neighbours = { false, false, false, false };
 
 		LinkedHashMap<String, Cell> cells = new LinkedHashMap<String, Cell>();
-
+		Cell cell = new Cell(0, null, false);
+		cell.setNeighbors(neighbours);
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-				cells.put("(" + i + "," + j + ")", new Cell(0, neighbours, false));
+				cells.put("(" + i + "," + j + ")", cell);
 			}
 		}
 
