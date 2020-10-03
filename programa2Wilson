@@ -1,0 +1,133 @@
+package practica;
+
+import java.util.*;
+
+import javax.swing.JFrame;
+
+public class Principal2 {
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int col = sizeLab();
+		int row = col;
+		int[][] mov = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
+		String[] id_mov = { "N", "E", "S", "O" };
+		boolean[] neighbours = { false, false, false, false };
+
+		LinkedHashMap<String, Cell> cells = new LinkedHashMap<String, Cell>();
+
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				cells.put("(" + i + "," + j + ")", new Cell(0, neighbours, false));
+			}
+		}
+
+		// System.out.println("Keys: "+cells.keySet());
+		// Fetching value
+		// System.out.println("Values: "+cells.values());
+		// Fetching key-value pair
+
+		Iterator it = cells.keySet().iterator();
+		while (it.hasNext()) {
+			String key = (String) it.next();
+			System.out.println("Coordenada: " + key + " -> " + cells.get(key));
+		}
+
+		Labyrinth lab = new Labyrinth(row, col, 4, mov, id_mov, cells);
+		int ranRow = randomCell(col);
+		int ranCol = randomCell(col);
+		int ranRow2 = randomCell(col);
+		int ranCol2 = randomCell(col);
+
+		System.out.println("Celda aleatoria origen: " + ranRow + "," + ranCol);
+		System.out.println("Celda aleatoria destino: " + ranRow2 + "," + ranCol2);
+
+		wilsonAlg(col, ranCol, ranRow, ranCol2, ranRow2, lab);
+
+		JFrame frame = new JFrame("Grupo B1-6 -- Practica de Laboratorio");
+		frame.getContentPane().add(new Interface(lab));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(1280, 720);
+		frame.setVisible(true);
+	}
+
+	public static int sizeLab() {
+		int size;
+		System.out.print("Size of your labyrinth: ");
+		size = sc.nextInt();
+		System.out.println("The size of your labyrinth is: " + size + "x" + size);
+		return size;
+	}
+
+	public static int randomCell(int col) {
+		int ranColOrRow = (int) (Math.random() * (col - 1));
+		return ranColOrRow;
+	}
+
+	public static void wilsonAlg(int col, int ranRow, int ranCol, int ranRow2, int ranCol2, Labyrinth lab) {
+
+		Map<String, Cell> cells = lab.getCells();
+		//Cell[] cell = Funciones.getCellsFromMap(cells);
+
+		int ranNei = (int) (Math.random() * 3);
+		// boolean visited = ((Cell) cell.keySet()).isVisited();
+		boolean[] neighbours = { false, false, false, false };
+
+		do{
+			String key = "(" + ranRow2 + "," + ranCol2 + ")";
+
+			Cell cell = null;
+			boolean[] list = cell.getNeighbors();
+			Funciones.readBooleanList(list);
+
+			// Order - N,E,S,W
+			if (ranNei == 0 && list[0] == false) {
+				if (ranRow2 > 0) {
+					neighbours[0] = true;
+					cells.replace("(" + ranRow2 + "," + ranCol2 + ")", new Cell(0, neighbours, true));
+					ranRow2 = ranRow2 - 1;
+					// North Neighbor
+
+				} else {
+					ranNei = 1;
+				}
+			}
+			if (ranNei == 1 && list[1] == false) {
+				if (ranCol2 < col - 1) {
+					neighbours[1] = true;
+					cells.replace("(" + ranRow2 + "," + ranCol2 + ")", new Cell(0, neighbours, true));
+					ranCol2 = ranCol2 + 1;
+
+					// East Neighbor
+
+				} else {
+					ranNei = 2;
+				}
+			}
+			if (ranNei == 2 && list[2] == false) {
+				if (ranRow2 < col - 1) {
+					neighbours[2] = true;
+					cells.replace("(" + ranRow2 + "," + ranCol2 + ")", new Cell(0, neighbours, true));
+					ranRow2 = ranRow2 + 1;
+					// South Neighbor
+
+				} else {
+					ranNei = 3;
+				}
+			}
+			if (ranNei == 3 && list[3] == false) {
+				if (ranCol2 > 0) {
+					neighbours[3] = true;
+					cells.replace("(" + ranRow2 + "," + ranCol2 + ")", new Cell(0, neighbours, true));
+					ranCol2 = ranCol2 - 1;
+					// West Neighbor
+
+				} else {
+					ranNei = 0;
+				}
+			}
+
+		}while(ranRow2 != ranRow && ranCol2 != ranCol);
+
+	}
+}
