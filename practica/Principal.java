@@ -1,25 +1,35 @@
-package practica;
-
-import java.awt.Image;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.JFrame;
+import java.util.Scanner;
 
 public class Principal {
-	public static void main(String[] args) {
-		
-		JFrame frame = new JFrame("Grupo B1-6 -- Practica de Laboratorio");
-		Labyrinth lab = null;
 
-		lab = practica.ReadJson.ReadJsons();		
-		System.out.println(lab);		
-		//practica.Interface.drawLab(lab);
-		practica.WriteJson.writeJson(lab);
+	static Scanner sc = new Scanner(System.in);
 
-		frame.getContentPane().add(new Interface(lab));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1280, 720);
-		frame.setVisible(true);
+	public static void main(String[] args) throws Exception {
+
+		int value;
+		boolean done = false;
+
+		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
+		do {
+			System.out.println("\n¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
+					+ "\n2. Generar laberinto aleatorio" + "\n3. Salir del programa");
+
+			do {
+				value = Functions.keyboardInt();
+			} while (value < 1 || value > 3);
+
+			switch (value) {
+			case 1:
+				Functions.readLab();
+				break;
+			case 2:
+				Functions.genLab();
+				break;
+			case 3:
+				System.out.println("Saliendo del programa");
+				done = true;
+			}
+		} while (!done);
 	}
+
 }

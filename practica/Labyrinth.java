@@ -1,11 +1,5 @@
-package practica;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-
-import com.google.gson.Gson;
 
 public class Labyrinth {
 	private int rows;
@@ -14,11 +8,11 @@ public class Labyrinth {
 	private int[][] mov;
 	private String[] id_mov;
 	private Map<String, Cell> cells;
-	
+
 	public Labyrinth() {
-		
+
 	}
-	
+
 	public Labyrinth(int rows, int cols, int max_n, int[][] mov, String[] id_mov, Map<String, Cell> cells) {
 		this.rows = rows;
 		this.cols = cols;
@@ -27,8 +21,6 @@ public class Labyrinth {
 		this.id_mov = id_mov;
 		this.cells = cells;
 	}
-	
-	
 
 	public int getRows() {
 		return rows;
@@ -61,7 +53,7 @@ public class Labyrinth {
 	public void setMov(int[][] mov) {
 		this.mov = mov;
 	}
-	
+
 	public String[] getId_mov() {
 		return id_mov;
 	}
@@ -73,18 +65,15 @@ public class Labyrinth {
 	public Map<String, Cell> getCells() {
 		return cells;
 	}
-	
-	public void setCells (Map<String, Cell> cells) {
+
+	public void setCells(Map<String, Cell> cells) {
 		this.cells = cells;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Labyrinth [rows=" + rows + ", cols=" + cols + ", max_n=" + max_n + ", mov=" + Arrays.toString(mov)
 				+ ", id_mov=" + Arrays.toString(id_mov) + ", cells=" + cells + "]";
 	}
-
-
-
 
 }

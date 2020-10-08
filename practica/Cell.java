@@ -1,18 +1,22 @@
-package practica;
-
 import java.util.Arrays;
 
 public class Cell {
 	private int value;
 	private boolean[] neighbors;
-	
-	public Cell () {
-		
+	private boolean visited;
+
+	public boolean isVisited() {
+		return visited;
 	}
 
-	@Override
-	public String toString() {
-		return "Cell [value=" + value + ", neighbors=" + Arrays.toString(neighbors) + "]";
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
+
+	public Cell(int value, boolean[] neighbors, boolean visited) {
+		this.value = value;
+		this.neighbors = neighbors;
+		this.visited = visited;
 	}
 
 	public int getValue() {
@@ -28,6 +32,19 @@ public class Cell {
 	}
 
 	public void setNeighbors(boolean[] neighbors) {
-		this.neighbors = neighbors;
+		if (neighbors == null) {
+			this.neighbors = neighbors;
+		} else {
+			for (int i = 0; i < neighbors.length - 1; i++) {
+				this.neighbors[i] = neighbors[i];
+			}
+		}
+
 	}
+
+	@Override
+	public String toString() {
+		return "Cell [value=" + value + ", neighbors=" + Arrays.toString(neighbors) + ", visited=" + visited + "]";
+	}
+
 }
