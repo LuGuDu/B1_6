@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,11 +26,28 @@ public class Functions {
 	}
 
 	public static void genLab() {
-		
-		System.out.println("Indique las filas: ");
-		int row = keyboardInt();
-		System.out.println("Indique las columnas: ");
-		int col = keyboardInt();
+		boolean seguir = false;
+		int row = 0;
+		int col = 0;
+		do {
+			try {
+				System.out.println("Indique las filas: ");
+				row = sc.nextInt();
+				if (row <= 0)
+					throw new NegativeIntegerException();
+				System.out.println("Indique las columnas: ");
+				col = sc.nextInt();
+				if (col <= 0)
+					throw new NegativeIntegerException();
+				seguir = true;
+			} catch (NegativeIntegerException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Introduzca un número entero POSITIVO: ");
+			} catch (InputMismatchException e) {
+				System.out.println("Error: No ha introducido un carácter numérico");
+			}
+			sc.nextLine();
+		} while (!seguir);
 
 		int[][] mov = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 		String[] id_mov = { "N", "E", "S", "O" };
@@ -83,12 +101,25 @@ public class Functions {
 	}
 
 	public static void saveLab(Labyrinth lab) {
-		String path;
-		System.out.println("\n¿Donde quiere guardar los resultados?");
-		path = sc.next();
-		WriteJson.writeJson(lab, path);
-		DrawLab.drawLab(lab, path);
-		System.out.println("\nHecho!");
+		String name = null;
+		char a = (char) 92; // character "
+		char b = (char) 34; // character \
+		boolean seguir = false;
+		System.out.println("¿Con qué nombre quiere guardar los archivos?");		
+		do {	
+			name = sc.next();
+			if (name.contains("<") || name.contains(">") || name.contains(":") || name.contains("*")
+					|| name.contains("?") || name.contains("|") || name.contains("/") || name.contains(a + "")
+					|| name.contains(b + "")) {
+				System.out.println("Error: Caracter no valido\n"
+						+ "Introduzca un nombre sin los caracteres < > : * / ? | " + a + " " + b);
+			} else {
+				seguir = true;
+			}
+		}while(!seguir);
+		WriteJson.writeJson(lab, name);
+		DrawLab.drawLab(lab, name);
+		System.out.println("\nLos archivos se han guardado en su escritorio!");
 	}
 
 	public static void wilsonAlg(int col, int row, int ranRow, int ranCol, Labyrinth lab, Stack<String> stackAuxVisited,
@@ -234,18 +265,103 @@ public class Functions {
 		}
 	}
 
-	public static int keyboardInt() {
-		int value = sc.nextInt();
-		return value;
+	public static void readLab() {
+		Labyrinth lab;
+		boolean checkGood;
+		System.out.println("\nEscriba la ruta completa de su archivo .json:");
+		lab = ReadJson.readJsons();
+		checkGood = checkSemantic(lab);
+
+		if (checkGood) {
+			saveLab(lab);
+		} else {
+			System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");
+		}
+
 	}
 
-	public static void readLab() {
-		String path;
-		Labyrinth lab;
-		System.out.println("\nEscriba la ruta completa de su archivo .json:");
-		path = sc.next();
-		lab = ReadJson.readJsons(path);
-		Functions.saveLab(lab);
-		
+	public static boolean checkSemantic(Labyrinth lab) {
+		Map<String, Cell> cells = lab.getCells();
+		Cell cellCheck = null;
+		Cell cellCheckCol = null;
+		Cell cellCheckRow = null;
+		boolean semanticGood = true;
+		// boolean[][] semanticGood = new boolean[lab.getCols()][lab.getRows()];
+
+		for (int i = 0; i < lab.getRows(); i++) {
+			for (int j = 0; j < lab.getCols(); j++) {
+
+				cellCheck = cells.get("(" + i + ", " + j + ")");
+				boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
+
+				if (j < (lab.getCols() - 1) && i < (lab.getRows() - 1)) {
+					cellCheckCol = cells.get("(" + i + ", " + (j + 1) + ")");
+					boolean[] neighboursCol = Arrays.copyOf(cellCheckCol.getNeighbors(), 4);
+					cellCheckRow = cells.get("(" + (i + 1) + ", " + j + ")");
+					boolean[] neighboursRow = Arrays.copyOf(cellCheckRow.getNeighbors(), 4);
+
+					// En cada celda, va a ir comprobando el vecino este y sur, comprobar los 4 a la
+					// vez son innecesarios
+					if (neighbours[1] == neighboursCol[3] && neighbours[2] == neighboursRow[0]) {
+						// semanticGood[i][j] = true;
+					} else {
+						semanticGood = false;
+
+						if (neighbours[1] == neighboursCol[3]) {
+
+						} else {
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ i + ", " + (j + 1) + ")");
+						}
+						if (neighbours[2] == neighboursRow[0]) {
+
+						} else {
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ (i + 1) + ", " + j + ")");
+						}
+					}
+
+				}
+
+				if (j == (lab.getCols() - 1) && i == (lab.getRows() - 1)) {
+					// semanticGood[i][j]=true;
+					// Esta celda cuando sea llegada no va a necesitar comprobacion debido a que ha
+					// sido comprobada
+				} else {
+					// Si llega a la ultima columna, que compruebe su vecino del sur
+					if (j == (lab.getCols() - 1)) {
+						cellCheckRow = cells.get("(" + (i + 1) + ", " + j + ")");
+						boolean[] neighboursRow = Arrays.copyOf(cellCheckRow.getNeighbors(), 4);
+
+						if (neighbours[2] == neighboursRow[0]) {
+							// semanticGood[i][j] = true;
+						} else {
+							semanticGood = false;
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ (i + 1) + ", " + j + ")");
+						}
+
+					}
+					// Si llega a la ultima fila, que compruebe su vecino del este
+					if (i == (lab.getRows() - 1)) {
+						cellCheckCol = cells.get("(" + i + ", " + (j + 1) + ")");
+						boolean[] neighboursCol = Arrays.copyOf(cellCheckCol.getNeighbors(), 4);
+
+						if (neighbours[1] == neighboursCol[3]) {
+							// semanticGood[i][j] = true;
+						} else {
+							semanticGood = false;
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ i + ", " + (j + 1) + ")");
+						}
+
+					}
+				}
+
+			}
+
+		}
+
+		return semanticGood;
 	}
 }
