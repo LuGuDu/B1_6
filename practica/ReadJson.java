@@ -6,6 +6,12 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
+class InvalidFileException extends Exception {
+	public InvalidFileException(){
+		super("Error: Archivo Json no valido");
+	}
+}
+
 public class ReadJson {
 
 	static Scanner sc = new Scanner(System.in);
@@ -18,7 +24,9 @@ public class ReadJson {
 		do {
 			try {
 				path = sc.next();
-				BufferedReader br = new BufferedReader(new FileReader(path));
+				String fileExtension=path.substring(path.lastIndexOf(".")+1);
+				if(fileExtension.equals("json")) throw new InvalidFileException();
+				BufferedReader br = new BufferedReader(new FileReader(path)); 
 				seguir = true;
 				String line = "";
 				while ((line = br.readLine()) != null) {
@@ -27,7 +35,11 @@ public class ReadJson {
 
 				br.close();
 
-			} catch (FileNotFoundException FNFE) {
+			} catch(InvalidFileException e){
+				System.out.println(e.getMessage());
+				System.out.println("Vuelva a intentarlo con otro archivo:");
+			}
+			catch (FileNotFoundException FNFE) {
 				System.out.println("Error: archivo no encontrado");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			} catch (IOException IOE) {
