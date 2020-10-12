@@ -22,36 +22,49 @@ public class ReadJson {
 
 		String json = "";
 		String path;
+		boolean labCorrect = false;
 		boolean seguir = false;
+		Labyrinth lab = null;
 		do {
-			try {
-				path = sc.next();
-				String fileExtension=path.substring(path.lastIndexOf(".")+1);
-				if(!fileExtension.equals("json")) throw new InvalidFileException();
-				BufferedReader br = new BufferedReader(new FileReader(path)); 
-				seguir = true;
-				String line = "";
-				while ((line = br.readLine()) != null) {
-					json += line;
+			do {
+				try {
+					path = sc.next();
+					String fileExtension=path.substring(path.lastIndexOf(".")+1);
+					if(!fileExtension.equals("json")) throw new InvalidFileException();
+					BufferedReader br = new BufferedReader(new FileReader(path)); 
+					seguir = true;
+					String line = "";
+					while ((line = br.readLine()) != null) {
+						json += line;
+					}
+
+					br.close();
+
+				} catch(InvalidFileException e){
+					System.out.println(e.getMessage());
+					System.out.println("Vuelva a intentarlo con otro archivo:");
 				}
+				catch (FileNotFoundException FNFE) {
+					System.out.println("Error: archivo no encontrado");
+					System.out.println("Vuelva a intentar introducir la ruta: ");
+				} catch (IOException IOE) {
+					System.out.println(IOE.toString());
+				} 
+			} while (!seguir);
 
-				br.close();
-
-			} catch(InvalidFileException e){
-				System.out.println(e.getMessage());
-				System.out.println("Vuelva a intentarlo con otro archivo:");
-			}
-			catch (FileNotFoundException FNFE) {
-				System.out.println("Error: archivo no encontrado");
+			Gson gson = new Gson();
+			try {
+				lab = gson.fromJson(json, Labyrinth.class);
+				labCorrect = true;
+			} catch (com.google.gson.JsonSyntaxException JSE) {
+				
+				System.out.println(JSE.toString());
+				System.out.println("Error sintáctico en el archivo.");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
-			} catch (IOException IOE) {
-				System.out.println(IOE.toString());
 			}
-		} while (!seguir);
-
-		Gson gson = new Gson();
-
-		Labyrinth lab = gson.fromJson(json, Labyrinth.class);
+		} while (!labCorrect) ;
+		
+		
 		return lab;
 	}
 }
