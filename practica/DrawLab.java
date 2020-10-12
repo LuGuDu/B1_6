@@ -6,17 +6,20 @@ import java.awt.image.ImageObserver;
 import java.io.*;
 import javax.imageio.*;
 
+import java.util.Scanner;
+
 public class DrawLab {
 
+	static Scanner sc = new Scanner(System.in);
 	private Labyrinth lab;
-	private String path;
+	private String name;
 
 	public void paint(Graphics g) {
-		Image img = drawLab(lab, path);
+		Image img = drawLab(lab, name);
 		g.drawImage(img, 20, 55, (ImageObserver) this);
 	}
 
-	static BufferedImage drawLab(Labyrinth lab, String path) {
+	static BufferedImage drawLab(Labyrinth lab, String name) {
 		BufferedImage image = new BufferedImage(((lab.getCols() * 50) + 1), ((lab.getRows() * 50) + 1),
 				BufferedImage.TYPE_INT_ARGB);
 		int counter = 0;
@@ -29,7 +32,7 @@ public class DrawLab {
 				counter++;
 			}
 		}
-		writeImage(image, path);
+		writeImage(image, name);
 		return image;
 	}
 
@@ -54,9 +57,14 @@ public class DrawLab {
 		return image;
 	}
 
-	private static void writeImage(BufferedImage image, String path) {
+	private static void writeImage(BufferedImage image, String name) {
 		File test = new File("test.png");
+		String path=System.getProperty("user.home")+"/desktop";
+		
+		boolean seguir = false;
+		do {
 		try {
+			path = path + "/" + name;
 			ImageIO.write(image, "png", test);
 
 			BufferedImage pngBuffer = ImageIO.read(test);
@@ -64,9 +72,12 @@ public class DrawLab {
 					BufferedImage.TYPE_INT_RGB);
 			jpgBuffer.createGraphics().drawImage(pngBuffer, 0, 0, Color.WHITE, null);
 			ImageIO.write(jpgBuffer, "jpg", new File(path + ".jpg"));
+			seguir = true;
 			test.delete();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
+		catch (IOException e) {
+			System.out.println("Error: Nombre no valido para su archivo");
+		}
+		}while (!seguir);
 	}
 }
