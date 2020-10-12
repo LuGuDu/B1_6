@@ -1,3 +1,5 @@
+package practica;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -25,7 +27,7 @@ public class ReadJson {
 			try {
 				path = sc.next();
 				String fileExtension=path.substring(path.lastIndexOf(".")+1);
-				if(fileExtension.equals("json")) throw new InvalidFileException();
+				if(!fileExtension.equals("json")) throw new InvalidFileException();
 				BufferedReader br = new BufferedReader(new FileReader(path)); 
 				seguir = true;
 				String line = "";

@@ -1,3 +1,5 @@
+package practica;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -64,8 +66,8 @@ public class Functions {
 			for (int j = 0; j < col; j++) {
 				boolean[] neighbours = { false, false, false, false };
 				Cell cell = new Cell(0, neighbours, false);
-				cells.put("(" + i + "," + j + ")", cell);
-				noVisited.add("(" + i + "," + j + ")");
+				cells.put("(" + i + ", " + j + ")", cell);
+				noVisited.add("(" + i + ", " + j + ")");
 			}
 		}
 
@@ -82,7 +84,7 @@ public class Functions {
 			int x = key1.indexOf(",");
 
 			int ranRow = Integer.parseInt(key1.substring(1, x));
-			int ranCol = Integer.parseInt(key1.substring(x + 1, key1.length() - 1));
+			int ranCol = Integer.parseInt(key1.substring(x + 2, key1.length() - 1));
 
 			Functions.wilsonAlg(col, row, ranRow, ranCol, lab, stackAuxVisited, stackAuxVisitedC);
 			while (!stackAuxVisited.empty()) {
@@ -130,11 +132,11 @@ public class Functions {
 		boolean done = false;
 		int ranNei = 0;
 		String last = "";
-		while (!cells.get("(" + ranRow + "," + ranCol + ")").isVisited()) {
-			cell = cells.get("(" + ranRow + "," + ranCol + ")");
+		while (!cells.get("(" + ranRow + ", " + ranCol + ")").isVisited()) {
+			cell = cells.get("(" + ranRow + ", " + ranCol + ")");
 
 			boolean[] neighbours = Arrays.copyOf(cell.getNeighbors(), 4);
-			if (!stackAuxVisited.contains("(" + ranRow + "," + ranCol + ")")) {
+			if (!stackAuxVisited.contains("(" + ranRow + ", " + ranCol + ")")) {
 
 				if (!stackAuxVisited.empty()) {
 					neighbours[0] = false;
@@ -163,7 +165,7 @@ public class Functions {
 					if (ranNei == 0 && neighbours[0] == false) {
 						if (ranRow > 0) {
 							neighbours[0] = true;
-							stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+							stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 							stackAuxVisitedC.push(new Cell(0, neighbours, false));
 							ranRow = ranRow - 1;
 							done = true;
@@ -172,7 +174,7 @@ public class Functions {
 					if (ranNei == 1 && neighbours[1] == false) {
 						if (ranCol < col - 1) {
 							neighbours[1] = true;
-							stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+							stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 							stackAuxVisitedC.push(new Cell(0, neighbours, false));
 							ranCol = ranCol + 1;
 							done = true;
@@ -181,7 +183,7 @@ public class Functions {
 					if (ranNei == 2 && neighbours[2] == false) {
 						if (ranRow < row - 1) {
 							neighbours[2] = true;
-							stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+							stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 							stackAuxVisitedC.push(new Cell(0, neighbours, false));
 							ranRow = ranRow + 1;
 							done = true;
@@ -190,7 +192,7 @@ public class Functions {
 					if (ranNei == 3 && neighbours[3] == false) {
 						if (ranCol > 0) {
 							neighbours[3] = true;
-							stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+							stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 							stackAuxVisitedC.push(new Cell(0, neighbours, false));
 							ranCol = ranCol - 1;
 							done = true;
@@ -199,7 +201,7 @@ public class Functions {
 				} while (!done);
 				done = false;
 			} else {
-				bucle = "(" + ranRow + "," + ranCol + ")";
+				bucle = "(" + ranRow + ", " + ranCol + ")";
 				while (stackAuxVisited.contains(bucle)) {
 					last = stackAuxVisited.pop();
 					stackAuxVisitedC.pop();
@@ -209,12 +211,12 @@ public class Functions {
 					int x = key1.indexOf(",");
 
 					int ranRow3 = Integer.parseInt(key1.substring(1, x));
-					int ranCol3 = Integer.parseInt(key1.substring(x + 1, key1.length() - 1));
+					int ranCol3 = Integer.parseInt(key1.substring(x + 2, key1.length() - 1));
 
 					int y = last.indexOf(",");
 
 					int ranRow4 = Integer.parseInt(last.substring(1, y));
-					int ranCol4 = Integer.parseInt(last.substring(y + 1, last.length() - 1));
+					int ranCol4 = Integer.parseInt(last.substring(y + 2, last.length() - 1));
 
 					int r = ranRow3 - ranRow4;
 					int c = ranCol3 - ranCol4;
@@ -236,29 +238,29 @@ public class Functions {
 
 			}
 		}
-		cell = cells.get("(" + ranRow + "," + ranCol + ")");
+		cell = cells.get("(" + ranRow + ", " + ranCol + ")");
 
 		boolean[] neighbours = Arrays.copyOf(cell.getNeighbors(), 4);
 		if (!stackAuxVisited.empty()) {
 			switch (ranNei) {
 			case 0:
 				neighbours[2] = true;
-				stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+				stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 				stackAuxVisitedC.push(new Cell(0, neighbours, false));
 				break;
 			case 1:
 				neighbours[3] = true;
-				stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+				stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 				stackAuxVisitedC.push(new Cell(0, neighbours, false));
 				break;
 			case 2:
 				neighbours[0] = true;
-				stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+				stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 				stackAuxVisitedC.push(new Cell(0, neighbours, false));
 				break;
 			case 3:
 				neighbours[1] = true;
-				stackAuxVisited.push("(" + ranRow + "," + ranCol + ")");
+				stackAuxVisited.push("(" + ranRow + ", " + ranCol + ")");
 				stackAuxVisitedC.push(new Cell(0, neighbours, false));
 				break;
 			}
