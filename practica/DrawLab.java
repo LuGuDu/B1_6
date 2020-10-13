@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+
 import java.io.*;
 import javax.imageio.*;
 
@@ -13,15 +14,18 @@ public class DrawLab {
 	static Scanner sc = new Scanner(System.in);
 	private Labyrinth lab;
 	private String name;
+	private static int weidth;
+	private static int length;
 
 	public void paint(Graphics g) {
 		Image img = drawLab(lab, name);
-		g.drawImage(img, 20, 55, (ImageObserver) this);
+		g.drawImage(img, 0, 0, (ImageObserver) this);
 	}
 
 	static BufferedImage drawLab(Labyrinth lab, String name) {
-		BufferedImage image = new BufferedImage(((lab.getCols() * 50) + 1), ((lab.getRows() * 50) + 1),
-				BufferedImage.TYPE_INT_ARGB);
+		weidth=((lab.getCols() * 50) + 100);
+		length=((lab.getRows() * 50) + 100);
+		BufferedImage image = new BufferedImage(weidth, length, BufferedImage.TYPE_INT_ARGB);
 		int counter = 0;
 		Cell[] cellArray = new Cell[(lab.getRows()) * (lab.getCols())];
 		cellArray = Functions.getCellsFromMap(lab.getCells());
@@ -42,16 +46,16 @@ public class DrawLab {
 		g.setColor(Color.BLACK);
 		// Order - N,E,S,W
 		if (list[0] == false) {
-			g.drawLine((row * 50), (col * 50), ((row + 1) * 50), ((col) * 50)); // North Neighbor
+			g.drawLine((row * 50)+50, (col * 50)+50, ((row + 1) * 50)+50, ((col) * 50)+50); // North Neighbor
 		}
 		if (list[1] == false) {
-			g.drawLine(((row + 1) * 50), (col * 50), ((row + 1) * 50), ((col + 1) * 50)); // East Neighbor
+			g.drawLine(((row + 1) * 50)+50, (col * 50)+50, ((row + 1) * 50)+50, ((col + 1) * 50)+50); // East Neighbor
 		}
 		if (list[2] == false) {
-			g.drawLine(((row) * 50), ((col + 1) * 50), ((row + 1) * 50), ((col + 1) * 50)); // South Neighbor
+			g.drawLine(((row) * 50)+50, ((col + 1) * 50)+50, ((row + 1) * 50)+50, ((col + 1) * 50)+50); // South Neighbor
 		}
 		if (list[3] == false) {
-			g.drawLine((row * 50), (col * 50), ((row) * 50), ((col + 1) * 50)); // West Neighbor
+			g.drawLine((row * 50)+50, (col * 50)+50, ((row) * 50)+50, ((col + 1) * 50)+50); // West Neighbor
 		}
 
 		return image;
