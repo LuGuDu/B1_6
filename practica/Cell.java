@@ -1,14 +1,23 @@
+package practica;
+
 import java.util.Arrays;
 
+/**
+ * Esta clase es una abstacción de cada casilla del laberinto.
+ * Tiene valor, vecinos, es decir, celdas con las que está conectada y un
+ * atributo que dice si está visitado o no.
+ * @author david
+ *
+ */
 public class Cell {
 	private int value;
 	private boolean[] neighbors;
 	private boolean visited;
-
-	public boolean isVisited() {
+	
+	public boolean getVisited() {
 		return visited;
 	}
-
+	
 	public void setVisited(boolean visited) {
 		this.visited = visited;
 	}
@@ -30,7 +39,7 @@ public class Cell {
 	public boolean[] getNeighbors() {
 		return neighbors;
 	}
-
+	
 	public void setNeighbors(boolean[] neighbors) {
 		if (neighbors == null) {
 			this.neighbors = neighbors;
