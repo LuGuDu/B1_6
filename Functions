@@ -1,3 +1,5 @@
+package practica;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -278,40 +280,41 @@ public class Functions {
 
 					// En cada celda, va a ir comprobando el vecino este y sur, comprobar los 4 a la
 					// vez son innecesarios
-					if (neighbours[1] == neighboursCol[3] && neighbours[2] == neighboursRow[0]) {
+					if (!(neighbours[1] == neighboursCol[3] && neighbours[2] == neighboursRow[0])) {
 						// semanticGood[i][j] = true;
-					} else {
 						semanticGood = false;
-						
-						if(neighbours[1] == neighboursCol[3]) {
-							
-						}else {
-							System.out.println("\nFallo de inconsistencia entre las celdas ("+i+","+j+") y (" + i + ", " + (j+1) + ")");
+
+						if (!(neighbours[1] == neighboursCol[3])) {
+
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ i + ", " + (j + 1) + ")");
 						}
-						if(neighbours[2] == neighboursRow[0]) {
-							
-						}else {
-							System.out.println("\nFallo de inconsistencia entre las celdas ("+i+","+j+") y (" + (i+1) + ", " + j + ")");
+
+						if (!(neighbours[2] == neighboursRow[0])) {
+
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ (i + 1) + ", " + j + ")");
 						}
+
 					}
 
 				}
 
-				if (j == (lab.getCols() - 1) && i == (lab.getRows() - 1)) {
+				if (!(j == (lab.getCols() - 1) && i == (lab.getRows() - 1))) {
 					// semanticGood[i][j]=true;
 					// Esta celda cuando sea llegada no va a necesitar comprobacion debido a que ha
 					// sido comprobada
-				} else {
+
 					// Si llega a la ultima columna, que compruebe su vecino del sur
 					if (j == (lab.getCols() - 1)) {
 						cellCheckRow = cells.get("(" + (i + 1) + ", " + j + ")");
 						boolean[] neighboursRow = Arrays.copyOf(cellCheckRow.getNeighbors(), 4);
 
-						if (neighbours[2] == neighboursRow[0]) {
+						if (!(neighbours[2] == neighboursRow[0])) {
 							// semanticGood[i][j] = true;
-						} else {
 							semanticGood = false;
-							System.out.println("\nFallo de inconsistencia entre las celdas ("+i+","+j+") y (" + (i+1) + ", " + j + ")");
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ (i + 1) + ", " + j + ")");
 						}
 
 					}
@@ -320,11 +323,11 @@ public class Functions {
 						cellCheckCol = cells.get("(" + i + ", " + (j + 1) + ")");
 						boolean[] neighboursCol = Arrays.copyOf(cellCheckCol.getNeighbors(), 4);
 
-						if (neighbours[1] == neighboursCol[3]) {
+						if (!(neighbours[1] == neighboursCol[3])) {
 							// semanticGood[i][j] = true;
-						} else {
 							semanticGood = false;
-							System.out.println("\nFallo de inconsistencia entre las celdas ("+i+","+j+") y (" + i + ", " + (j+1) + ")");
+							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
+									+ i + ", " + (j + 1) + ")");
 						}
 
 					}
