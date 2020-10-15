@@ -253,7 +253,7 @@ public class Functions {
 		if (checkGood) {
 			Functions.saveLab(lab);
 		} else {
-			System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");
+			System.out.println("\nJSON file is inconsistent");
 		}
 
 	}
@@ -264,70 +264,103 @@ public class Functions {
 		Cell cellCheckCol = null;
 		Cell cellCheckRow = null;
 		boolean semanticGood = true;
-		// boolean[][] semanticGood = new boolean[lab.getCols()][lab.getRows()];
+
+		/*
+		 * FOR-LOOPS 
+		 * The for loop takes care of going through the cells of our labyrinth
+		 * to check its neighbors with the adjacent cell.
+		 */
 
 		for (int i = 0; i < lab.getRows(); i++) {
 			for (int j = 0; j < lab.getCols(); j++) {
 
+				// The cells and the neighbors of the cells are obtained
 				cellCheck = cells.get("(" + i + ", " + j + ")");
 				boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
+				/*
+				 * CHECKING THE CELLS The n-1 cells are checked for their adjacent neighbors
+				 * (south and east). It is not necessary to check all the neighbors (N,E,S,W)
+				 * for each cell.
+				 * 
+				 * The value of semanticGood is always true. Otherwise, if we find
+				 * inconsistencies between two cells, the value of semanticGood will become
+				 * false.
+				 */
+
 				if (j < (lab.getCols() - 1) && i < (lab.getRows() - 1)) {
+
+					// The adjacent cells and their neighbors are obtained
+
 					cellCheckCol = cells.get("(" + i + ", " + (j + 1) + ")");
 					boolean[] neighboursCol = Arrays.copyOf(cellCheckCol.getNeighbors(), 4);
+
 					cellCheckRow = cells.get("(" + (i + 1) + ", " + j + ")");
 					boolean[] neighboursRow = Arrays.copyOf(cellCheckRow.getNeighbors(), 4);
 
-					// En cada celda, va a ir comprobando el vecino este y sur, comprobar los 4 a la
-					// vez son innecesarios
+					// The east and south neighbor is checked, in case of finding an inconsistency,
+					// it is communicated
+
 					if (!(neighbours[1] == neighboursCol[3] && neighbours[2] == neighboursRow[0])) {
-						// semanticGood[i][j] = true;
+
 						semanticGood = false;
 
+						// EAST NEIGHBOUR
 						if (!(neighbours[1] == neighboursCol[3])) {
 
-							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
-									+ i + ", " + (j + 1) + ")");
+							System.out.println("\nInconsistency bug between cells (" + i + "," + j + ") and (" + i
+									+ ", " + (j + 1) + ")");
 						}
 
+						// SOUTH NEIGHBOUR
 						if (!(neighbours[2] == neighboursRow[0])) {
 
-							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
-									+ (i + 1) + ", " + j + ")");
+							System.out.println("\nInconsistency bug between cells (" + i + "," + j + ") and (" + (i + 1)
+									+ ", " + j + ")");
 						}
 
 					}
 
 				}
 
-				if (!(j == (lab.getCols() - 1) && i == (lab.getRows() - 1))) {
-					// semanticGood[i][j]=true;
-					// Esta celda cuando sea llegada no va a necesitar comprobacion debido a que ha
-					// sido comprobada
+				// The last row and the last column are checked, and a different procedure will
+				// be performed
 
-					// Si llega a la ultima columna, que compruebe su vecino del sur
+				if (!(j == (lab.getCols() - 1) && i == (lab.getRows() - 1))) {
+
+					/*
+					 * LAST COLUMN CHECK 
+					 * In the last column check, it is only necessary to check the
+					 * southern neighbor
+					 */
+
 					if (j == (lab.getCols() - 1)) {
 						cellCheckRow = cells.get("(" + (i + 1) + ", " + j + ")");
 						boolean[] neighboursRow = Arrays.copyOf(cellCheckRow.getNeighbors(), 4);
 
-						if (!(neighbours[2] == neighboursRow[0])) {
-							// semanticGood[i][j] = true;
+						if (!(neighbours[2] == neighboursRow[0])) { // in case of finding an inconsistency, it is
+																	// communicated
 							semanticGood = false;
-							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
-									+ (i + 1) + ", " + j + ")");
+							System.out.println("\nInconsistency bug between cells (" + i + "," + j + ") and (" + (i + 1)
+									+ ", " + j + ")");
 						}
 
 					}
-					// Si llega a la ultima fila, que compruebe su vecino del este
+
+					/*
+					 * LAST ROW CHECK 
+					 * In the last row check, it is only necessary to check the east
+					 * neighbor
+					 */
 					if (i == (lab.getRows() - 1)) {
 						cellCheckCol = cells.get("(" + i + ", " + (j + 1) + ")");
 						boolean[] neighboursCol = Arrays.copyOf(cellCheckCol.getNeighbors(), 4);
 
-						if (!(neighbours[1] == neighboursCol[3])) {
-							// semanticGood[i][j] = true;
+						if (!(neighbours[1] == neighboursCol[3])) { // in case of finding an inconsistency, it is
+																	// communicated
 							semanticGood = false;
-							System.out.println("\nFallo de inconsistencia entre las celdas (" + i + "," + j + ") y ("
-									+ i + ", " + (j + 1) + ")");
+							System.out.println("\nInconsistency bug between cells (" + i + "," + j + ") and (" + i
+									+ ", " + (j + 1) + ")");
 						}
 
 					}
