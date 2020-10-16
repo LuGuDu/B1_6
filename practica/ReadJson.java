@@ -23,7 +23,7 @@ public class ReadJson {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static Labyrinth readJsons() {
+	public static Labyrinth readJson() {
 
 		String json = "";
 		String path;

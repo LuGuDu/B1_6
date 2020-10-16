@@ -27,7 +27,7 @@ public class WilsonAlgorithm {
 		Map<String, Cell> cells = lab.getCells();
 		LinkedHashMap<String, Cell> cellsVisited = new LinkedHashMap<String, Cell>();
 		ArrayList<String> noVisitedKeys = new ArrayList<String>();
-		rellenarnoVisitedKeys(noVisitedKeys, lab);
+		fillNoVisitedKeys(noVisitedKeys, lab);
 		
 		int firstVisited = (int) (Math.random() * (noVisitedKeys.size()));
 		String key2 = noVisitedKeys.get(firstVisited);
@@ -224,7 +224,7 @@ public class WilsonAlgorithm {
 	 * @param noVisitedKeys
 	 * @param lab
 	 */
-	public static void rellenarnoVisitedKeys(ArrayList<String> noVisitedKeys, Labyrinth lab) {
+	public static void fillNoVisitedKeys(ArrayList<String> noVisitedKeys, Labyrinth lab) {
 		int row = lab.getRows();
 		int col = lab.getCols();
 		
