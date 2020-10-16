@@ -1,6 +1,16 @@
+package practica;
+
 import java.util.Arrays;
 import java.util.Map;
 
+/**
+ * Esta clase Labyrinth tiene un número de filas y de columnas que puede ser distinto
+ * un máximo de vecinos que en principio siempre será 4, los movimientos y los id de 
+ * movimientos para llegar a celdas subyacentes y por último un Map con las llaves y
+ * celdas del laberinto.
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 16/10/2020
+ */
 public class Labyrinth {
 	private int rows;
 	private int cols;
