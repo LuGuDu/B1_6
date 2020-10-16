@@ -1,3 +1,5 @@
+package practica;
+
 import java.util.*;
 import java.util.Scanner;
 
@@ -12,7 +14,11 @@ class NoValidNumberException extends Exception {
 		super("Error: Opcion no valida");
 	}
 }
-
+/**
+ * Clase principal donde se pueden probar las funcionalidades del sistema
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 16/10/2020
+ */
 public class Principal {
 
 	static Scanner sc = new Scanner(System.in);
@@ -53,7 +59,16 @@ public class Principal {
 			
 			switch (value) {
 			case 1:
-				Functions.readLab();
+				Labyrinth lab;
+				boolean checkGood;
+				lab = ReadJson.readJsons();
+				checkGood = Functions.checkSemantic(lab);
+
+				if (checkGood) {
+					Functions.saveLab(lab);
+				} else {
+					System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");
+				}
 				break;
 			case 2:
 				Functions.genLab();

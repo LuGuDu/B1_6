@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Stack;
-
+/**
+ * Esta clase es la encargada de hacer el algoritmo de Wilson sobre un objeto Labyrinth
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 16/10/2020
+ */
 public class WilsonAlgorithm {
 
 	/**
@@ -16,6 +20,8 @@ public class WilsonAlgorithm {
 	 * @param lab
 	 */
 	public static void wilson(Labyrinth lab) {
+		// Se controlará el avance y el retroceso debido a bucles con dos pilas.
+		// Una pila tendrá la keys y otra las Cells
 		Stack<String> stackKeys = new Stack<String>();
 		Stack<Cell> stackCells = new Stack<Cell>(); 
 		Map<String, Cell> cells = lab.getCells();
@@ -23,35 +29,38 @@ public class WilsonAlgorithm {
 		ArrayList<String> noVisitedKeys = new ArrayList<String>();
 		rellenarnoVisitedKeys(noVisitedKeys, lab);
 		
-		int position2 = (int) (Math.random() * (noVisitedKeys.size()));
-		String key2 = noVisitedKeys.get(position2);
+		int firstVisited = (int) (Math.random() * (noVisitedKeys.size()));
+		String key2 = noVisitedKeys.get(firstVisited);
 
 		String aux = "";
 		Cell auxC = null;
 		
 		lab.getCells().get(key2).setVisited(true);
-		
-		while (cellsVisited.size() < cells.size()) {
-			int position = (int) (Math.random() * (noVisitedKeys.size()));
-			String key1 = noVisitedKeys.get(position);
-			int x = key1.indexOf(",");
+		if (lab.getCols() != 1 || lab.getRows() != 1) {
+			while (cellsVisited.size() < cells.size()) {
+				// Posición random desde la que buscará una casilla visitada
+				int position = (int) (Math.random() * (noVisitedKeys.size()));
+				String key1 = noVisitedKeys.get(position);
+				int x = key1.indexOf(",");
+				int ranRow = Integer.parseInt(key1.substring(1, x));
+				int ranCol = Integer.parseInt(key1.substring(x + 2, key1.length() - 1));
 
-			int ranRow = Integer.parseInt(key1.substring(1, x));
-			int ranCol = Integer.parseInt(key1.substring(x + 2, key1.length() - 1));
-
-			oneRoad(ranRow, ranCol, lab, stackKeys, stackCells);
-			while (!stackKeys.empty()) {
-				aux = stackKeys.pop();
-				auxC = stackCells.pop();
-				auxC.setVisited(true);
-				noVisitedKeys.remove(aux);
-				if (cells.containsKey(aux)) {
-					cells.get(aux).setVisited(true);
-					cells.put(aux, auxC);
-					cellsVisited.put(aux, auxC);
+				oneRoad(ranRow, ranCol, lab, stackKeys, stackCells);
+				// Bucle para ir guardando cada camino
+				while (!stackKeys.empty()) {
+					aux = stackKeys.pop();
+					auxC = stackCells.pop();
+					auxC.setVisited(true);
+					noVisitedKeys.remove(aux);
+					if (cells.containsKey(aux)) {
+						cells.get(aux).setVisited(true);
+						cells.put(aux, auxC);
+						cellsVisited.put(aux, auxC);
+					}
 				}
 			}
 		}
+		
 	}
 	
 	/**
@@ -74,12 +83,15 @@ public class WilsonAlgorithm {
 		int col = lab.getCols();
 		int row = lab.getRows();
 		
+		// Bucle que visita celdas hasta encontrar una visitada
 		while (!cells.get("(" + ranRow + ", " + ranCol + ")").getVisited()) {
 			cell = cells.get("(" + ranRow + ", " + ranCol + ")");
 
 			boolean[] neighbours = Arrays.copyOf(cell.getNeighbors(), 4);
 			if (!stackKeys.contains("(" + ranRow + ", " + ranCol + ")")) {
-
+				
+				// Configuración contra fallo de vecinos inexistentes contemplados en neighbours
+				// después de resolver un bucle
 				if (!stackKeys.empty()) {
 					neighbours[0] = false;
 					neighbours[1] = false;
@@ -150,15 +162,15 @@ public class WilsonAlgorithm {
 					last = stackKeys.pop();
 					stackCells.pop();
 				}
+				// Configuración contra fallo de vecinos inexistentes contemplados en neighbours
+				// después de resolver un bucle
 				if (!stackKeys.empty()) {
 					String key1 = stackKeys.peek();
 					int x = key1.indexOf(",");
-
 					int ranRow3 = Integer.parseInt(key1.substring(1, x));
 					int ranCol3 = Integer.parseInt(key1.substring(x + 2, key1.length() - 1));
 
 					int y = last.indexOf(",");
-
 					int ranRow4 = Integer.parseInt(last.substring(1, y));
 					int ranCol4 = Integer.parseInt(last.substring(y + 2, last.length() - 1));
 
@@ -183,7 +195,7 @@ public class WilsonAlgorithm {
 			}
 		}
 		cell = cells.get("(" + ranRow + ", " + ranCol + ")");
-
+		// Controla que la última celda del camino también esté unida
 		boolean[] neighbours = Arrays.copyOf(cell.getNeighbors(), 4);
 		if (!stackKeys.empty()) {
 			switch (ranNei) {

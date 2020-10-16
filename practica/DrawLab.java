@@ -1,28 +1,34 @@
+package practica;
+
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 
 import java.io.*;
 import javax.imageio.*;
 
 import java.util.Scanner;
-
+/**
+ * Clase encargada de dibujar un laberinto a partir de un objeto Labyrinth y generar el archivo
+ * correspondiente con esa imagen
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 16/10/2020
+ */
 public class DrawLab {
 
 	static Scanner sc = new Scanner(System.in);
-	private Labyrinth lab;
-	private String name;
 	private static int weidth;
 	private static int length;
 
-	public void paint(Graphics g) {
-		Image img = drawLab(lab, name);
-		g.drawImage(img, 0, 0, (ImageObserver) this);
-	}
-
-	static BufferedImage drawLab(Labyrinth lab, String name) {
+	/**
+	 * Método principal que va generando el dibujo de todas las celdas y al final llama al
+	 * método que genera el archivo, devuelve el objeto BufferedImage image ya que tendrá 
+	 * que ser usado por la clase paint
+	 * @param lab
+	 * @param name
+	 * @return
+	 */
+	public static BufferedImage drawLab(Labyrinth lab, String name) {
 		weidth=((lab.getCols() * 50) + 100);
 		length=((lab.getRows() * 50) + 100);
 		BufferedImage image = new BufferedImage(weidth, length, BufferedImage.TYPE_INT_ARGB);
@@ -36,11 +42,18 @@ public class DrawLab {
 				counter++;
 			}
 		}
-		writeImage(image, name);
+		generateFile(image, name);
 		return image;
 	}
 
-	private static Image drawNeighbors(BufferedImage image, Cell cell, int row, int col) {
+	/**
+	 * Método que dibuja cada uno de los lados de las celdas y lo añade a image
+	 * @param image
+	 * @param cell
+	 * @param row
+	 * @param col
+	 */
+	private static void drawNeighbors(BufferedImage image, Cell cell, int row, int col) {
 		Graphics g = image.getGraphics();
 		boolean[] list = cell.getNeighbors();
 		g.setColor(Color.BLACK);
@@ -57,11 +70,15 @@ public class DrawLab {
 		if (list[3] == false) {
 			g.drawLine((row * 50)+50, (col * 50)+50, ((row) * 50)+50, ((col + 1) * 50)+50); // West Neighbor
 		}
-
-		return image;
 	}
-
-	private static void writeImage(BufferedImage image, String name) {
+	
+	/**
+	 * Este método genera un archivo .jpg con la imagen del laberinto y un archivo .json con el laberinto
+	 * en formato de texto.
+	 * @param image
+	 * @param name
+	 */
+	public static void generateFile(BufferedImage image, String name) {
 		File test = new File("test.png");
 		String path=System.getProperty("user.home")+"/desktop";
 		
@@ -84,4 +101,5 @@ public class DrawLab {
 		}
 		}while (!seguir);
 	}
+	
 }

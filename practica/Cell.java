@@ -6,8 +6,8 @@ import java.util.Arrays;
  * Esta clase es una abstacción de cada casilla del laberinto.
  * Tiene valor, vecinos, es decir, celdas con las que está conectada y un
  * atributo que dice si está visitado o no.
- * @author david
- *
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 16/10/2020
  */
 public class Cell {
 	private int value;

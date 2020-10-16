@@ -14,6 +14,11 @@ class InvalidFileException extends Exception {
 	}
 }
 
+/**
+ * Esta clase permite leer archivos .json. Pedirá que introduzcas la ruta completa del archivo
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 16/10/2020
+ */
 public class ReadJson {
 
 	static Scanner sc = new Scanner(System.in);
@@ -25,6 +30,9 @@ public class ReadJson {
 		boolean labCorrect = false;
 		boolean seguir = false;
 		Labyrinth lab = null;
+		
+		System.out.println("\nEscriba la ruta completa de su archivo .json:");
+		
 		do {
 			do {
 				try {
@@ -63,7 +71,6 @@ public class ReadJson {
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 		} while (!labCorrect) ;
-		
 		
 		return lab;
 	}
