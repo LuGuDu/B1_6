@@ -1,7 +1,7 @@
 package practica;
 
 public class Nodo {
-	private String id;
+	private int id;
 	private int costo;
 	private String idEstado;
 	private String idPadre;
@@ -14,7 +14,7 @@ public class Nodo {
 		
 	}
 	
-	public Nodo (String id, int costo, String idEstado, String idPadre, String accion, 
+	public Nodo (int id, int costo, String idEstado, String idPadre, String accion, 
 			int profundidad, int heuristica, int valor) {
 		this.id = id;
 		this.costo = costo;
@@ -26,12 +26,12 @@ public class Nodo {
 		this.valor = valor;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -93,14 +93,14 @@ public class Nodo {
 	}
 	
 	public int getRow() {
-		int x = id.indexOf(",");
-		int row = Integer.parseInt(id.substring(1, x));
+		int x = idEstado.indexOf(",");
+		int row = Integer.parseInt(idEstado.substring(1, x));
 		return row;
 	}
 
 	public int getCol() {
-		int x = id.indexOf(",");
-		int col = Integer.parseInt(id.substring(x + 2, id.length() - 1));
+		int x = idEstado.indexOf(",");
+		int col = Integer.parseInt(idEstado.substring(x + 2, idEstado.length() - 1));
 		return col;
 	}
 
