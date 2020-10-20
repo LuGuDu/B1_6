@@ -9,10 +9,26 @@ public class Frontera {
 	private Comparator<Nodo> comparador = new Ordenar();
 	private PriorityQueue<Nodo> frontera = new PriorityQueue<Nodo>(50, comparador);
 	
+	public Frontera () {
+		
+	}
 	public Frontera(PriorityQueue<Nodo> frontera) {
 		this.frontera = frontera;
 	}
 	
+	public void push(Nodo nodo) {
+		frontera.add(nodo);
+	}
+
+	public Nodo pop() {
+		return frontera.poll();
+	}
+	
+	public int size() {
+		return frontera.size();
+	}
+
+
 	public class Ordenar implements Comparator<Nodo> {
 		public int compare(Nodo x, Nodo y) {
 			if (x.getValor() > y.getValor()) {

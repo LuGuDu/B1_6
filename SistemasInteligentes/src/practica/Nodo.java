@@ -13,6 +13,18 @@ public class Nodo {
 	public Nodo() {
 		
 	}
+	
+	public Nodo (String id, int costo, String idEstado, String idPadre, String accion, 
+			int profundidad, int heuristica, int valor) {
+		this.id = id;
+		this.costo = costo;
+		this.idEstado = idEstado;
+		this.idPadre = idPadre;
+		this.accion = accion;
+		this.profundidad = profundidad;
+		this.heuristica = heuristica;
+		this.valor = valor;
+	}
 
 	public String getId() {
 		return id;
@@ -91,10 +103,13 @@ public class Nodo {
 		int col = Integer.parseInt(id.substring(x + 2, id.length() - 1));
 		return col;
 	}
+
 	@Override
 	public String toString() {
-		return "Nodo [costo=" + costo + ", idEstado=" + idEstado + ", idPadre=" + idPadre + ", accion=" + accion
-				+ ", profundidad=" + profundidad + ", heuristica=" + heuristica + "]";
+		return "Nodo [id=" + id + ", costo=" + costo + ", idEstado=" + idEstado + ", idPadre=" + idPadre + ", accion="
+				+ accion + ", profundidad=" + profundidad + ", heuristica=" + heuristica + ", valor=" + valor + "]";
 	}
+
+	
 	
 }
