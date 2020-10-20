@@ -1,20 +1,26 @@
 package practica;
 
 public class Sucesor {
-	private Estado estado;
-	private int costo;
 	private String mov;
+	private String idEstado;
+	private int costo;
 	
 	public Sucesor () {
 		
 	}
-
-	public Estado getEstado() {
-		return estado;
+	
+	public Sucesor (String mov, String idEstado, int costo) {
+		this.mov = mov;
+		this.idEstado = idEstado;
+		this.costo = costo;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public String getIdEstado() {
+		return idEstado;
+	}
+
+	public void setIdEstado(String idEstado) {
+		this.idEstado = idEstado;
 	}
 
 	public int getCosto() {
@@ -31,5 +37,17 @@ public class Sucesor {
 
 	public void setMov(String mov) {
 		this.mov = mov;
+	}
+	
+	public int getRow() {
+		int x = idEstado.indexOf(",");
+		int row = Integer.parseInt(idEstado.substring(1, x));
+		return row;
+	}
+
+	public int getCol() {
+		int x = idEstado.indexOf(",");
+		int col = Integer.parseInt(idEstado.substring(x + 2, idEstado.length() - 1));
+		return col;
 	}
 }

@@ -24,5 +24,16 @@ public class Estado {
 		this.valor = valor;
 	}
 	
+	public int getRow() {
+		int x = id.indexOf(",");
+		int row = Integer.parseInt(id.substring(1, x));
+		return row;
+	}
+
+	public int getCol() {
+		int x = id.indexOf(",");
+		int col = Integer.parseInt(id.substring(x + 2, id.length() - 1));
+		return col;
+	}
 	
 }
