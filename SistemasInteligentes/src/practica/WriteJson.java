@@ -17,7 +17,7 @@ public class WriteJson {
 	 * @param lab
 	 * @param name
 	 */
-	public static void writeJson(Labyrinth lab, String name) {
+	public static void writeJsonLab(Labyrinth lab, String name) {
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		// Por defecto mandamos los archivos al escritorio
@@ -26,6 +26,21 @@ public class WriteJson {
 		
 		try (FileWriter writer = new FileWriter(path + ".json")) {
 			gson.toJson(lab, writer);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void writeJsonProblem(Problema prob, String name) {
+
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		// Por defecto mandamos los archivos al escritorio
+		String path=System.getProperty("user.home")+"/desktop";
+		path = path + "/" +name;
+		
+		try (FileWriter writer = new FileWriter(path + ".json")) {
+			gson.toJson(prob, writer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

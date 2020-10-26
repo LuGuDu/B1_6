@@ -101,7 +101,7 @@ public class Principal {
 				while (!(fron.size() == 0)) {
 					System.out.println(fron.pop());
 				}
-				
+				WriteJson.writeJsonProblem(pro, "hola");
 				break;
 			case 4:
 				System.out.println("Saliendo del programa");

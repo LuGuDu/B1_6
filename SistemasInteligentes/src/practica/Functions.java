@@ -102,7 +102,7 @@ public class Functions {
 				seguir = true;
 			}
 		}while(!seguir);
-		WriteJson.writeJson(lab, name);
+		WriteJson.writeJsonLab(lab, name);
 		DrawLab.drawLab(lab, name);
 		System.out.println("\nLos archivos se han guardado en su escritorio!");
 	}
