@@ -23,20 +23,24 @@ public class ReadJson {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static Labyrinth readJson() {
+	public static Labyrinth readJson(String path) {
 
 		String json = "";
-		String path;
+		
 		boolean labCorrect = false;
 		boolean seguir = false;
 		Labyrinth lab = null;
-		
-		System.out.println("\nEscriba la ruta completa de su archivo .json:");
+		if (path.equals("")) {
+			System.out.println("\nEscriba la ruta completa de su archivo .json:");
+		}
 		
 		do {
 			do {
 				try {
-					path = sc.next();
+					if (path.equals("")) {
+						path = sc.next();
+					}		
+					
 					String fileExtension=path.substring(path.lastIndexOf(".")+1);
 					if(!fileExtension.equals("json")) throw new InvalidFileException();
 					BufferedReader br = new BufferedReader(new FileReader(path)); 

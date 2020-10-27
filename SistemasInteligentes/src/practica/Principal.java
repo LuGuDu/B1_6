@@ -61,7 +61,7 @@ public class Principal {
 			case 1:
 				Labyrinth lab;
 				boolean checkGood;
-				lab = ReadJson.readJson();
+				lab = ReadJson.readJson("");
 				checkGood = Functions.checkSemantic(lab);
 
 				if (checkGood) {
