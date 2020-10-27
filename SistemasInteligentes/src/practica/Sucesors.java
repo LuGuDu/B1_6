@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class Sucesors {
-	private ArrayList<Sucesor> sucesors;
+	private ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 	private Labyrinth lab = null;
 
 	public Sucesors(Sucesor sucesor, Labyrinth lab) {
@@ -31,11 +31,14 @@ public class Sucesors {
 
 		if (neighbours[0]) {
 			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", 1));
-		} else if (neighbours[1]) {
+		} 
+		if (neighbours[1]) {
 			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", 1));
-		} else if (neighbours[2]) {
+		} 
+		if (neighbours[2]) {
 			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", 1));
-		} else if (neighbours[3]) {
+		} 
+		if (neighbours[3]) {
 			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", 1));
 		}
 

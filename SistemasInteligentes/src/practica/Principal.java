@@ -107,7 +107,9 @@ public class Principal {
 				checkGood1 = Functions.checkSemantic(lab1);
 
 				if (checkGood1) {
-					
+					Sucesor suc = new Sucesor("N", "(2, 3)", 1);
+					Sucesors s = new Sucesors(suc, lab1);
+					System.out.println(s.toString());
 					Functions.saveLab(lab1);
 				} else {
 					System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");

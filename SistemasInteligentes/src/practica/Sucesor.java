@@ -50,4 +50,11 @@ public class Sucesor {
 		int col = Integer.parseInt(idEstado.substring(x + 2, idEstado.length() - 1));
 		return col;
 	}
+
+	@Override
+	public String toString() {
+		return "Sucesor [mov=" + mov + ", idEstado=" + idEstado + ", costo=" + costo + "]";
+	}
+	
+	
 }
