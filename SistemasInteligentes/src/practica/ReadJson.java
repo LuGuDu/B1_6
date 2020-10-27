@@ -79,12 +79,12 @@ public class ReadJson {
 		return lab;
 	}
 	
-	public static Problema readProblem () {
+	public static Problem readProblem () {
 		String json = "";
 		String path;
 		boolean problemaCorrect = false;
 		boolean seguir = false;
-		Problema problema = null;
+		Problem problema = null;
 		
 		System.out.println("\nEscriba la ruta completa de su archivo .json:");
 		
@@ -117,7 +117,7 @@ public class ReadJson {
 
 			Gson gson = new Gson();
 			try {
-				problema = gson.fromJson(json, Problema.class);
+				problema = gson.fromJson(json, Problem.class);
 				problemaCorrect = true;
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 				

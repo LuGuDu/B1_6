@@ -5,22 +5,22 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
-public class Frontera {
-	private Comparator<Nodo> comparador = new Ordenar();
-	private PriorityQueue<Nodo> frontera = new PriorityQueue<Nodo>(50, comparador);
+public class Border {
+	private Comparator<Node> comparador = new Order();
+	private PriorityQueue<Node> frontera = new PriorityQueue<Node>(50, comparador);
 	
-	public Frontera () {
+	public Border () {
 		
 	}
-	public Frontera(PriorityQueue<Nodo> frontera) {
+	public Border (PriorityQueue<Node> frontera) {
 		this.frontera = frontera;
 	}
 	
-	public void push(Nodo nodo) {
+	public void push(Node nodo) {
 		frontera.add(nodo);
 	}
 
-	public Nodo pop() {
+	public Node pop() {
 		return frontera.poll();
 	}
 	
@@ -29,12 +29,12 @@ public class Frontera {
 	}
 
 
-	public class Ordenar implements Comparator<Nodo> {
-		public int compare(Nodo x, Nodo y) {
-			if (x.getValor() > y.getValor()) {
+	public class Order implements Comparator<Node> {
+		public int compare(Node x, Node y) {
+			if (x.getValue() > y.getValue()) {
 				return -1;
 			}
-			else if (x.getValor() < y.getValor()) {
+			else if (x.getValue() < y.getValue()) {
 				return 1;
 			}
 			else {

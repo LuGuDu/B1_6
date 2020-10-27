@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
-public class Sucesores {
-	private ArrayList<Sucesor> sucesores;
+public class Sucesors {
+	private ArrayList<Sucesor> sucesors;
 	private Labyrinth lab = null;
 
-	public Sucesores(Sucesor sucesor, Labyrinth lab) {
+	public Sucesors(Sucesor sucesor, Labyrinth lab) {
 		conseguirSucesorN(sucesor, lab);
 	}
 
@@ -30,13 +30,13 @@ public class Sucesores {
 		boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
 		if (neighbours[0]) {
-			sucesores.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", 1));
+			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", 1));
 		} else if (neighbours[1]) {
-			sucesores.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", 1));
+			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", 1));
 		} else if (neighbours[2]) {
-			sucesores.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", 1));
+			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", 1));
 		} else if (neighbours[3]) {
-			sucesores.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", 1));
+			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", 1));
 		}
 
 	}

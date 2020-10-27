@@ -1,15 +1,15 @@
 package practica;
 
-public class Problema {
+public class Problem {
 	private String initial;
 	private String objective;
 	private String maze;
 	
-	public Problema () {
+	public Problem () {
 		
 	}
 	
-	public Problema (String initial, String objective, String maze) {
+	public Problem (String initial, String objective, String maze) {
 		this.initial = initial;
 		this.objective = objective;
 		this.maze = maze;

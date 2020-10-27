@@ -32,7 +32,7 @@ public class WriteJson {
 
 	}
 	
-	public static void writeJsonProblem(Problema prob, String name) {
+	public static void writeJsonProblem(Problem prob, String name) {
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		// Por defecto mandamos los archivos al escritorio

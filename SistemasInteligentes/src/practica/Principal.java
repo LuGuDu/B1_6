@@ -75,19 +75,19 @@ public class Principal {
 				break;
 			case 3:
 				// COMPROBACIONES
-				Problema pro = ReadJson.readProblem();
+				Problem pro = ReadJson.readProblem();
 				System.out.println(pro);
-				Nodo nodo = new Nodo(0, 1, "(2, 4)", "", "", 1, 1, 2);
-				Nodo nodo1 = new Nodo(1, 1, "(1, 4)", "", "", 1, 1, 2);
-				Nodo nodo2 = new Nodo(2, 1, "(2, 3)", "", "", 1, 1, 1);
-				Nodo nodo3 = new Nodo(3, 1, "(0, 3)", "", "", 1, 1, 1);
-				Nodo nodo4 = new Nodo(4, 1, "(2, 4)", "", "", 1, 1, 1);
-				Nodo nodo5 = new Nodo(5, 1, "(2, 4)", "", "", 1, 1, 1);
-				Nodo nodo6 = new Nodo(6, 1, "(2, 7)", "", "", 1, 1, 3);
-				Nodo nodo7 = new Nodo(7, 1, "(2, 3)", "", "", 1, 1, 1);
-				Nodo nodo8 = new Nodo(8, 1, "(1, 4)", "", "", 1, 1, 1);
-				Nodo nodo9 = new Nodo(9, 1, "(0, 4)", "", "", 1, 1, 5);
-				Frontera fron = new Frontera();
+				Node nodo = new Node(0, 1, "(2, 4)", 6, "", 1, 1, 2);
+				Node nodo1 = new Node(1, 1, "(1, 4)", 4, "", 1, 1, 2);
+				Node nodo2 = new Node(2, 1, "(2, 3)", 3, "", 1, 1, 1);
+				Node nodo3 = new Node(3, 1, "(0, 3)", 1, "", 1, 1, 1);
+				Node nodo4 = new Node(4, 1, "(2, 4)", 1, "", 1, 1, 1);
+				Node nodo5 = new Node(5, 1, "(2, 4)", 1, "", 1, 1, 1);
+				Node nodo6 = new Node(6, 1, "(2, 7)", 1, "", 1, 1, 3);
+				Node nodo7 = new Node(7, 1, "(2, 3)", 1, "", 1, 1, 1);
+				Node nodo8 = new Node(8, 1, "(1, 4)", 3, "", 1, 1, 1);
+				Node nodo9 = new Node(9, 1, "(0, 4)", 2, "", 1, 1, 5);
+				Border fron = new Border();
 				fron.push(nodo);
 				fron.push(nodo1);
 				fron.push(nodo2);
