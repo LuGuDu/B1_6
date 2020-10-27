@@ -40,4 +40,19 @@ public class Sucesors {
 		}
 
 	}
+
+	public ArrayList<Sucesor> getSucesors() {
+		return sucesors;
+	}
+
+	public void setSucesors(ArrayList<Sucesor> sucesors) {
+		this.sucesors = sucesors;
+	}
+
+	@Override
+	public String toString() {
+		return "Sucesors [sucesors=" + sucesors + "]";
+	}
+	
+	
 }

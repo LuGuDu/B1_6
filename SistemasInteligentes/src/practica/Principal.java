@@ -101,6 +101,17 @@ public class Principal {
 				while (!(fron.size() == 0)) {
 					System.out.println(fron.pop());
 				}
+				Labyrinth lab1 = ReadJson.readJson(pro.getMaze());
+				boolean checkGood1;
+				
+				checkGood1 = Functions.checkSemantic(lab1);
+
+				if (checkGood1) {
+					
+					Functions.saveLab(lab1);
+				} else {
+					System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");
+				}
 				WriteJson.writeJsonProblem(pro, "hola");
 				break;
 			case 4:

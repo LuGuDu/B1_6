@@ -33,6 +33,9 @@ public class ReadJson {
 		if (path.equals("")) {
 			System.out.println("\nEscriba la ruta completa de su archivo .json:");
 		}
+		else {
+			path = "C:\\Users\\david\\Desktop\\" + path;
+		}
 		
 		do {
 			do {
