@@ -1,5 +1,12 @@
 package practica;
 
+/**
+ * Esta clase define el problema en el que queremos ir desde una celda inicial a una objetivo.
+ * Tiene como atributos el inicio, el final, y el laberinto a usar
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 28/10/2020
+ */
+
 public class Problem {
 	private String initial;
 	private String objective;
