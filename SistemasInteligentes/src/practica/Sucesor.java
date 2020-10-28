@@ -1,5 +1,12 @@
 package practica;
 
+/**
+ * Esta clase almacena el sucesor de nuestro nodo.
+ * Tiene mov, el id del Estado y el costo.
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 28/10/2020
+ */
+
 public class Sucesor {
 	private String mov;
 	private String idEstado;
