@@ -1,5 +1,13 @@
 package practica;
 
+/**
+ * Esta clase es un nodo que representa la celda que se va recorriendo y sus atributos en un arbol.
+ * Tiene id Nodo, coste, id estado, id del padre (es decir del nodo primero), accion, profundidad del nodo,
+ * heuristica, y el valor final
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 28/10/2020
+ */
+
 public class Node {
 	private int id;
 	private double cost;
