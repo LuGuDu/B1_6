@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
+/**
+ * Esta clase se encargará de guardar los sucesores de nuestros nodos.
+ * Tiene un arrayList de sucesores donde se iran almacenando, y una clase laberinto
+ * para poder comprobar si la celda tiene vecinos
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 28/10/2020
+ */
+
 public class Sucesors {
 	private ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 	private Labyrinth lab = null;
