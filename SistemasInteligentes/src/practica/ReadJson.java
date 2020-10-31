@@ -15,8 +15,8 @@ class InvalidFileException extends Exception {
 }
 
 /**
- * Esta clase permite leer archivos .json. Pedir· que introduzcas la ruta completa del archivo
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * Esta clase permite leer archivos .json. Pedir√° que introduzcas la ruta completa del archivo
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 16/10/2020
  */
 public class ReadJson {
@@ -74,7 +74,7 @@ public class ReadJson {
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 				
 				System.out.println(JSE.toString());
-				System.out.println("Error sint·ctico en el archivo.");
+				System.out.println("Error sint√°ctico en el archivo.");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 		} while (!labCorrect) ;
@@ -82,6 +82,12 @@ public class ReadJson {
 		return lab;
 	}
 	
+	/**
+ * Esta clase permite leer archivos .json para asi poder generar el problema. 
+ * Se pedir√° que introduzcas la ruta completa del archivo
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * Fecha: 28/10/2020
+ */
 	public static Problem readProblem () {
 		String json = "";
 		String path;
@@ -125,7 +131,7 @@ public class ReadJson {
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 				
 				System.out.println(JSE.toString());
-				System.out.println("Error sint·ctico en el archivo.");
+				System.out.println("Error sint√°ctico en el archivo.");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 		} while (!problemaCorrect) ;
