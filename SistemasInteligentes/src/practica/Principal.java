@@ -3,9 +3,10 @@ package practica;
 import java.util.*;
 import java.util.Scanner;
 
+//Control de errores
 class NegativeIntegerException extends Exception {
 	public NegativeIntegerException(){
-		super("Error: Número negativo o cero");
+		super("Error: NÃºmero negativo o cero");
 	}
 }
 
@@ -16,7 +17,7 @@ class NoValidNumberException extends Exception {
 }
 /**
  * Clase principal donde se pueden probar las funcionalidades del sistema
- * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * @author David GonzÃ¡lez BermÃºdez, Lucas GutiÃ©rrez DurÃ¡n, David GutiÃ©rrez Mariblanca
  * Fecha: 16/10/2020
  */
 public class Principal {
@@ -31,7 +32,7 @@ public class Principal {
 
 		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
 		do {
-			System.out.println("\n¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
+			System.out.println("\nÂ¿QuÃ© es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
 					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Salir del programa");
 
 			do {
@@ -50,7 +51,7 @@ public class Principal {
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				catch(InputMismatchException e) {
-					System.out.println("Error: No ha introducido un carácter numérico");
+					System.out.println("Error: No ha introducido un carÃ¡cter numÃ©rico");
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				sc.nextLine();
@@ -59,6 +60,10 @@ public class Principal {
 			
 			switch (value) {
 			case 1:
+			/*1Âº OPCION
+ 			* Se lee archivo JSON que contiene las propiedades de un laberinto. Tras la lectura
+			* se generara el laberinto correspondiente, y se comprobara las inconsistencias del mismo
+			*/
 				Labyrinth lab;
 				boolean checkGood;
 				lab = ReadJson.readJson("");
@@ -71,9 +76,18 @@ public class Principal {
 				}
 				break;
 			case 2:
+			/*2Âº OPCION
+ 			* Se generÃ¡ un laberinto eligiendo tamaÃ±o de columnas y tamaÃ±o de filas, posteriormente
+			* se generara el laberinto correspondiente.
+			*/	
 				Functions.genLab();
 				break;
 			case 3:
+			/*3Âº OPCION
+ 			* Se leera el archivo que contiene el problema, para una vez despues generar los nodos
+			* correspondientes, y obtener asi los sucesores y la frontera. Tambien se comprobara la inconsistencia
+			* del laberinto.
+			*/
 				// COMPROBACIONES
 				Problem pro = ReadJson.readProblem();
 				System.out.println(pro);
