@@ -1,20 +1,17 @@
 package practica;
-
+import practica.utilidades.*;
 import java.util.*;
 import java.util.Scanner;
+import practica.busqueda.Border;
+import practica.busqueda.Node;
+import practica.busqueda.Problem;
+import practica.busqueda.Sucesor;
+import practica.busqueda.Sucesors;
+import practica.creacion.Labyrinth;
+import practica.utilidades.Functions;
+import practica.utilidades.ReadJson;
+import practica.utilidades.WriteJson;
 
-//Control de errores
-class NegativeIntegerException extends Exception {
-	public NegativeIntegerException(){
-		super("Error: Número negativo o cero");
-	}
-}
-
-class NoValidNumberException extends Exception {
-	public NoValidNumberException(){
-		super("Error: Opcion no valida");
-	}
-}
 /**
  * Clase principal donde se pueden probar las funcionalidades del sistema
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
@@ -24,7 +21,7 @@ public class Principal {
 
 	static Scanner sc = new Scanner(System.in);
 	
-	public static void main(String[] args) throws NegativeIntegerException {
+	public static void main(String[] args) {
 
 		int value = 0;
 		boolean done = false;

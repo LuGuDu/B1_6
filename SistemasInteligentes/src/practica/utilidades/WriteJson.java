@@ -1,7 +1,10 @@
-package practica;
+package practica.utilidades;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import practica.busqueda.Problem;
+import practica.creacion.Labyrinth;
 
 import java.io.FileWriter;
 import java.io.IOException;

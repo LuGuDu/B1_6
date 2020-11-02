@@ -1,4 +1,4 @@
-package practica;
+package practica.busqueda;
 
 /**
  * Esta clase define el problema en el que queremos ir desde una celda inicial a una objetivo.

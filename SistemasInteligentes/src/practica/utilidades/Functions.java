@@ -1,4 +1,5 @@
-package practica;
+package practica.utilidades;
+
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -7,6 +8,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Map.Entry;
+
+import practica.creacion.Cell;
+import practica.creacion.Labyrinth;
+import practica.creacion.WilsonAlgorithm;
 
 /**
  * Esta clase tiene funciones auxiliares

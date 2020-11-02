@@ -1,4 +1,4 @@
-package practica;
+package practica.busqueda;
 
 /**
  * Esta clase almacena el sucesor de nuestro nodo.

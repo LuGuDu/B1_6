@@ -1,8 +1,11 @@
-package practica;
+package practica.busqueda;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
+
+import practica.creacion.Cell;
+import practica.creacion.Labyrinth;
 
 /**
  * Esta clase se encargará de guardar los sucesores de nuestros nodos.

@@ -1,4 +1,4 @@
-package practica;
+package practica.creacion;
 
 import java.util.Arrays;
 import java.util.Map;

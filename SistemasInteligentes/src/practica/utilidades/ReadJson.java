@@ -1,4 +1,4 @@
-package practica;
+package practica.utilidades;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+
+import practica.busqueda.Problem;
+import practica.creacion.Labyrinth;
 
 class InvalidFileException extends Exception {
 	public InvalidFileException(){
@@ -65,6 +68,9 @@ public class ReadJson {
 				} catch (IOException IOE) {
 					System.out.println(IOE.toString());
 				} 
+				finally {
+					path = "";
+				}
 			} while (!seguir);
 
 			Gson gson = new Gson();

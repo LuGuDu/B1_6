@@ -1,4 +1,4 @@
-package practica;
+package practica.busqueda;
 
 /**
  * Esta clase es un nodo que representa la celda que se va recorriendo y sus atributos en un arbol.

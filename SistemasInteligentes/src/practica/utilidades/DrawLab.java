@@ -1,4 +1,4 @@
-package practica;
+package practica.utilidades;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,6 +6,9 @@ import java.awt.image.BufferedImage;
 
 import java.io.*;
 import javax.imageio.*;
+
+import practica.creacion.Cell;
+import practica.creacion.Labyrinth;
 
 import java.util.Scanner;
 /**
