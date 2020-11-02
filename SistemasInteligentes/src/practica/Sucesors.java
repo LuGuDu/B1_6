@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * Esta clase se encargar√° de guardar los sucesores de nuestros nodos.
+ * Esta clase se encargar· de guardar los sucesores de nuestros nodos.
  * Tiene un arrayList de sucesores donde se iran almacenando, y una clase laberinto
  * para poder comprobar si la celda tiene vecinos
- * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
  * Fecha: 28/10/2020
  */
 
