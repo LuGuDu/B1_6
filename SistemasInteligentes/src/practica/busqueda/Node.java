@@ -12,7 +12,7 @@ public class Node {
 	private int id;
 	private double cost;
 	private String idState;
-	private int idFather;
+	private Node father;
 	private String action;
 	private int depth;
 	private double heuristic;
@@ -22,12 +22,12 @@ public class Node {
 		
 	}
 	
-	public Node (int id, double cost, String idState, int idFather, String action, 
+	public Node (int id, double cost, String idState, Node father, String action, 
 			int depth, double heuristic, double value) {
 		this.id = id;
 		this.cost = cost;
 		this.idState = idState;
-		this.idFather = idFather;
+		this.father = father;
 		this.action = action;
 		this.depth = depth;
 		this.heuristic = heuristic;
@@ -60,12 +60,12 @@ public class Node {
 		this.idState = idState;
 	}
 
-	public int getIdFather() {
-		return idFather;
+	public Node getFather() {
+		return father;
 	}
 
-	public void setIdFather(int idFather) {
-		this.idFather = idFather;
+	public void setFather(Node father) {
+		this.father = father;
 	}
 
 	public String getAction() {
@@ -114,7 +114,7 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Node [id=" + id + ", cost=" + cost + ", idState=" + idState + ", idFather=" + idFather + ", action="
+		return "Node [id=" + id + ", cost=" + cost + ", idState=" + idState + ", idFather=" + father + ", action="
 				+ action + ", depth=" + depth + ", heuristic=" + heuristic + ", value=" + value + "]";
 	}
 	

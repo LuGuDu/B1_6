@@ -5,8 +5,6 @@ import java.util.Scanner;
 import practica.busqueda.Border;
 import practica.busqueda.Node;
 import practica.busqueda.Problem;
-import practica.busqueda.Sucesor;
-import practica.busqueda.Sucesors;
 import practica.creacion.Labyrinth;
 import practica.utilidades.Functions;
 import practica.utilidades.ReadJson;
@@ -62,15 +60,8 @@ public class Principal {
 			* se generara el laberinto correspondiente, y se comprobara las inconsistencias del mismo
 			*/
 				Labyrinth lab;
-				boolean checkGood;
 				lab = ReadJson.readJson("");
-				checkGood = Functions.checkSemantic(lab);
-
-				if (checkGood) {
-					Functions.saveLab(lab);
-				} else {
-					System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");
-				}
+				Functions.saveLab(lab);
 				break;
 			case 2:
 			/*2º OPCION
@@ -88,16 +79,16 @@ public class Principal {
 				// COMPROBACIONES
 				Problem pro = ReadJson.readProblem();
 				System.out.println(pro);
-				Node nodo = new Node(0, 1, "(2, 4)", 6, "", 1, 1, 2);
-				Node nodo1 = new Node(1, 1, "(1, 4)", 4, "", 1, 1, 2);
-				Node nodo2 = new Node(2, 1, "(2, 3)", 3, "", 1, 1, 1);
-				Node nodo3 = new Node(3, 1, "(0, 3)", 1, "", 1, 1, 1);
-				Node nodo4 = new Node(4, 1, "(2, 4)", 1, "", 1, 1, 1);
-				Node nodo5 = new Node(5, 1, "(2, 4)", 1, "", 1, 1, 1);
-				Node nodo6 = new Node(6, 1, "(2, 7)", 1, "", 1, 1, 3);
-				Node nodo7 = new Node(7, 1, "(2, 3)", 1, "", 1, 1, 1);
-				Node nodo8 = new Node(8, 1, "(1, 4)", 3, "", 1, 1, 1);
-				Node nodo9 = new Node(9, 1, "(0, 4)", 2, "", 1, 1, 5);
+				Node nodo = new Node(0, 1, "(2, 4)", null, "", 1, 1, 2);
+				Node nodo1 = new Node(1, 1, "(1, 4)", nodo, "", 1, 1, 2);
+				Node nodo2 = new Node(2, 1, "(2, 3)", nodo, "", 1, 1, 1);
+				Node nodo3 = new Node(3, 1, "(0, 3)", nodo, "", 1, 1, 1);
+				Node nodo4 = new Node(4, 1, "(2, 4)", nodo, "", 1, 1, 1);
+				Node nodo5 = new Node(5, 1, "(2, 4)", nodo, "", 1, 1, 1);
+				Node nodo6 = new Node(6, 1, "(2, 7)", nodo, "", 1, 1, 3);
+				Node nodo7 = new Node(7, 1, "(2, 3)", nodo, "", 1, 1, 1);
+				Node nodo8 = new Node(8, 1, "(1, 4)", nodo, "", 1, 1, 1);
+				Node nodo9 = new Node(9, 1, "(0, 4)", nodo, "", 1, 1, 5);
 				Border fron = new Border();
 				fron.push(nodo);
 				fron.push(nodo1);
@@ -112,19 +103,8 @@ public class Principal {
 				while (!(fron.size() == 0)) {
 					System.out.println(fron.pop());
 				}
-				Labyrinth lab1 = ReadJson.readJson(pro.getMaze());
-				boolean checkGood1;
+				System.out.println(pro.conseguirSucesors("(2, 3)"));
 				
-				checkGood1 = Functions.checkSemantic(lab1);
-
-				if (checkGood1) {
-					Sucesor suc = new Sucesor("N", "(2, 3)", 1);
-					Sucesors s = new Sucesors(suc, lab1);
-					System.out.println(s.toString());
-					Functions.saveLab(lab1);
-				} else {
-					System.out.println("\nEL ARCHIVO JSON ES INCONSISTENTE");
-				}
 				WriteJson.writeJsonProblem(pro, "hola");
 				break;
 			case 4:

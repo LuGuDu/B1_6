@@ -45,18 +45,6 @@ public class Sucesor {
 	public void setMov(String mov) {
 		this.mov = mov;
 	}
-	
-	public int getRow() {
-		int x = idEstado.indexOf(",");
-		int row = Integer.parseInt(idEstado.substring(1, x));
-		return row;
-	}
-
-	public int getCol() {
-		int x = idEstado.indexOf(",");
-		int col = Integer.parseInt(idEstado.substring(x + 2, idEstado.length() - 1));
-		return col;
-	}
 
 	@Override
 	public String toString() {
