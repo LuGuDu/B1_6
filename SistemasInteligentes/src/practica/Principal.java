@@ -6,7 +6,7 @@ import java.util.Scanner;
 //Control de errores
 class NegativeIntegerException extends Exception {
 	public NegativeIntegerException(){
-		super("Error: NÃºmero negativo o cero");
+		super("Error: Número negativo o cero");
 	}
 }
 
@@ -17,7 +17,7 @@ class NoValidNumberException extends Exception {
 }
 /**
  * Clase principal donde se pueden probar las funcionalidades del sistema
- * @author David GonzÃ¡lez BermÃºdez, Lucas GutiÃ©rrez DurÃ¡n, David GutiÃ©rrez Mariblanca
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 16/10/2020
  */
 public class Principal {
@@ -32,7 +32,7 @@ public class Principal {
 
 		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
 		do {
-			System.out.println("\nÂ¿QuÃ© es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
+			System.out.println("\nÂ¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
 					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Salir del programa");
 
 			do {
@@ -51,7 +51,7 @@ public class Principal {
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				catch(InputMismatchException e) {
-					System.out.println("Error: No ha introducido un carÃ¡cter numÃ©rico");
+					System.out.println("Error: No ha introducido un carácter numérico");
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				sc.nextLine();
@@ -77,7 +77,7 @@ public class Principal {
 				break;
 			case 2:
 			/*2Âº OPCION
- 			* Se generÃ¡ un laberinto eligiendo tamaÃ±o de columnas y tamaÃ±o de filas, posteriormente
+ 			* Se generá un laberinto eligiendo tamaño de columnas y tamaño de filas, posteriormente
 			* se generara el laberinto correspondiente.
 			*/	
 				Functions.genLab();
