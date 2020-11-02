@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
  * encarga de ordenar los nodos hoja que hay en el.
  * Tiene un comparator para la ordenacion, y una cola de prioridad frontera donde
  * se almacenan
- * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
  * Fecha: 28/10/2020
  */
 

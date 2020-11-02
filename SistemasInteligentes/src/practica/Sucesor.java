@@ -3,7 +3,7 @@ package practica;
 /**
  * Esta clase almacena el sucesor de nuestro nodo.
  * Tiene mov, el id del Estado y el costo.
- * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
  * Fecha: 28/10/2020
  */
 

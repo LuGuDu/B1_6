@@ -4,7 +4,7 @@ package practica;
  * Esta clase es un nodo que representa la celda que se va recorriendo y sus atributos en un arbol.
  * Tiene id Nodo, coste, id estado, id del padre (es decir del nodo primero), accion, profundidad del nodo,
  * heuristica, y el valor final
- * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
  * Fecha: 28/10/2020
  */
 

@@ -3,7 +3,7 @@ package practica;
 /**
  * Esta clase define el problema en el que queremos ir desde una celda inicial a una objetivo.
  * Tiene como atributos el inicio, el final, y el laberinto a usar
- * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
  * Fecha: 28/10/2020
  */
 

@@ -7,12 +7,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 /**
  * Esta clase 
- * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
+ * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
  * Fecha: 16/10/2020
  */
 public class WriteJson {
 	/**
-	 * M√©todo que escribe un archivo .json a partir de un objeto Labyrinth y un nombre de
+	 * MÈtodo que escribe un archivo .json a partir de un objeto Labyrinth y un nombre de
 	 * archivo.
 	 * @param lab
 	 * @param name
@@ -33,7 +33,7 @@ public class WriteJson {
 	}
 	
 	/**
-	 * M√©todo que escribe un archivo .json a partir de un objeto Labyrinth y un nombre de
+	 * MÈtodo que escribe un archivo .json a partir de un objeto Labyrinth y un nombre de
 	 * archivo para poder general el problema.
 	 * @param prob
 	 * @param name
