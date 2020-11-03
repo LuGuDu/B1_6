@@ -50,6 +50,5 @@ public class Sucesor {
 	public String toString() {
 		return "Sucesor [mov=" + mov + ", idState=" + idState + ", cost=" + cost + "]";
 	}
-	
-	
+
 }
