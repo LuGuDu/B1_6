@@ -13,6 +13,7 @@ import practica.creacion.Labyrinth;
  * Tiene como atributos el inicio, el final, y el laberinto a usar
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 28/10/2020
+ * 
  */
 
 public class Problem {

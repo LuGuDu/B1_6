@@ -12,6 +12,7 @@ import java.util.PriorityQueue;
  * se almacenan
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 28/10/2020
+ * 
  */
 
 public class Border {

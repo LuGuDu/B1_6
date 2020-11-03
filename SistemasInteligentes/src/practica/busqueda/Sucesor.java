@@ -5,6 +5,7 @@ package practica.busqueda;
  * Tiene mov, el id del Estado y el cost.
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 28/10/2020
+ * 
  */
 
 public class Sucesor {

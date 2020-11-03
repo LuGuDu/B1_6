@@ -14,6 +14,7 @@ import practica.utilidades.WriteJson;
  * Clase principal donde se pueden probar las funcionalidades del sistema
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 16/10/2020
+ * 
  */
 public class Principal {
 

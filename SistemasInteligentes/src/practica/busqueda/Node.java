@@ -6,6 +6,7 @@ package practica.busqueda;
  * heuristica, y el valor final
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 28/10/2020
+ * 
  */
 
 public class Node {
