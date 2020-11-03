@@ -21,8 +21,8 @@ class InvalidFileException extends Exception {
 }
 
 /**
- * Esta clase permite leer archivos .json. Pedir· que introduzcas la ruta completa del archivo
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * Esta clase permite leer archivos .json. Pedir√° que introduzcas la ruta completa del archivo
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 16/10/2020
  */
 public class ReadJson {
@@ -40,7 +40,7 @@ public class ReadJson {
 			System.out.println("\nEscriba la ruta completa de su archivo .json:");
 		}
 		else {
-			path = "C:\\Users\\david\\Desktop\\" + path;
+			path = System.getProperty("user.home")+"/desktop/" + path;
 		}
 		
 		do {
@@ -83,7 +83,7 @@ public class ReadJson {
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 				
 				System.out.println(JSE.toString());
-				System.out.println("Error sint·ctico en el archivo.");
+				System.out.println("Error sint√°ctico en el archivo.");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 			labCorrect = checkSemantic(lab);
@@ -94,8 +94,8 @@ public class ReadJson {
 	
 	/**
  * Esta clase permite leer archivos .json para asi poder generar el problem. 
- * Se pedir· que introduzcas la ruta completa del archivo
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * Se pedir√° que introduzcas la ruta completa del archivo
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 28/10/2020
  */
 	public static Problem readProblem () {
@@ -141,7 +141,7 @@ public class ReadJson {
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 				
 				System.out.println(JSE.toString());
-				System.out.println("Error sint·ctico en el archivo.");
+				System.out.println("Error sint√°ctico en el archivo.");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 		} while (!problemCorrect) ;
@@ -151,7 +151,7 @@ public class ReadJson {
 	
 
 	/**
-	 * MÈtodo que a partir de un laberinto verifica si su sem·ntica es correcta o no
+	 * M√©todo que a partir de un laberinto verifica si su sem√°ntica es correcta o no
 	 * @param lab
 	 * @return
 	 */
@@ -176,12 +176,12 @@ public class ReadJson {
 				boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
 				/*				 * 
-				 * COMPROBACI”N DE LAS CELDAS
+				 * COMPROBACI√ìN DE LAS CELDAS
 				 * Se comprueban las n-1 celdas y sus vecinos adyacentes (Sur y Este). No es necesario
 				 * comprobar todos los vecinos (N,S,E,O) por cada celda.
 				 * 
 				 * El valor de semanticGood es siempre verdadero. En caso contrario, si encontramos inconsistencias
-				 * entre dos celdas, el valor de semanticGood ser· falso.
+				 * entre dos celdas, el valor de semanticGood ser√° falso.
 				 * 
 				 */
 
@@ -225,7 +225,7 @@ public class ReadJson {
 
 					/*
 					 * COMPROBACION DE LA ULTIMA COLUMNA
-					 * En la comprobaciÛn de la ultma columna, solo es necesario comprobar
+					 * En la comprobaci√≥n de la ultma columna, solo es necesario comprobar
 					 * el vecino sur
 					 */
 
@@ -243,7 +243,7 @@ public class ReadJson {
 
 					/*
 					 * COMPROBACION DE LA ULTIMA FILA
-					 * En la comprobaciÛn de la ultma fila, solo es necesario comprobar
+					 * En la comprobaci√≥n de la ultma fila, solo es necesario comprobar
 					 * el vecino este
 					 */
 					
