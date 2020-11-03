@@ -46,12 +46,12 @@ public class Problem {
 		this.lab = lab;
 	}
 	
-	public ArrayList<Sucesor> conseguirSucesors(String idEstado) {
+	public ArrayList<Sucesor> getSucesors(String idState) {
 		ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 		Map<String, Cell> cells = lab.getCells();
 		Cell cellCheck = null;
-		int row = Functions.getRow(idEstado);
-		int col = Functions.getCol(idEstado);
+		int row = Functions.getRow(idState);
+		int col = Functions.getCol(idState);
 		int rowN = row - 1;
 		int colN = col;
 		int rowE = row;

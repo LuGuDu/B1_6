@@ -6,35 +6,35 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 /**
- * Esta clase representa la frontera de nuestro arbol, se 
- * encarga de ordenar los nodos hoja que hay en el.
- * Tiene un comparator para la ordenacion, y una cola de prioridad frontera donde
+ * Esta clase representa la borderQueue de nuestro arbol, se 
+ * encarga de ordenar los nodes hoja que hay en el.
+ * Tiene un comparator para la ordenacion, y una cola de prioridad borderQueue donde
  * se almacenan
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
  * Fecha: 28/10/2020
  */
 
 public class Border {
-	private Comparator<Node> comparador = new Order();
-	private PriorityQueue<Node> frontera = new PriorityQueue<Node>(50, comparador);
+	private Comparator<Node> comparatorNode = new Order();
+	private PriorityQueue<Node> borderQueue = new PriorityQueue<Node>(50, comparatorNode);
 	
 	public Border () {
 		
 	}
-	public Border (PriorityQueue<Node> frontera) {
-		this.frontera = frontera;
+	public Border (PriorityQueue<Node> borderQueue) {
+		this.borderQueue = borderQueue;
 	}
 	
-	public void push(Node nodo) {
-		frontera.add(nodo);
+	public void push(Node node) {
+		borderQueue.add(node);
 	}
 
 	public Node pop() {
-		return frontera.poll();
+		return borderQueue.poll();
 	}
 	
 	public int size() {
-		return frontera.size();
+		return borderQueue.size();
 	}
 
 

@@ -27,7 +27,7 @@ public class Principal {
 
 		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
 		do {
-			System.out.println("\nÂ¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
+			System.out.println("\n¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
 					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Salir del programa");
 
 			do {
@@ -55,7 +55,7 @@ public class Principal {
 			
 			switch (value) {
 			case 1:
-			/*1Âº OPCION
+			/*1º OPCION
  			* Se lee archivo JSON que contiene las propiedades de un laberinto. Tras la lectura
 			* se generara el laberinto correspondiente, y se comprobara las inconsistencias del mismo
 			*/
@@ -64,46 +64,46 @@ public class Principal {
 				Functions.saveLab(lab);
 				break;
 			case 2:
-			/*2Âº OPCION
+			/*2º OPCION
  			* Se generá un laberinto eligiendo tamaño de columnas y tamaño de filas, posteriormente
 			* se generara el laberinto correspondiente.
 			*/	
 				Functions.genLab();
 				break;
 			case 3:
-			/*3Âº OPCION
- 			* Se leera el archivo que contiene el problema, para una vez despues generar los nodos
+			/*3º OPCION
+ 			* Se leera el archivo que contiene el problema, para una vez despues generar los nodes
 			* correspondientes, y obtener asi los sucesores y la frontera. Tambien se comprobara la inconsistencia
 			* del laberinto.
 			*/
 				// COMPROBACIONES
 				Problem pro = ReadJson.readProblem();
 				System.out.println(pro);
-				Node nodo = new Node(0, 1, "(2, 4)", null, "", 1, 1, 2);
-				Node nodo1 = new Node(1, 1, "(1, 4)", nodo, "", 1, 1, 2);
-				Node nodo2 = new Node(2, 1, "(2, 3)", nodo, "", 1, 1, 1);
-				Node nodo3 = new Node(3, 1, "(0, 3)", nodo, "", 1, 1, 1);
-				Node nodo4 = new Node(4, 1, "(2, 4)", nodo, "", 1, 1, 1);
-				Node nodo5 = new Node(5, 1, "(2, 4)", nodo, "", 1, 1, 1);
-				Node nodo6 = new Node(6, 1, "(2, 7)", nodo, "", 1, 1, 3);
-				Node nodo7 = new Node(7, 1, "(2, 3)", nodo, "", 1, 1, 1);
-				Node nodo8 = new Node(8, 1, "(1, 4)", nodo, "", 1, 1, 1);
-				Node nodo9 = new Node(9, 1, "(0, 4)", nodo, "", 1, 1, 5);
+				Node node = new Node(0, 1, "(2, 4)", null, "", 1, 1, 2);
+				Node node1 = new Node(1, 1, "(1, 4)", node, "", 1, 1, 2);
+				Node node2 = new Node(2, 1, "(2, 3)", node, "", 1, 1, 1);
+				Node node3 = new Node(3, 1, "(0, 3)", node, "", 1, 1, 1);
+				Node node4 = new Node(4, 1, "(2, 4)", node, "", 1, 1, 1);
+				Node node5 = new Node(5, 1, "(2, 4)", node, "", 1, 1, 1);
+				Node node6 = new Node(6, 1, "(2, 7)", node, "", 1, 1, 3);
+				Node node7 = new Node(7, 1, "(2, 3)", node, "", 1, 1, 1);
+				Node node8 = new Node(8, 1, "(1, 4)", node, "", 1, 1, 1);
+				Node node9 = new Node(9, 1, "(0, 4)", node, "", 1, 1, 5);
 				Border fron = new Border();
-				fron.push(nodo);
-				fron.push(nodo1);
-				fron.push(nodo2);
-				fron.push(nodo3);
-				fron.push(nodo4);
-				fron.push(nodo5);
-				fron.push(nodo6);
-				fron.push(nodo7);
-				fron.push(nodo8);
-				fron.push(nodo9);
+				fron.push(node);
+				fron.push(node1);
+				fron.push(node2);
+				fron.push(node3);
+				fron.push(node4);
+				fron.push(node5);
+				fron.push(node6);
+				fron.push(node7);
+				fron.push(node8);
+				fron.push(node9);
 				while (!(fron.size() == 0)) {
 					System.out.println(fron.pop());
 				}
-				System.out.println(pro.conseguirSucesors("(2, 3)"));
+				System.out.println(pro.getSucesors("(2, 3)"));
 				
 				WriteJson.writeJsonProblem(pro, "hola");
 				break;
