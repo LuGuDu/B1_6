@@ -11,14 +11,17 @@ import practica.creacion.Labyrinth;
 /**
  * Esta clase define el problema en el que queremos ir desde una celda inicial a una objetivo.
  * Tiene como atributos el inicio, el final, y el laberinto a usar
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 28/10/2020
  * 
  */
 
 public class Problem {
+	@SerializedName("INITIAL")
 	private String initial;
+	@SerializedName("OBJETIVE")
 	private String objective;
+	@SerializedName("MAZE")
 	private String maze;
 	private Labyrinth lab;
 	
