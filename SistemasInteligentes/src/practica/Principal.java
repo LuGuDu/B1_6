@@ -9,6 +9,7 @@ import practica.creacion.Labyrinth;
 import practica.utilidades.Functions;
 import practica.utilidades.ReadJson;
 import practica.utilidades.WriteJson;
+import practica.busqueda.*;
 
 /**
  * Clase principal donde se pueden probar las funcionalidades del sistema
@@ -103,7 +104,9 @@ public class Principal {
 				while (!(fron.size() == 0)) {
 					System.out.println(fron.pop());
 				}
-				System.out.println(pro.conseguirSucesors("(2, 3)"));
+				System.out.println(pro.getSucesors("(2, 3)"));
+				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
+				System.out.println(solution);
 				
 				WriteJson.writeJsonProblem(pro, "hola");
 				break;

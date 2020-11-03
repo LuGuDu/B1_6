@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import practica.utilidades.*;
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
@@ -16,19 +21,23 @@ import practica.creacion.Labyrinth;
  */
 
 public class Problem {
+	@SerializedName("INITIAL")
 	private String initial;
+	@SerializedName("OBJETIVE")
 	private String objective;
+	@SerializedName("MAZE")
 	private String maze;
-	private Labyrinth lab;
+	private static Labyrinth lab;
 	
 	public Problem () {
-		
+		this.lab = new Labyrinth();
 	}
 	
-	public Problem (String initial, String objective, String maze) {
+	public Problem (String initial, String objective, String maze, Labyrinth lab) {
 		this.initial = initial;
 		this.objective = objective;
 		this.maze = maze;
+		this.lab = lab;
 	}
 	
 	public Labyrinth getLab() {
@@ -38,15 +47,8 @@ public class Problem {
 	public void setLab(Labyrinth lab) {
 		this.lab = lab;
 	}
-
-	public Problem (String initial, String objective, String maze, Labyrinth lab) {
-		this.initial = initial;
-		this.objective = objective;
-		this.maze = maze;
-		this.lab = lab;
-	}
 	
-	public ArrayList<Sucesor> conseguirSucesors(String idEstado) {
+	public ArrayList<Sucesor> getSucesors(String idEstado) {
 		ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 		Map<String, Cell> cells = lab.getCells();
 		Cell cellCheck = null;
@@ -108,5 +110,5 @@ public class Problem {
 	public String toString() {
 		return "Problema [initial=" + initial + ", objective=" + objective + ", maze=" + maze + "]";
 	}
-	
+
 }

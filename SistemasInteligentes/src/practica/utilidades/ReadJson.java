@@ -4,11 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import practica.busqueda.Problem;
 import practica.creacion.Cell;
@@ -19,6 +24,8 @@ class InvalidFileException extends Exception {
 		super("Error: Archivo Json no valido");
 	}
 }
+
+
 
 /**
  * Esta clase permite leer archivos .json. Pedirá que introduzcas la ruta completa del archivo
@@ -40,7 +47,7 @@ public class ReadJson {
 			System.out.println("\nEscriba la ruta completa de su archivo .json:");
 		}
 		else {
-			path = "C:\\Users\\david\\Desktop\\" + path;
+			path = System.getProperty("user.home")+"/desktop/" + path;
 		}
 		
 		do {
@@ -102,9 +109,8 @@ public class ReadJson {
 		String json = "";
 		String path;
 		boolean problemCorrect = false;
-		boolean seguir = false;
-		Problem problem = null;
-		
+		boolean follow = false;
+		Problem problem = new Problem();
 		System.out.println("\nEscriba la ruta completa de su archivo .json:");
 		
 		do {
@@ -114,7 +120,7 @@ public class ReadJson {
 					String fileExtension=path.substring(path.lastIndexOf(".")+1);
 					if(!fileExtension.equals("json")) throw new InvalidFileException();
 					BufferedReader br = new BufferedReader(new FileReader(path)); 
-					seguir = true;
+					follow = true;
 					String line = "";
 					while ((line = br.readLine()) != null) {
 						json += line;
@@ -132,7 +138,7 @@ public class ReadJson {
 				} catch (IOException IOE) {
 					System.out.println(IOE.toString());
 				} 
-			} while (!seguir);
+			} while (!follow);
 
 			Gson gson = new Gson();
 			try {

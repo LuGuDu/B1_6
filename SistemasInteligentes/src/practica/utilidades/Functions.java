@@ -110,15 +110,15 @@ public class Functions {
 		System.out.println("\nLos archivos se han guardado en su escritorio!");
 	}
 	
-	public static int getRow(String idEstado) {
-		int x = idEstado.indexOf(",");
-		int row = Integer.parseInt(idEstado.substring(1, x));
+	public static int getRow(String idState) {
+		int x = idState.indexOf(",");
+		int row = Integer.parseInt(idState.substring(1, x));
 		return row;
 	}
 
-	public static int getCol(String idEstado) {
-		int x = idEstado.indexOf(",");
-		int col = Integer.parseInt(idEstado.substring(x + 2, idEstado.length() - 1));
+	public static int getCol(String idState) {
+		int x = idState.indexOf(",");
+		int col = Integer.parseInt(idState.substring(x + 2, idState.length() - 1));
 		return col;
 	}
 }
