@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
+
 import practica.utilidades.*;
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
