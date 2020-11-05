@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import practica.utilidades.*;

@@ -1,4 +1,5 @@
 package practica;
+
 import practica.utilidades.*;
 import java.util.*;
 import java.util.Scanner;
@@ -8,7 +9,6 @@ import practica.busqueda.Problem;
 import practica.creacion.Labyrinth;
 import practica.utilidades.Functions;
 import practica.utilidades.ReadJson;
-import practica.utilidades.WriteJson;
 import practica.busqueda.*;
 
 /**
