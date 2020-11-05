@@ -29,13 +29,13 @@ public class Principal {
 		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
 		do {
 			System.out.println("\nÂ¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
-					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Salir del programa");
+					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Generar problema" + "\n5. Salir del programa");
 
 			do {
 				try {
 					value = sc.nextInt();
 					if(value <= 0) throw new NegativeIntegerException();
-					if(value < 1 || value > 4) throw new NoValidNumberException();
+					if(value < 1 || value > 5) throw new NoValidNumberException();
 					seguir = true;
 				}
 				catch(NoValidNumberException e) {
@@ -110,7 +110,16 @@ public class Principal {
 				
 				WriteJson.writeJsonProblem(pro, "hola");
 				break;
+				
 			case 4:
+			/*4Âº OPCION
+	 		* Se generará un problema a gusto del usuario permitiendole elegir el nodo inicial, el nodo objetivo
+	 		* y el problema donde se realizará la busqueda de la solución.
+			*/
+				Functions.genProblem();
+				break;
+				
+			case 5:
 				System.out.println("Saliendo del programa");
 				done = true;
 				break;
