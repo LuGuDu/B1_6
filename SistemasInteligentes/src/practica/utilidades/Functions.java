@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 import javax.swing.JFileChooser;
 
+import practica.busqueda.Problem;
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
 import practica.creacion.WilsonAlgorithm;
@@ -122,10 +123,70 @@ public class Functions {
 
 	public static void genProblem() {
 		
+		char a = (char) 92; // character "
+		char b = (char) 34; // character \
+		Labyrinth lab = new Labyrinth();
+		String maze = null;
+		String initial = null;
+		String objetive = null;
+		File fileToOpen = null;
+		
+		System.out.println("Seleccione el archivo del laberinto");
+		JFileChooser fcOpen = new JFileChooser();
+		int returnValue = fcOpen.showOpenDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			fileToOpen = fcOpen.getSelectedFile();
+			String name = fileToOpen.getName();
+			maze = name;
+			if (name.contains("<") || name.contains(">") || name.contains(":") || name.contains("*")
+					|| name.contains("?") || name.contains("|") || name.contains("/") || name.contains(a + "")
+					|| name.contains(b + "")) {
+				System.out.println("Error: Caracter no valido\n"
+						+ "Introduzca un nombre sin los caracteres < > : * / ? | " + a + " " + b);
+			} else {
+				System.out.println("\nEl archivo se seleccionado correctamente!");
+				
+				System.out.println("Escriba la casilla inicial");
+				initial = sc.next();
+				System.out.println("Escriba la casilla objetivo");
+				objetive = sc.next();
+				
+				Problem prob = new Problem(initial, objetive,maze, lab);
+				
+				saveProblem(prob);
+				
+			}
+		} else {
+			System.out.println("El usuario ha cancelado la operación");
+		}
+		
+		
+		
 	}
 	
-	public static void saveProblem() {
-		
+	public static void saveProblem(Problem prob) {
+		String name = null;
+		char a = (char) 92; // character "
+		char b = (char) 34; // character \
+		JFileChooser fc = new JFileChooser();
+		int valorDevuelto = fc.showSaveDialog(null);
+		File fileToSave;
+
+		if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+			fileToSave = fc.getSelectedFile();
+			name = fileToSave.getName();
+			if (name.contains("<") || name.contains(">") || name.contains(":") || name.contains("*")
+					|| name.contains("?") || name.contains("|") || name.contains("/") || name.contains(a + "")
+					|| name.contains(b + "")) {
+				System.out.println("Error: Caracter no valido\n"
+						+ "Introduzca un nombre sin los caracteres < > : * / ? | " + a + " " + b);
+			} else {
+				WriteJson.writeJsonProblem(prob, fileToSave);
+				System.out.println("\nLos archivos se han guardado correctamente!");
+			}
+		} else {
+			System.out.println("El usuario ha cancelado el guardado");
+		}
 	}
 	
 	public static int getRow(String idState) {

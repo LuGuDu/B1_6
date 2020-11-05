@@ -108,7 +108,7 @@ public class Principal {
 				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
 				System.out.println(solution);
 				
-				WriteJson.writeJsonProblem(pro, "hola");
+				//WriteJson.writeJsonProblem(pro, "hola");
 				break;
 				
 			case 4:

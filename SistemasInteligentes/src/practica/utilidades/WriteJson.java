@@ -34,20 +34,16 @@ public class WriteJson {
 	}
 	
 	/**
-	 * Método que escribe un archivo .json a partir de un objeto Labyrinth y un nombre de
+	 * Método que escribe un archivo .json a partir de un objeto problema y un 
 	 * archivo para poder general el problema.
 	 * @param prob
-	 * @param name
+	 * @param file
 	 */
 	
-	public static void writeJsonProblem(Problem prob, String name) {
+	public static void writeJsonProblem(Problem prob, File file) {
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		// Por defecto mandamos los archivos al escritorio
-		String path=System.getProperty("user.home")+"/desktop";
-		path = path + "/" +name;
-		
-		try (FileWriter writer = new FileWriter(path + ".json")) {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();	
+		try (FileWriter writer = new FileWriter(file.getAbsolutePath() + ".json")) {
 			gson.toJson(prob, writer);
 		} catch (IOException e) {
 			e.printStackTrace();
