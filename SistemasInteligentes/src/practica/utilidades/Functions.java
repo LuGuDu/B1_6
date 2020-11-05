@@ -146,12 +146,22 @@ public class Functions {
 			} else {
 				System.out.println("\nEl archivo se seleccionado correctamente!");
 				
-				System.out.println("\n---FORMATO (#, #)---");
-				System.out.println("Escriba la casilla inicial");
-				initial = sc.next();
-				System.out.println("Escriba la casilla objetivo");
-				objetive = sc.next();
+				System.out.println("Casilla inicial:");
+				System.out.println("-> Introduzca la fila:");
+				int fi = sc.nextInt();
+				System.out.println("-> Introduzca la columna: ");
+				int ci = sc.nextInt();
 				
+				System.out.println("Casilla objetivo:");
+				System.out.println("-> Introduzca la fila:");
+				int fo = sc.nextInt();
+				System.out.println("-> Introduzca la columna: ");
+				int co = sc.nextInt();
+
+				initial = "("+fi+", "+ci+")";
+				objetive = "("+fo+", "+co+")";
+				
+				System.out.println(""+initial+" "+objetive+" "+ maze);
 				Problem prob = new Problem(initial, objetive,maze, lab);
 				
 				saveProblem(prob);
