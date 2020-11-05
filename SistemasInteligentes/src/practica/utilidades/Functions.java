@@ -1,5 +1,6 @@
 package practica.utilidades;
 
+import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -7,14 +8,17 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Map.Entry;
 
+import javax.swing.JFileChooser;
+
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
 import practica.creacion.WilsonAlgorithm;
 
 /**
  * Esta clase tiene funciones auxiliares
- * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
- * Fecha: 16/10/2020
+ * 
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez
+ *         Mariblanca Fecha: 16/10/2020
  */
 public class Functions {
 
@@ -22,6 +26,7 @@ public class Functions {
 
 	/**
 	 * Pasando un laberinto devuelves sus celdas en forma de array
+	 * 
 	 * @param map
 	 * @return
 	 */
@@ -48,7 +53,7 @@ public class Functions {
 		int row = 0;
 		int col = 0;
 		boolean seguir = false;
-		
+
 		do {
 			try {
 				System.out.println("Indique las filas: ");
@@ -69,7 +74,6 @@ public class Functions {
 			sc.nextLine();
 		} while (!seguir);
 
-		
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				boolean[] neighbours = { false, false, false, false };
@@ -86,6 +90,7 @@ public class Functions {
 
 	/**
 	 * Se encarga de guardar el laberinto en forma de imagen y documento de texto
+	 * 
 	 * @param lab
 	 */
 	public static void saveLab(Labyrinth lab) {
@@ -93,23 +98,28 @@ public class Functions {
 		char a = (char) 92; // character "
 		char b = (char) 34; // character \
 		boolean seguir = false;
-		System.out.println("¿Con qué nombre quiere guardar los archivos?");		
-		do {	
-			name = sc.next();
+		JFileChooser fc = new JFileChooser();
+		int valorDevuelto = fc.showSaveDialog(null);
+		File fileToSave;
+
+		if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+			fileToSave = fc.getSelectedFile();
+			name = fileToSave.getName();
 			if (name.contains("<") || name.contains(">") || name.contains(":") || name.contains("*")
 					|| name.contains("?") || name.contains("|") || name.contains("/") || name.contains(a + "")
 					|| name.contains(b + "")) {
 				System.out.println("Error: Caracter no valido\n"
 						+ "Introduzca un nombre sin los caracteres < > : * / ? | " + a + " " + b);
 			} else {
-				seguir = true;
+				WriteJson.writeJsonLab(lab, fileToSave);
+				DrawLab.drawLab(lab, fileToSave.getName());
+				System.out.println("\nLos archivos se han guardado correctamente!");
 			}
-		}while(!seguir);
-		WriteJson.writeJsonLab(lab, name);
-		DrawLab.drawLab(lab, name);
-		System.out.println("\nLos archivos se han guardado en su escritorio!");
+		} else {
+			System.out.println("El usuario ha cancelado el guardado");
+		}
 	}
-	
+
 	public static int getRow(String idState) {
 		int x = idState.indexOf(",");
 		int row = Integer.parseInt(idState.substring(1, x));
