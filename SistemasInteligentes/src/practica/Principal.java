@@ -107,8 +107,6 @@ public class Principal {
 				System.out.println(pro.getSucesors("(2, 3)"));
 				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
 				System.out.println(solution);
-				
-				//WriteJson.writeJsonProblem(pro, "hola");
 				break;
 				
 			case 4:

@@ -4,22 +4,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import practica.busqueda.Problem;
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
 
 class InvalidFileException extends Exception {
+
+	private static final long serialVersionUID = 1L;
+
 	public InvalidFileException(){
 		super("Error: Archivo Json no valido");
 	}

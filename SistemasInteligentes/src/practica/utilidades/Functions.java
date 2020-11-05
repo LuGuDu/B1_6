@@ -98,7 +98,7 @@ public class Functions {
 		String name = null;
 		char a = (char) 92; // character "
 		char b = (char) 34; // character \
-		boolean seguir = false;
+		
 		JFileChooser fc = new JFileChooser();
 		int valorDevuelto = fc.showSaveDialog(null);
 		File fileToSave;
@@ -146,6 +146,7 @@ public class Functions {
 			} else {
 				System.out.println("\nEl archivo se seleccionado correctamente!");
 				
+				System.out.println("\n---FORMATO (#, #)---");
 				System.out.println("Escriba la casilla inicial");
 				initial = sc.next();
 				System.out.println("Escriba la casilla objetivo");

@@ -6,12 +6,10 @@ import com.google.gson.GsonBuilder;
 import practica.busqueda.Problem;
 import practica.creacion.Labyrinth;
 
-import java.awt.Component;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JFileChooser;
 /**
  * Esta clase 
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
