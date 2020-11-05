@@ -120,6 +120,14 @@ public class Functions {
 		}
 	}
 
+	public static void genProblem() {
+		
+	}
+	
+	public static void saveProblem() {
+		
+	}
+	
 	public static int getRow(String idState) {
 		int x = idState.indexOf(",");
 		int row = Integer.parseInt(idState.substring(1, x));
