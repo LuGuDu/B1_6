@@ -91,15 +91,19 @@ public class SearchAlgorithm {
 		double value = 0;
 		switch (strategy) {
 		case 1:
-			value = node.getCost() + node.getHeuristic();
+			value = node.getCost() + node.getHeuristic(); //Estrategia A*
 			break;
 		case 2:
+			value = node.getCost(); //Estrategia costo uniforme
 			break;
 		case 3:
+			value = node.getDepth();//Estrategia en anchura
 			break;
 		case 4:
+			value = 1/(node.getDepth() + 1);//Estrategia en profundidad
 			break;
 		case 5:
+			value = node.getHeuristic();//Estrategia voraz
 			break;
 		}
 		
