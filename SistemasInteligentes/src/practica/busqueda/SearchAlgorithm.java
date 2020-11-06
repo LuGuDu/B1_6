@@ -48,27 +48,14 @@ public class SearchAlgorithm {
 			Sucesor suc = new Sucesor();
 			suc = sucesors.remove(sucesors.size() - 1);
 			Node childNode = new Node();
-			if (node.getFather() != null) {
-				if (!node.getFather().getIdState().equals(suc.getIdState())) {
-					childNode.setIdState(suc.getIdState());
-					childNode.setFather(node);
-					childNode.setAction(suc.getMov());
-					childNode.setDepth(node.getDepth() + 1);
-					childNode.setCost(node.getCost() + suc.getCost());
-					childNode.setHeuristic(heuristic(problem, node.getIdState()));
-					childNode.setValue(calculate(strategy, node));
-					expandList.add(childNode);
-				}
-			} else {
-				childNode.setIdState(suc.getIdState());
-				childNode.setFather(node);
-				childNode.setAction(suc.getMov());
-				childNode.setDepth(node.getDepth() + 1);
-				childNode.setCost(node.getCost() + suc.getCost());
-				childNode.setHeuristic(heuristic(problem, node.getIdState()));
-				childNode.setValue(calculate(strategy, node));
-				expandList.add(childNode);
-			}
+			childNode.setIdState(suc.getIdState());
+			childNode.setFather(node);
+			childNode.setAction(suc.getMov());
+			childNode.setDepth(node.getDepth() + 1);
+			childNode.setCost(node.getCost() + suc.getCost());
+			childNode.setHeuristic(heuristic(problem, node.getIdState()));
+			childNode.setValue(calculate(strategy, node));
+			expandList.add(childNode);
 		}
 
 		return expandList;

@@ -50,19 +50,19 @@ public class DrawSolution {
 				row = Functions.getRow(id);
 				col = Functions.getCol(id);
 						
-				g.drawLine(((row) * 5)+6, ((col) * 5)+6, ((row + 1) * 5)+4, ((col) * 5)+6);
-				g.drawLine(((row) * 5)+6, ((col) * 5)+7, ((row + 1) * 5)+4, ((col) * 5)+7);
-				g.drawLine(((row) * 5)+6, ((col) * 5)+8, ((row + 1) * 5)+4, ((col) * 5)+8);
-				g.drawLine(((row) * 5)+6, ((col) * 5)+9, ((row + 1) * 5)+4, ((col) * 5)+9);					
+				g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);			
 			}
 			
 			row = 0;
 			col = 0;
 			
-			g.drawLine(((row) * 5)+6, ((col) * 5)+6, ((row + 1) * 5)+4, ((col) * 5)+6);
-			g.drawLine(((row) * 5)+6, ((col) * 5)+7, ((row + 1) * 5)+4, ((col) * 5)+7);
-			g.drawLine(((row) * 5)+6, ((col) * 5)+8, ((row + 1) * 5)+4, ((col) * 5)+8);
-			g.drawLine(((row) * 5)+6, ((col) * 5)+9, ((row + 1) * 5)+4, ((col) * 5)+9);	
+			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
 			
 			
 			return image;
