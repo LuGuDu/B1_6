@@ -17,9 +17,10 @@ public class DrawSolution {
 	
 		public static  String getPath(Problem prob) {
 			
+			
 			String path = prob.getMaze();			
 			DrawLab.drawLab(prob.getLab(), path);
-			path = System.getProperty("user.home") + "/desktop/" + path +".jpg";		
+			path = System.getProperty("user.home") + "/desktop/" + path +".jpg";
 			return path;
 		}
 		
@@ -31,6 +32,10 @@ public class DrawSolution {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			File file = new File(path);
+			file.delete();
+			
 			return image;
 		}
 		
@@ -64,6 +69,7 @@ public class DrawSolution {
 		}
 		
 		public static void generateFile(BufferedImage imageSolution) {
+			
 			File test = new File("test.png");
 			String path=System.getProperty("user.home")+"/desktop";
 			
