@@ -109,9 +109,7 @@ public class Principal {
 				System.out.println(pro.getSucesors("(3, 3)"));
 				System.out.println(pro.toString());
 				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
-				for(Node n:solution) {
-					System.out.println(n);
-				}
+				DrawSolution.saveImageSolution(pro, solution);
 				break;
 				
 			case 4:

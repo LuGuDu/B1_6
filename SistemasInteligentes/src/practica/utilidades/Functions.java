@@ -100,7 +100,9 @@ public class Functions {
 		char b = (char) 34; // character \
 		
 		JFileChooser fc = new JFileChooser();
+		fc.setDialogTitle("Seleccione donde quiere guardar su laberinto");
 		int valorDevuelto = fc.showSaveDialog(null);
+		
 		File fileToSave;
 
 		if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
@@ -133,7 +135,10 @@ public class Functions {
 		
 		System.out.println("Seleccione el archivo del laberinto");
 		JFileChooser fcOpen = new JFileChooser();
+		fcOpen.setFileFilter(new ImageFilter());
+		fcOpen.setDialogTitle("Seleccione un laberinto para el problema");
 		int returnValue = fcOpen.showOpenDialog(null);
+		
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			fileToOpen = fcOpen.getSelectedFile();
 			String name = fileToOpen.getName();

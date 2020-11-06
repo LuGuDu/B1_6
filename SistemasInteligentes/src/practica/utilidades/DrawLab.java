@@ -32,8 +32,8 @@ public class DrawLab {
 	 * @return
 	 */
 	public static BufferedImage drawLab(Labyrinth lab, String name) {
-		weidth=((lab.getCols() * 50) + 100);
-		length=((lab.getRows() * 50) + 100);
+		weidth=((lab.getCols() * 5) + 10);
+		length=((lab.getRows() * 5) + 10);
 		BufferedImage image = new BufferedImage(weidth, length, BufferedImage.TYPE_INT_ARGB);
 		int counter = 0;
 		Cell[] cellArray = new Cell[(lab.getRows()) * (lab.getCols())];
@@ -62,16 +62,16 @@ public class DrawLab {
 		g.setColor(Color.BLACK);
 		// Order - N,E,S,W
 		if (list[0] == false) {
-			g.drawLine((row * 50)+50, (col * 50)+50, ((row + 1) * 50)+50, ((col) * 50)+50); // North Neighbor
+			g.drawLine((row * 5)+5, (col * 5)+5, ((row + 1) * 5)+5, ((col) * 5)+5); // North Neighbor
 		}
 		if (list[1] == false) {
-			g.drawLine(((row + 1) * 50)+50, (col * 50)+50, ((row + 1) * 50)+50, ((col + 1) * 50)+50); // East Neighbor
+			g.drawLine(((row + 1) * 5)+5, (col * 5)+5, ((row + 1) * 5)+5, ((col + 1) * 5)+5); // East Neighbor
 		}
 		if (list[2] == false) {
-			g.drawLine(((row) * 50)+50, ((col + 1) * 50)+50, ((row + 1) * 50)+50, ((col + 1) * 50)+50); // South Neighbor
+			g.drawLine(((row) * 5)+5, ((col + 1) * 5)+5, ((row + 1) * 5)+5, ((col + 1) * 5)+5); // South Neighbor
 		}
 		if (list[3] == false) {
-			g.drawLine((row * 50)+50, (col * 50)+50, ((row) * 50)+50, ((col + 1) * 50)+50); // West Neighbor
+			g.drawLine((row * 5)+5, (col * 5)+5, ((row) * 5)+5, ((col + 1) * 5)+5); // West Neighbor
 		}
 	}
 	
