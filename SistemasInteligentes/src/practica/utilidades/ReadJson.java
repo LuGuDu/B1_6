@@ -122,13 +122,25 @@ public class ReadJson {
 		String path;
 		boolean problemCorrect = false;
 		boolean follow = false;
+		boolean cancel = false;
 		Problem problem = new Problem();
 		System.out.println("\nEscriba la ruta completa de su archivo .json:");
 
 		do {
 			do {
 				try {
-					path = sc.next();
+					JFileChooser fcOpen = new JFileChooser();
+					fcOpen.setFileFilter(new ImageFilter());
+					int valorDevuelto = fcOpen.showOpenDialog(null);
+
+					if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+						File file = fcOpen.getSelectedFile();
+						path = file.getAbsolutePath();
+					} else {
+						System.out.println("Operación cancelada");
+						cancel = true;
+						break;
+					}
 					String fileExtension = path.substring(path.lastIndexOf(".") + 1);
 					if (!fileExtension.equals("json"))
 						throw new InvalidFileException();
@@ -152,6 +164,7 @@ public class ReadJson {
 				}
 			} while (!follow);
 
+			if (cancel) break;
 			Gson gson = new Gson();
 			try {
 				problem = gson.fromJson(json, Problem.class);

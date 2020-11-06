@@ -106,9 +106,12 @@ public class Principal {
 				while (!(fron.size() == 0)) {
 					System.out.println(fron.pop());
 				}
-				System.out.println(pro.getSucesors("(2, 3)"));
+				System.out.println(pro.getSucesors("(3, 3)"));
+				System.out.println(pro.toString());
 				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
-				System.out.println(solution);
+				for(Node n:solution) {
+					System.out.println(n);
+				}
 				break;
 				
 			case 4:
