@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
  * encarga de ordenar los nodes hoja que hay en el.
  * Tiene un comparator para la ordenacion, y una cola de prioridad borderQueue donde
  * se almacenan
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 28/10/2020
  * 
  */
@@ -41,24 +41,24 @@ public class Border {
 
 	public class Order implements Comparator<Node> {
 		public int compare(Node x, Node y) {
-			if (x.getValue() > y.getValue()) {
+			if (x.getValue() < y.getValue()) {
 				return -1;
 			}
-			else if (x.getValue() < y.getValue()) {
+			else if (x.getValue() > y.getValue()) {
 				return 1;
 			}
 			else {
-				if (x.getRow() > y.getRow()) {
+				if (x.getRow() < y.getRow()) {
 					return -1;
 				}
-				else if (x.getRow() < y.getRow()) {
+				else if (x.getRow() > y.getRow()) {
 					return 1;
 				}
 				else {
-					if (x.getCol() > y.getCol()) {
+					if (x.getCol() < y.getCol()) {
 						return -1;
 					}
-					else if (x.getCol() < y.getCol()) {
+					else if (x.getCol() > y.getCol()) {
 						return 1;
 					}
 					else {
