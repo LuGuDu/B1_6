@@ -115,7 +115,7 @@ public class Functions {
 						+ "Introduzca un nombre sin los caracteres < > : * / ? | " + a + " " + b);
 			} else {
 				WriteJson.writeJsonLab(lab, fileToSave);
-				DrawLab.drawLab(lab, fileToSave.getName());
+				DrawLab.drawLab(lab, fileToSave.getAbsolutePath());
 				System.out.println("\nLos archivos se han guardado correctamente!");
 			}
 		} else {

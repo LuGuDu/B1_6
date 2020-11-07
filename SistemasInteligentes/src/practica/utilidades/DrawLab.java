@@ -83,12 +83,12 @@ public class DrawLab {
 	 */
 	public static void generateFile(BufferedImage image, String name) {
 		File test = new File("test.png");
-		String path=System.getProperty("user.home")+"/desktop";
+		String path=name;
+		//System.getProperty("user.home")+"/desktop";
 		
 		boolean seguir = false;
 		do {
 		try {
-			path = path + "/" + name;
 			ImageIO.write(image, "png", test);
 
 			BufferedImage pngBuffer = ImageIO.read(test);
