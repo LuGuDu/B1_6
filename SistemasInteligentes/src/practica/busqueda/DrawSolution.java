@@ -45,7 +45,9 @@ public class DrawSolution {
 			String id = null;
 			int row, col;
 			g.setColor(Color.RED);
+			
 			for(Node n:solution) {
+				System.out.println(n.toString());
 				id = n.getIdState();
 				row = Functions.getRow(id);
 				col = Functions.getCol(id);
@@ -63,7 +65,6 @@ public class DrawSolution {
 			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
 			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
 			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
-			
 			
 			return image;
 		}

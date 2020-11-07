@@ -114,7 +114,7 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Node [id=" + id + ", cost=" + cost + ", idState=" + idState + ", idFather=" + father + ", action="
+		return "Node [id=" + id + ", cost=" + cost + ", idState=" + idState + ", idFather=" + father.getId() + ", action="
 				+ action + ", depth=" + depth + ", heuristic=" + heuristic + ", value=" + value + "]";
 	}
 	

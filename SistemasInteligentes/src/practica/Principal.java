@@ -79,36 +79,11 @@ public class Principal {
 			* correspondientes, y obtener asi los sucesores y la frontera. Tambien se comprobara la inconsistencia
 			* del laberinto.
 			*/
-				// COMPROBACIONES
+
 				Problem pro = ReadJson.readProblem();
-				System.out.println(pro);
-				Node nodo = new Node(0, 1, "(2, 4)", null, "", 1, 1, 2);
-				Node nodo1 = new Node(1, 1, "(1, 4)", nodo, "", 1, 1, 2);
-				Node nodo2 = new Node(2, 1, "(2, 3)", nodo, "", 1, 1, 1);
-				Node nodo3 = new Node(3, 1, "(0, 3)", nodo, "", 1, 1, 1);
-				Node nodo4 = new Node(4, 1, "(2, 4)", nodo, "", 1, 1, 1);
-				Node nodo5 = new Node(5, 1, "(2, 4)", nodo, "", 1, 1, 1);
-				Node nodo6 = new Node(6, 1, "(2, 7)", nodo, "", 1, 1, 3);
-				Node nodo7 = new Node(7, 1, "(2, 3)", nodo, "", 1, 1, 1);
-				Node nodo8 = new Node(8, 1, "(1, 4)", nodo, "", 1, 1, 1);
-				Node nodo9 = new Node(9, 1, "(0, 4)", nodo, "", 1, 1, 5);
-				Border fron = new Border();
-				fron.push(nodo);
-				fron.push(nodo1);
-				fron.push(nodo2);
-				fron.push(nodo3);
-				fron.push(nodo4);
-				fron.push(nodo5);
-				fron.push(nodo6);
-				fron.push(nodo7);
-				fron.push(nodo8);
-				fron.push(nodo9);
-				while (!(fron.size() == 0)) {
-					System.out.println(fron.pop());
-				}
-				System.out.println(pro.getSucesors("(3, 3)"));
 				System.out.println(pro.toString());
 				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
+				System.out.println(solution);
 				DrawSolution.saveImageSolution(pro, solution);
 				break;
 				
