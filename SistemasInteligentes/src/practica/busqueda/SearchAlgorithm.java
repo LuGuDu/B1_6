@@ -9,9 +9,10 @@ public class SearchAlgorithm {
 		ArrayList<String> visited = new ArrayList<String>();
 		Border border = new Border();
 		boolean isSolution = false;
-
+		int id = 0;
 		// Nodo inicial
 		Node node = new Node();
+		node.setId(id);
 		node.setFather(null);
 		node.setIdState(problem.getInitial());
 		node.setCost(0);
@@ -19,7 +20,8 @@ public class SearchAlgorithm {
 		node.setAction(null);
 		node.setHeuristic(heuristic(problem, node.getIdState()));
 		node.setValue(calculate(strategy, node));
-
+		id++;
+		
 		border.push(node);
 		while (!border.getFrontier().isEmpty() && !isSolution) {
 			node = border.pop();
@@ -27,7 +29,8 @@ public class SearchAlgorithm {
 				isSolution = true;
 			} else if (!visited.contains(node.getIdState()) && node.getDepth() < depth) {
 				visited.add(node.getIdState());
-				ArrayList<Node> expandNodes = expandNode(problem, node, strategy);
+				ArrayList<Node> expandNodes = new ArrayList<Node>();
+				id = expandNode(problem, node, strategy, id, expandNodes);
 				while (!expandNodes.isEmpty()) {
 					border.push(expandNodes.remove(expandNodes.size() - 1));
 				}
@@ -41,24 +44,25 @@ public class SearchAlgorithm {
 		}
 	}
 
-	public static ArrayList<Node> expandNode(Problem problem, Node node, int strategy) {
-		ArrayList<Node> expandList = new ArrayList<Node>();
+	public static int expandNode(Problem problem, Node node, int strategy, int id, ArrayList<Node> expandNodes) {
 		ArrayList<Sucesor> sucesors = problem.getSucesors(node.getIdState());
 		while (!sucesors.isEmpty()) {
 			Sucesor suc = new Sucesor();
 			suc = sucesors.remove(sucesors.size() - 1);
 			Node childNode = new Node();
+			childNode.setId(id);
 			childNode.setIdState(suc.getIdState());
 			childNode.setFather(node);
 			childNode.setAction(suc.getMov());
 			childNode.setDepth(node.getDepth() + 1);
 			childNode.setCost(node.getCost() + suc.getCost() + 1);
-			childNode.setHeuristic(heuristic(problem, node.getIdState()));
-			childNode.setValue(calculate(strategy, node));
-			expandList.add(childNode);
+			childNode.setHeuristic(heuristic(problem, childNode.getIdState()));
+			childNode.setValue(calculate(strategy, childNode));
+			expandNodes.add(childNode);
+			id++;
 		}
 
-		return expandList;
+		return id;
 	}
 
 	public static double heuristic(Problem problem, String idState) {

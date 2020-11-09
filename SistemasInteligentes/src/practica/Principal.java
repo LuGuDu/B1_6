@@ -102,7 +102,8 @@ public class Principal {
 				ArrayList<Node> solution5 = SearchAlgorithm.search(pro, 500, 5);
 				double finalTime5 = System.nanoTime();
 				System.out.println("El algoritmo de búsqueda tarda " + (finalTime5-startTime5) + " nanosegundos.");
-				DrawSolution.saveImageSolution(pro, solution);
+				System.out.println(solution2);
+				DrawSolution.saveImageSolution(pro, solution2);
 				break;
 				
 			case 4:
