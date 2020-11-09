@@ -41,7 +41,6 @@ public class DrawSolution {
 		
 		public static BufferedImage drawCells(BufferedImage image, ArrayList<Node> solution) {
 			Graphics g = image.getGraphics();
-			System.out.println(solution);
 			String id = null;
 			int row, col;
 			g.setColor(Color.RED);
@@ -55,16 +54,6 @@ public class DrawSolution {
 				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
 				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);			
 			}
-			
-			row = 0;
-			col = 0;
-			
-			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
-			
-			
 			return image;
 		}
 		

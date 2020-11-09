@@ -64,16 +64,16 @@ public class Problem {
 		boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
 		if (neighbours[0]) {
-			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", 1));
+			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", cells.get("(" + rowN + ", " + colN + ")").getValue()));
 		} 
 		if (neighbours[1]) {
-			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", 1));
+			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", cells.get("(" + rowE + ", " + colE + ")").getValue()));
 		} 
 		if (neighbours[2]) {
-			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", 1));
+			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", cells.get("(" + rowS + ", " + colS + ")").getValue()));
 		} 
 		if (neighbours[3]) {
-			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", 1));
+			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", cells.get("(" + rowO + ", " + colO + ")").getValue()));
 		}
 		
 		return sucesors;

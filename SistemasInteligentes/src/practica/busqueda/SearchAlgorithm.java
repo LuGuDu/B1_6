@@ -6,7 +6,7 @@ import practica.utilidades.Functions;
 
 public class SearchAlgorithm {
 	public static ArrayList<Node> search(Problem problem, int depth, int strategy) {
-		ArrayList<Node> visited = new ArrayList<Node>();
+		ArrayList<String> visited = new ArrayList<String>();
 		Border border = new Border();
 		boolean isSolution = false;
 
@@ -25,8 +25,8 @@ public class SearchAlgorithm {
 			node = border.pop();
 			if (problem.getObjective().equals(node.getIdState())) {
 				isSolution = true;
-			} else if (!visited.contains(node) && node.getDepth() < depth) {
-				visited.add(node);
+			} else if (!visited.contains(node.getIdState()) && node.getDepth() < depth) {
+				visited.add(node.getIdState());
 				ArrayList<Node> expandNodes = expandNode(problem, node, strategy);
 				while (!expandNodes.isEmpty()) {
 					border.push(expandNodes.remove(expandNodes.size() - 1));
@@ -52,7 +52,7 @@ public class SearchAlgorithm {
 			childNode.setFather(node);
 			childNode.setAction(suc.getMov());
 			childNode.setDepth(node.getDepth() + 1);
-			childNode.setCost(node.getCost() + suc.getCost());
+			childNode.setCost(node.getCost() + suc.getCost() + 1);
 			childNode.setHeuristic(heuristic(problem, node.getIdState()));
 			childNode.setValue(calculate(strategy, node));
 			expandList.add(childNode);
@@ -75,21 +75,22 @@ public class SearchAlgorithm {
 		double value = 0;
 		switch (strategy) {
 		case 1:
-			value = node.getCost() + node.getHeuristic(); // Estrategia A*
-			break;
-		case 2:
-			value = node.getCost(); // Estrategia costo uniforme
-			break;
-		case 3:
 			value = node.getDepth();// Estrategia en anchura
 			break;
-		case 4:
-			value = 1 / (node.getDepth() + 1);// Estrategia en profundidad
+		case 2:
+			value = 1 / (node.getDepth() + 1);// Estrategia en profundidad acotada
 			break;
-		case 5:
+		case 3:
+			value = node.getCost(); // Estrategia costo uniforme
+			break;
+		case 4:
 			value = node.getHeuristic();// Estrategia voraz
 			break;
+		case 5:
+			value = node.getCost() + node.getHeuristic(); // Estrategia A*
+			break;
 		}
+		
 
 		return value;
 	}
@@ -100,7 +101,7 @@ public class SearchAlgorithm {
 			solution.add(node);
 			node = node.getFather();
 		}
-
+		solution.add(node);
 		return solution;
 	}
 
