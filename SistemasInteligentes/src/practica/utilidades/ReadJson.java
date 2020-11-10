@@ -124,7 +124,7 @@ public class ReadJson {
 		boolean follow = false;
 		boolean cancel = false;
 		Problem problem = new Problem();
-		System.out.println("\nEscriba la ruta completa de su archivo .json:");
+		System.out.println("\nSeleccione la ruta completa de su archivo .json:");
 
 		do {
 			do {

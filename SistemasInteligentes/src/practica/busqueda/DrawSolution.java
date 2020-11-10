@@ -84,7 +84,7 @@ public class DrawSolution {
 			boolean seguir = false;
 			do {
 			try {
-				path = path + "/Solution" + nameStrategy;
+				path = path + "/Solucion_" + nameStrategy;
 				BufferedImage image = (BufferedImage) imageSolution;
 				ImageIO.write(image, "png", test);
 
@@ -107,7 +107,6 @@ public class DrawSolution {
 			BufferedImage imageOriginal, imageSolution;
 			
 			path = getPath(prob);
-			System.out.println(path);
 			imageOriginal = getImage(path);
 			imageSolution = drawCells(imageOriginal, solution);
 			generateFile(imageSolution,strategy);

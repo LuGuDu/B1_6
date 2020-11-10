@@ -81,7 +81,7 @@ public class Principal {
 			*/
 				// COMPROBACIONES
 				Problem pro = ReadJson.readProblem();
-				System.out.println(pro);
+				System.out.println("\t"+pro);
 				double startTime1 = System.nanoTime();
 				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1);
 				double finalTime1 = System.nanoTime();
@@ -102,7 +102,7 @@ public class Principal {
 				ArrayList<Node> solution5 = SearchAlgorithm.search(pro, 500, 5);
 				double finalTime5 = System.nanoTime();
 				System.out.println("El algoritmo de búsqueda tarda " + (finalTime5-startTime5) + " nanosegundos.");
-				System.out.println(solution2);
+
 				DrawSolution.saveImageSolution(pro, solution, 1);
 				DrawSolution.saveImageSolution(pro, solution2, 2);
 				DrawSolution.saveImageSolution(pro, solution3, 3);
