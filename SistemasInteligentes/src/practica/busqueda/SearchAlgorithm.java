@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import practica.utilidades.Functions;
 
 public class SearchAlgorithm {
-	public static ArrayList<Node> search(Problem problem, int depth, int strategy) {
-		ArrayList<String> visited = new ArrayList<String>();
-		Border border = new Border();
+	public static ArrayList<Node> search(Problem problem, int depth, int strategy, ArrayList<String>visited, Border border) {
+	
 		boolean isSolution = false;
 		int id = 0;
 		// Nodo inicial
@@ -82,7 +81,7 @@ public class SearchAlgorithm {
 			value = node.getDepth();// Estrategia en anchura
 			break;
 		case 2:
-			value = 1 / (node.getDepth() + 1);// Estrategia en profundidad acotada
+			value = (1 / (node.getDepth() + 1));// Estrategia en profundidad acotada
 			break;
 		case 3:
 			value = node.getCost(); // Estrategia costo uniforme

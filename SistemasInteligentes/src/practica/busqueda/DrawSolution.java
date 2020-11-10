@@ -39,11 +39,41 @@ public class DrawSolution {
 			return image;
 		}
 		
-		public static BufferedImage drawCells(BufferedImage image, ArrayList<Node> solution) {
+		public static BufferedImage drawCells(BufferedImage image, ArrayList<Node> solution, ArrayList<String> visited, Border border) {
 			Graphics g = image.getGraphics();
 			String id = null;
 			int row, col;
+			
+			/*g.setColor(Color.BLUE);
+			
+			for (int i = 0; i<border.size(); i++) {
+				
+				Node n = border.pop();
+				id = n.getIdState();
+				
+				row = Functions.getRow(id);
+				col = Functions.getCol(id);
+				
+				g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
+			}*/
+			
+			g.setColor(Color.GREEN);
+			
+			for(String s:visited) {
+				row = Functions.getRow(s);
+				col = Functions.getCol(s);
+						
+				g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);			
+			}
+			
 			g.setColor(Color.RED);
+			
 			for(Node n:solution) {
 				id = n.getIdState();
 				row = Functions.getRow(id);
@@ -102,13 +132,13 @@ public class DrawSolution {
 			}while (!seguir);
 		}
 		
-		public static void saveImageSolution(Problem prob, ArrayList<Node> solution, int strategy) {
+		public static void saveImageSolution(Problem prob, ArrayList<Node> solution, int strategy, ArrayList<String> visited, Border border) {
 			String path;
 			BufferedImage imageOriginal, imageSolution;
 			
 			path = getPath(prob);
 			imageOriginal = getImage(path);
-			imageSolution = drawCells(imageOriginal, solution);
+			imageSolution = drawCells(imageOriginal, solution, visited, border);
 			generateFile(imageSolution,strategy);
 		}
 }
