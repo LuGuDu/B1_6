@@ -80,51 +80,21 @@ public class Principal {
 			* del laberinto.
 			*/
 				// COMPROBACIONES
-				ArrayList<String> visited1 = new ArrayList<String>();	
-				Border border1 = new Border();
-				
-				ArrayList<String> visited2 = new ArrayList<String>();
-				Border border2 = new Border();
-				
-				ArrayList<String> visited3 = new ArrayList<String>();
-				Border border3 = new Border();
-				
-				ArrayList<String> visited4 = new ArrayList<String>();
-				Border border4 = new Border();
-				
-				ArrayList<String> visited5 = new ArrayList<String>();
-				Border border5 = new Border();
+				ArrayList<String> visited = new ArrayList<String>();	
+				Border border = new Border();
 				
 				Problem pro = ReadJson.readProblem();
 				System.out.println("\t"+pro);
 				
+				for(int i = 1; i<6; i++) {				
+					double startTime = System.nanoTime();
+					ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, i, visited, border);
+					double finalTime = System.nanoTime();
+					System.out.println("El algoritmo de búsqueda tarda " + (finalTime-startTime) + " nanosegundos.");
+					DrawSolution.saveImageSolution(pro, solution, i, visited, border);
+					visited.clear();
+				}
 				
-				double startTime1 = System.nanoTime();
-				ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, 1, visited1, border1);
-				double finalTime1 = System.nanoTime();
-				System.out.println("El algoritmo de búsqueda tarda " + (finalTime1-startTime1) + " nanosegundos.");
-				double startTime2 = System.nanoTime();
-				ArrayList<Node> solution2 = SearchAlgorithm.search(pro, 500, 2, visited2, border2);
-				double finalTime2 = System.nanoTime();
-				System.out.println("El algoritmo de búsqueda tarda " + (finalTime2-startTime2) + " nanosegundos.");
-				double startTime3 = System.nanoTime();
-				ArrayList<Node> solution3 = SearchAlgorithm.search(pro, 500, 3, visited3, border3);
-				double finalTime3 = System.nanoTime();
-				System.out.println("El algoritmo de búsqueda tarda " + (finalTime3-startTime3) + " nanosegundos.");
-				double startTime4 = System.nanoTime();
-				ArrayList<Node> solution4 = SearchAlgorithm.search(pro, 500, 4, visited4, border4);
-				double finalTime4 = System.nanoTime();
-				System.out.println("El algoritmo de búsqueda tarda " + (finalTime4-startTime4) + " nanosegundos.");
-				double startTime5 = System.nanoTime();
-				ArrayList<Node> solution5 = SearchAlgorithm.search(pro, 500, 5, visited5, border5);
-				double finalTime5 = System.nanoTime();
-				System.out.println("El algoritmo de búsqueda tarda " + (finalTime5-startTime5) + " nanosegundos.");
-
-				DrawSolution.saveImageSolution(pro, solution, 1, visited1, border1);
-				DrawSolution.saveImageSolution(pro, solution2, 2, visited2, border2);
-				DrawSolution.saveImageSolution(pro, solution3, 3, visited3, border3);
-				DrawSolution.saveImageSolution(pro, solution4, 4, visited4, border4);
-				DrawSolution.saveImageSolution(pro, solution5, 5, visited5, border5);
 				break;
 				
 			case 4:

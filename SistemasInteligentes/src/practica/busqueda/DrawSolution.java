@@ -46,7 +46,7 @@ public class DrawSolution {
 			
 			g.setColor(Color.BLUE);
 			System.out.println(border.getFrontier());
-			while(!border.getFrontier().isEmpty()) {
+			while(!border.getFrontier().isEmpty()) { 
 				
 				Node n = border.pop();
 				id = n.getIdState();
