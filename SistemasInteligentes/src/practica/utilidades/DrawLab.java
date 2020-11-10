@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.*;
 
+import practica.busqueda.Node;
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
 
@@ -42,6 +43,7 @@ public class DrawLab {
 		for (int i = 0; i < lab.getRows(); i++) {
 			for (int j = 0; j < lab.getCols(); j++) {
 				drawNeighbors(image, cellArray[counter], j, i);
+				drawCell(image, cellArray[counter], i, j);
 				counter++;
 			}
 		}
@@ -73,6 +75,51 @@ public class DrawLab {
 		if (list[3] == false) {
 			g.drawLine((row * 5)+5, (col * 5)+5, ((row) * 5)+5, ((col + 1) * 5)+5); // West Neighbor
 		}
+	}
+	
+	private static void drawCell(BufferedImage image, Cell cell, int row, int col) {
+		Graphics g = image.getGraphics();
+		int value = cell.getValue();
+		System.out.println(value);
+		switch(value) {
+		case 0:
+			g.setColor(Color.WHITE); 
+			System.out.println("Hola, dibujo asfalto");
+			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
+			break;
+		case 1:
+			Color myBrown = new Color(131,99,35);
+			g.setColor(myBrown); //tierra
+			System.out.println("Hola, dibujo tierra");
+			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
+			break;
+		case 2:
+			Color myGreen = new Color(87,206,116);
+			g.setColor(myGreen); //hierba
+			System.out.println("Hola, dibujo hierba");
+			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
+			break;
+		case 3:
+			Color myBlue = new Color(82,217,254);
+			g.setColor(myBlue); //agua
+			System.out.println("Hola, dibujo agua");
+			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
+			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
+			break;
+		}
+		
+		
 	}
 	
 	/**
