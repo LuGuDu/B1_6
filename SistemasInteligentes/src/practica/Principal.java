@@ -80,7 +80,7 @@ public class Principal {
 			* del laberinto.
 			*/
 				// COMPROBACIONES
-				ArrayList<String> visited = new ArrayList<String>();	
+				ArrayList<String> visited = new ArrayList<String>();
 				Border border = new Border();
 				
 				Problem pro = ReadJson.readProblem();
@@ -91,6 +91,7 @@ public class Principal {
 					ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, i, visited, border);
 					double finalTime = System.nanoTime();
 					System.out.println("El algoritmo de búsqueda tarda " + (finalTime-startTime) + " nanosegundos.");
+					//AÑADIR METODO QUE IMPRIMA EN TXT LA SOLUCION
 					DrawSolution.saveImageSolution(pro, solution, i, visited, border);
 					visited.clear();
 				}
