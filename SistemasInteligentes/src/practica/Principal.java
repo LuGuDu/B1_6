@@ -91,7 +91,7 @@ public class Principal {
 					ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, i, visited, border);
 					double finalTime = System.nanoTime();
 					System.out.println("El algoritmo de búsqueda tarda " + (finalTime-startTime) + " nanosegundos.");
-					//AÑADIR METODO QUE IMPRIMA EN TXT LA SOLUCION
+					PrintSolution.printSolution(solution, i);
 					DrawSolution.saveImageSolution(pro, solution, i, visited, border);
 					visited.clear();
 				}
