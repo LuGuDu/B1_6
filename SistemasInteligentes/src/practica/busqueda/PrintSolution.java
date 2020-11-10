@@ -34,13 +34,16 @@ public class PrintSolution {
 		path=path+"/Solucion_"+nameStrategy+".txt";
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(new File(path)));
+			out.flush();
 			out.write("[id][cost,state,father_id,action,depth,h,value]");
+			out.newLine();
 			for (Node n: solution) {
 				out.write("["+n.getId()+"]");
-				out.write("["+n.getCost()+","+n.getIdState()+","+n.getFather()+","+n.getAction()+","+n.getDepth()+","+
+				out.write("["+n.getCost()+","+n.getIdState()+","+n.getAction()+","+n.getDepth()+","+ //FALTA IMPRIMIR PADRE
 				n.getHeuristic()+","+n.getValue()+"]");
 				out.newLine();
 			}
+			out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
