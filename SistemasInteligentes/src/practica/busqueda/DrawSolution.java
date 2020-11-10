@@ -44,8 +44,8 @@ public class DrawSolution {
 			String id = null;
 			int row, col;
 			
+			//Dibujado de los nodos de la frontera
 			g.setColor(Color.BLUE);
-			System.out.println(border.getFrontier());
 			while(!border.getFrontier().isEmpty()) { 
 				
 				Node n = border.pop();
@@ -60,8 +60,8 @@ public class DrawSolution {
 				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
 			}
 			
-			g.setColor(Color.GREEN);
-			
+			//Dibujado de los nodos visitados
+			g.setColor(Color.GREEN);		
 			for(String s:visited) {
 				row = Functions.getRow(s);
 				col = Functions.getCol(s);
@@ -72,8 +72,8 @@ public class DrawSolution {
 				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);			
 			}
 			
-			g.setColor(Color.RED);
-			
+			//Dibujado del conjunto de nodos solucion
+			g.setColor(Color.RED);			
 			for(Node n:solution) {
 				id = n.getIdState();
 				row = Functions.getRow(id);
