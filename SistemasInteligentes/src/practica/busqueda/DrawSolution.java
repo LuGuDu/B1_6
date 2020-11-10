@@ -14,10 +14,8 @@ import practica.utilidades.Functions;
 
 public class DrawSolution {
 		
-	
 		public static  String getPath(Problem prob) {
-			
-			
+						
 			String path = prob.getMaze();			
 			DrawLab.drawLab(prob.getLab(), path);
 			path = System.getProperty("user.home") + "/desktop/" + path +".jpg";

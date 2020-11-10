@@ -116,7 +116,7 @@ public class Node {
 		String idFather = null;
 		if(father != null) {
 			idFather = Integer.toString(father.getId());
-		} 
+		} else idFather = "None";
 		return idFather;
 	}
 

@@ -16,7 +16,7 @@ public class SearchAlgorithm {
 		node.setIdState(problem.getInitial());
 		node.setCost(0);
 		node.setDepth(0);
-		node.setAction(null);
+		node.setAction("None");
 		node.setHeuristic(heuristic(problem, node.getIdState()));
 		node.setValue(calculate(strategy, node));
 		id++;

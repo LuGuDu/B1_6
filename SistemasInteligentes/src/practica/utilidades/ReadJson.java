@@ -119,7 +119,7 @@ public class ReadJson {
 	 */
 	public static Problem readProblem() {
 		String json = "";
-		String path;
+		String path=null;
 		boolean problemCorrect = false;
 		boolean follow = false;
 		boolean cancel = false;
@@ -177,6 +177,7 @@ public class ReadJson {
 			}
 		} while (!problemCorrect);
 		problem.setLab(readJson(problem.getMaze()));
+		
 		return problem;
 	}
 
