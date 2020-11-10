@@ -57,15 +57,34 @@ public class DrawSolution {
 			return image;
 		}
 		
-		public static void generateFile(BufferedImage imageSolution) {
+		public static void generateFile(BufferedImage imageSolution, int strategy) {
 			
 			File test = new File("test.png");
 			String path=System.getProperty("user.home")+"/desktop";
+			String nameStrategy = null;
+			
+			switch (strategy) {
+			case 1:
+				nameStrategy = "Anchura";
+				break;
+			case 2:
+				nameStrategy = "Profundidad";
+				break;
+			case 3:
+				nameStrategy = "CostoUniforme";
+				break;
+			case 4:
+				nameStrategy = "Voraz";
+				break;
+			case 5:
+				nameStrategy = "A";
+				break;
+			}
 			
 			boolean seguir = false;
 			do {
 			try {
-				path = path + "/Solution";
+				path = path + "/Solution" + nameStrategy;
 				BufferedImage image = (BufferedImage) imageSolution;
 				ImageIO.write(image, "png", test);
 
@@ -83,7 +102,7 @@ public class DrawSolution {
 			}while (!seguir);
 		}
 		
-		public static void saveImageSolution(Problem prob, ArrayList<Node> solution) {
+		public static void saveImageSolution(Problem prob, ArrayList<Node> solution, int strategy) {
 			String path;
 			BufferedImage imageOriginal, imageSolution;
 			
@@ -91,6 +110,6 @@ public class DrawSolution {
 			System.out.println(path);
 			imageOriginal = getImage(path);
 			imageSolution = drawCells(imageOriginal, solution);
-			generateFile(imageSolution);
+			generateFile(imageSolution,strategy);
 		}
 }
