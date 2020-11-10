@@ -44,9 +44,9 @@ public class DrawSolution {
 			String id = null;
 			int row, col;
 			
-			/*g.setColor(Color.BLUE);
-			
-			for (int i = 0; i<border.size(); i++) {
+			g.setColor(Color.BLUE);
+			System.out.println(border.getFrontier());
+			while(!border.getFrontier().isEmpty()) {
 				
 				Node n = border.pop();
 				id = n.getIdState();
@@ -58,7 +58,7 @@ public class DrawSolution {
 				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
 				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
 				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
-			}*/
+			}
 			
 			g.setColor(Color.GREEN);
 			

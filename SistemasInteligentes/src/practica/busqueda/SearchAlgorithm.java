@@ -24,14 +24,16 @@ public class SearchAlgorithm {
 		border.push(node);
 		while (!border.getFrontier().isEmpty() && !isSolution) {
 			node = border.pop();
+			
 			if (problem.getObjective().equals(node.getIdState())) {
 				isSolution = true;
 			} else if (!visited.contains(node.getIdState()) && node.getDepth() < depth) {
 				visited.add(node.getIdState());
 				ArrayList<Node> expandNodes = new ArrayList<Node>();
 				id = expandNode(problem, node, strategy, id, expandNodes);
+				
 				while (!expandNodes.isEmpty()) {
-					border.push(expandNodes.remove(expandNodes.size() - 1));
+					border.push(expandNodes.remove(expandNodes.size() - 1));				
 				}
 			}
 		}
