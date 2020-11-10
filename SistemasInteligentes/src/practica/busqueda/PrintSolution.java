@@ -4,13 +4,19 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 
 public class PrintSolution {
 
 	public static void printSolution(ArrayList<Node> solution, int strategy) {
 		
-		String path = System.getProperty("user.home")+"/Desktop";		
+		String path = System.getProperty("user.home")+"/Desktop";	
+		Deque<Node> nodesInverse = new ArrayDeque<Node>();
+		for (Node n: solution) {
+			nodesInverse.push(n);
+		}
 		String nameStrategy = null;
 		
 		switch (strategy) {
@@ -37,13 +43,16 @@ public class PrintSolution {
 			out.flush();
 			out.write("[id][cost,state,father_id,action,depth,h,value]");
 			out.newLine();
-			for (Node n: solution) {
+			
+			while(!nodesInverse.isEmpty()) {
+				Node n=nodesInverse.pop();
 				out.write("["+n.getId()+"]");
 				out.write("["+n.getCost()+","+n.getIdState()+","+n.getAction()+","+n.getDepth()+","+ //FALTA IMPRIMIR PADRE
 				n.getHeuristic()+","+n.getValue()+"]");
-				out.newLine();
+				out.newLine();		
 			}
 			out.close();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -176,10 +176,7 @@ public class Functions {
 			}
 		} else {
 			System.out.println("El usuario ha cancelado la operación");
-		}
-		
-		
-		
+		}		
 	}
 	
 	public static void saveProblem(Problem prob) {
