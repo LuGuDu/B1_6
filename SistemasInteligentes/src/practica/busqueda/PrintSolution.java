@@ -47,7 +47,7 @@ public class PrintSolution {
 			while(!nodesInverse.isEmpty()) {
 				Node n=nodesInverse.pop();
 				out.write("["+n.getId()+"]");
-				out.write("["+n.getCost()+","+n.getIdState()+","+n.getAction()+","+n.getDepth()+","+ //FALTA IMPRIMIR PADRE
+				out.write("["+n.getCost()+","+n.getIdState()+","+n.getFatherId()+","+n.getAction()+","+n.getDepth()+","+ //FALTA IMPRIMIR PADRE
 				n.getHeuristic()+","+n.getValue()+"]");
 				out.newLine();		
 			}

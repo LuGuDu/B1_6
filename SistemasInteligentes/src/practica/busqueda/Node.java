@@ -111,6 +111,14 @@ public class Node {
 		int col = Integer.parseInt(idState.substring(x + 2, idState.length() - 1));
 		return col;
 	}
+	
+	public String getFatherId(){
+		String idFather = null;
+		if(father != null) {
+			idFather = Integer.toString(father.getId());
+		} 
+		return idFather;
+	}
 
 	@Override
 	public String toString() {
