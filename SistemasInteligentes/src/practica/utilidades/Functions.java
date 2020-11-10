@@ -86,7 +86,7 @@ public class Functions {
 		Labyrinth lab = new Labyrinth(row, col, 4, mov, id_mov, cells);
 
 		WilsonAlgorithm.wilson(lab);
-		saveLab(lab);
+		saveLab(lab, true);
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class Functions {
 	 * 
 	 * @param lab
 	 */
-	public static void saveLab(Labyrinth lab) {
+	public static void saveLab(Labyrinth lab, boolean write) {
 		String name = null;
 		char a = (char) 92; // character "
 		char b = (char) 34; // character \
@@ -114,7 +114,9 @@ public class Functions {
 				System.out.println("Error: Caracter no valido\n"
 						+ "Introduzca un nombre sin los caracteres < > : * / ? | " + a + " " + b);
 			} else {
-				WriteJson.writeJsonLab(lab, fileToSave);
+				if(write) {
+					WriteJson.writeJsonLab(lab, fileToSave);
+				}
 				DrawLab.drawLab(lab, fileToSave.getName());
 				System.out.println("\nLos archivos se han guardado correctamente!");
 			}

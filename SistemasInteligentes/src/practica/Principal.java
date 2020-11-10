@@ -63,7 +63,7 @@ public class Principal {
 				Labyrinth lab;
 				lab = ReadJson.readJson("");
 				if (!(lab==null)) {
-					Functions.saveLab(lab);
+					Functions.saveLab(lab, false);
 				}
 				break;
 			case 2:
