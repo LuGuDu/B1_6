@@ -78,7 +78,7 @@ public class Functions {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				boolean[] neighbours = { false, false, false, false };
-				Cell cell = new Cell(0, neighbours, false);
+				Cell cell = new Cell(0, neighbours, false); 
 				cells.put("(" + i + ", " + j + ")", cell);
 			}
 		}
