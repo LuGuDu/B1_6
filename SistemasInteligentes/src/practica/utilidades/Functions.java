@@ -86,6 +86,7 @@ public class Functions {
 		Labyrinth lab = new Labyrinth(row, col, 4, mov, id_mov, cells);
 
 		WilsonAlgorithm.wilson(lab);
+		makeValue(lab);
 		saveLab(lab, true);
 	}
 
@@ -201,6 +202,17 @@ public class Functions {
 			}
 		} else {
 			System.out.println("El usuario ha cancelado el guardado");
+		}
+	}
+	
+	public static void makeValue(Labyrinth lab) {
+		Map<String, Cell> map = lab.getCells();
+		for (int i = 0; i < lab.getRows(); i++) {
+			for (int j = 0; j < lab.getCols(); j++) {
+				Cell cell = map.get("(" + i + ", " + j + ")");
+				cell.setValue((int)(Math.random()*4));
+				//map.replace("(" + i + ", " + j + ")", cell);
+			}
 		}
 	}
 	
