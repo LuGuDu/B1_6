@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.*;
 
-import practica.busqueda.Node;
 import practica.creacion.Cell;
 import practica.creacion.Labyrinth;
 

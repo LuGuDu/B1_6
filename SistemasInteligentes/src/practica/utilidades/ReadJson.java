@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
@@ -49,7 +51,7 @@ public class ReadJson {
 		if (path.equals("")) {
 			System.out.println("\nSeleccione la ruta de su archivo .json:");
 		} else {
-			path = System.getProperty("user.home") + "/desktop/" + path;
+			//path = System.getProperty("user.home") + "/desktop/" + path;
 		}
 
 		do {
@@ -92,8 +94,7 @@ public class ReadJson {
 				}
 
 			} while (!seguir);
-			if (cancel)
-				break;
+			if (cancel) break;
 			Gson gson = new Gson();
 			try {
 				lab = gson.fromJson(json, Labyrinth.class);
@@ -176,7 +177,11 @@ public class ReadJson {
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 		} while (!problemCorrect);
-		problem.setLab(readJson(problem.getMaze()));
+		Path prueba = Paths.get(path);
+		
+		String photopath = (prueba.getParent()).toString() + "/" + problem.getMaze();
+		problem.setLab(readJson(photopath));
+		problem.setPath(path);
 		
 		return problem;
 	}

@@ -25,6 +25,7 @@ public class Problem {
 	@SerializedName("MAZE")
 	private String maze;
 	private static Labyrinth lab;
+	private String path;
 	
 	public Problem () {
 		this.lab = new Labyrinth();
@@ -39,6 +40,14 @@ public class Problem {
 	
 	public Labyrinth getLab() {
 		return lab;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+	
+	public void setPath(String path) {
+		this.path=path;
 	}
 
 	public void setLab(Labyrinth lab) {
