@@ -22,7 +22,7 @@ public class DrawLab {
 	static Scanner sc = new Scanner(System.in);
 	private static int weidth;
 	private static int length;
-
+	private static int tcell;
 	/**
 	 * Método principal que va generando el dibujo de todas las celdas y al final llama al
 	 * método que genera el archivo, devuelve el objeto BufferedImage image ya que tendrá 
@@ -32,8 +32,11 @@ public class DrawLab {
 	 * @return
 	 */
 	public static BufferedImage drawLab(Labyrinth lab, String name) {
-		weidth=((lab.getCols() * 5) + 10);
-		length=((lab.getRows() * 5) + 10);
+		
+		tcell = Constants.TCELL;
+		weidth=((lab.getCols() * tcell) + (tcell*2));
+		length=((lab.getRows() * tcell) + (tcell*2));
+		
 		BufferedImage image = new BufferedImage(weidth, length, BufferedImage.TYPE_INT_ARGB);
 		int counter = 0;
 		Cell[] cellArray = new Cell[(lab.getRows()) * (lab.getCols())];
@@ -41,8 +44,8 @@ public class DrawLab {
 
 		for (int i = 0; i < lab.getRows(); i++) {
 			for (int j = 0; j < lab.getCols(); j++) {
-				drawNeighbors(image, cellArray[counter], i, j);
-				drawCell(image, cellArray[counter], i, j);
+				drawNeighbors(image, cellArray[counter], i, j, tcell);
+				drawCell(image, cellArray[counter], i, j, tcell);
 				counter++;
 			}
 		}
@@ -57,65 +60,51 @@ public class DrawLab {
 	 * @param row
 	 * @param col
 	 */
-	private static void drawNeighbors(BufferedImage image, Cell cell, int row, int col) {
+	private static void drawNeighbors(BufferedImage image, Cell cell, int row, int col, int tcell) {
 		Graphics g = image.getGraphics();
+		//Graphics g = image.getGraphics();
 		boolean[] list = cell.getNeighbors();
 		g.setColor(Color.BLACK);
 		// Order - N,E,S,W
 		if (list[0] == false) {
-			g.drawLine((col * 5)+5, (row * 5)+5, ((col + 1) * 5)+5, ((row) * 5)+5); // North Neighbor
+			g.drawLine((col * tcell)+tcell, (row * tcell)+tcell, ((col + 1) * tcell)+tcell, ((row) * tcell)+tcell); // North Neighbor
 		}
 		if (list[1] == false) {
-			g.drawLine(((col + 1) * 5)+5, (row * 5)+5, ((col + 1) * 5)+5, ((row + 1) * 5)+5); // East Neighbor
+			g.drawLine(((col + 1) * tcell)+tcell, (row * tcell)+tcell, ((col + 1) * tcell)+tcell, ((row + 1) * tcell)+tcell); // East Neighbor
 		}
 		if (list[2] == false) {
-			g.drawLine(((col) * 5)+5, ((row + 1) * 5)+5, ((col + 1) * 5)+5, ((row + 1) * 5)+5); // South Neighbor
+			g.drawLine(((col) * tcell)+tcell, ((row + 1) * tcell)+tcell, ((col + 1) * tcell)+tcell, ((row + 1) * tcell)+tcell); // South Neighbor
 		}
 		if (list[3] == false) {
-			g.drawLine((col * 5)+5, (row * 5)+5, ((col) * 5)+5, ((row + 1) * 5)+5); // West Neighbor
+			g.drawLine((col * tcell)+tcell, (row * tcell)+tcell, ((col) * tcell)+tcell, ((row + 1) * tcell)+tcell); // West Neighbor
 		}
 	}
 	
-	private static void drawCell(BufferedImage image, Cell cell, int row, int col) {
+	private static void drawCell(BufferedImage image, Cell cell, int row, int col, int tcell) {
 		Graphics g = image.getGraphics();
 		int value = cell.getValue();
 		switch(value) {
 		case 0:
 			g.setColor(Color.WHITE); 
-
-			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
 			break;
 		case 1:
 			Color myBrown = new Color(131,99,35);
 			g.setColor(myBrown); //tierra
-
-			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
 			break;
 		case 2:
 			Color myGreen = new Color(87,206,116);
 			g.setColor(myGreen); //hierba
-
-			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
 			break;
 		case 3:
-			Color myBlue = new Color(82,217,254);
+			Color myBlue = new Color(82,217,255);
 			g.setColor(myBlue); //agua
-
-			g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-			g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
 			break;
 		}	
+		
+		for(int i=tcell+1; i<(tcell*2); i++) {
+			g.drawLine((col * tcell)+(tcell+2), (row * tcell)+(i), ((col + 1) * tcell)+(tcell-2), ((row) * tcell)+(i));
+		}
+
 	}
 	
 	/**

@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import practica.utilidades.DrawLab;
 import practica.utilidades.Functions;
+import practica.utilidades.Constants;
 
 public class DrawSolution {
 		
@@ -40,49 +41,37 @@ public class DrawSolution {
 		public static BufferedImage drawCells(BufferedImage image, ArrayList<Node> solution, ArrayList<String> visited, Border border) {
 			Graphics g = image.getGraphics();
 			String id = null;
-			int row, col;
+			int tcell = Constants.TCELL;
 			
 			//Dibujado de los nodos de la frontera
 			g.setColor(Color.BLUE);
-			while(!border.getFrontier().isEmpty()) { 
-				
+			while(!border.getFrontier().isEmpty()) { 				
 				Node n = border.pop();
-				id = n.getIdState();
-				
-				row = Functions.getRow(id);
-				col = Functions.getCol(id);
-				
-				g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);	
+				id = n.getIdState();			
+				fillCell(g, Functions.getCol(id), Functions.getRow(id), tcell);
 			}
 			
 			//Dibujado de los nodos visitados
 			g.setColor(Color.GREEN);		
 			for(String s:visited) {
-				row = Functions.getRow(s);
-				col = Functions.getCol(s);
-						
-				g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);			
+				fillCell(g, Functions.getCol(s), Functions.getRow(s), tcell);		
 			}
 			
 			//Dibujado del conjunto de nodos solucion
 			g.setColor(Color.RED);			
 			for(Node n:solution) {
-				id = n.getIdState();
-				row = Functions.getRow(id);
-				col = Functions.getCol(id);
-						
-				g.drawLine(((col) * 5)+6, ((row) * 5)+6, ((col + 1) * 5)+4, ((row) * 5)+6);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+7, ((col + 1) * 5)+4, ((row) * 5)+7);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+8, ((col + 1) * 5)+4, ((row) * 5)+8);
-				g.drawLine(((col) * 5)+6, ((row) * 5)+9, ((col + 1) * 5)+4, ((row) * 5)+9);			
+				id = n.getIdState();				
+				fillCell(g, Functions.getCol(id), Functions.getRow(id), tcell);
+
 			}
 			return image;
+		}
+		
+		public static void fillCell(Graphics g, int col, int row, int tcell) {
+			
+			for(int i=tcell+1; i<(tcell*2); i++) {
+				g.drawLine((col * tcell)+(tcell+1), (row * tcell)+(i), ((col + 1) * tcell)+(tcell-1), ((row) * tcell)+(i));
+			}	
 		}
 		
 		public static void generateFile(BufferedImage imageSolution, int strategy) {
