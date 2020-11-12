@@ -83,7 +83,7 @@ public class SearchAlgorithm {
 			value = node.getDepth();// Estrategia en anchura
 			break;
 		case 2:
-			value = (1 / (node.getDepth() + 1));// Estrategia en profundidad acotada
+			value = (1.0 / (node.getDepth() + 1.0));// Estrategia en profundidad acotada
 			break;
 		case 3:
 			value = node.getCost(); // Estrategia costo uniforme
