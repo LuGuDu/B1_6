@@ -88,15 +88,15 @@ public class DrawLab {
 			g.setColor(Color.WHITE); 
 			break;
 		case 1:
-			Color myBrown = new Color(131,99,35);
+			Color myBrown = new Color(191,168,123);
 			g.setColor(myBrown); //tierra
 			break;
 		case 2:
-			Color myGreen = new Color(87,206,116);
+			Color myGreen = new Color(196,249,159);
 			g.setColor(myGreen); //hierba
 			break;
 		case 3:
-			Color myBlue = new Color(82,217,255);
+			Color myBlue = new Color(159,244,249);
 			g.setColor(myBlue); //agua
 			break;
 		}	

@@ -39,7 +39,7 @@ public class ReadJson {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static Labyrinth readJson(String path) {
+	public static Labyrinth readJson(String path){
 
 		String json = "";
 
