@@ -1,6 +1,7 @@
 package practica.utilidades;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -88,6 +89,8 @@ public class Functions {
 		WilsonAlgorithm.wilson(lab);
 		makeValue(lab);
 		saveLab(lab, true);
+		removeRandomWalls(lab);
+		saveLab(lab,true); //Para ver si guarda nuevo laberinto con paredes quitadas
 	}
 
 	/**
@@ -214,6 +217,99 @@ public class Functions {
 				//map.replace("(" + i + ", " + j + ")", cell);
 			}
 		}
+	}
+	
+	public static void removeRandomWalls(Labyrinth lab) {
+		Map<String, Cell> map = lab.getCells();
+		Cell cellCheck, cellCheckN, cellCheckE, cellCheckS, cellCheckW;
+		int nwalls, wallremoved, ranRow, ranCol, ranNei;
+		float nw, percent;
+		boolean perwallrem = false;
+		boolean[] neighbours, neighboursN, neighboursE, neighboursS, neighboursW;
+		
+
+		System.out.println("Indique el porcentaje de paredes que quiere quitar: ");
+		nw = sc.nextFloat();
+
+		nwalls=((lab.getRows()+1)*lab.getCols()) + ((lab.getCols()+1)*lab.getRows()) - ((lab.getRows()*2) + (lab.getCols()*2)) - ((lab.getRows()*lab.getCols())-1);
+		
+		System.out.println("Numero de paredes en el laberinto: " + nwalls);
+		percent=(nw/100);
+		wallremoved=(int)(percent * nwalls);
+		System.out.println("Se van a quitar un "+nw+"% de paredes. Total a remover: " + wallremoved+ " paredes");
+		
+		while(!perwallrem) {
+			
+			ranRow=(int)(Math.random() * ( lab.getRows()-1));
+			ranCol=(int)(Math.random() * ( lab.getCols()-1));
+			ranNei=(int)(Math.random() * 3 );
+			
+			cellCheck = map.get("(" + ranRow + ", " + ranCol + ")");
+			neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
+			
+			if(ranNei==0) {
+				if(!(ranRow==0) && !(neighbours[ranNei])) {
+					neighbours[0]=true;
+					cellCheck.setNeighbors(neighbours);
+					
+					cellCheckN=map.get("(" + (ranRow - 1) + ", " + ranCol + ")");
+					neighboursN = Arrays.copyOf(cellCheckN.getNeighbors(), 4);
+					neighboursN[2]=true;
+					cellCheckN.setNeighbors(neighboursN);
+					
+					wallremoved--;
+				}
+				
+			}
+			
+			if(ranNei==1) {
+				if(!(ranCol==lab.getCols()-1) && !(neighbours[ranNei])) {
+					neighbours[1]=true;
+					cellCheck.setNeighbors(neighbours);
+					
+					cellCheckE=map.get("(" + ranRow + ", " + (ranCol+1) + ")");
+					neighboursE = Arrays.copyOf(cellCheckE.getNeighbors(), 4);
+					neighboursE[3]=true;
+					cellCheckE.setNeighbors(neighboursE);
+					
+					wallremoved--;
+				}
+			}
+			
+			if(ranNei==2) {
+				if(!(ranRow==lab.getRows()-1) && !(neighbours[ranNei])) {
+					neighbours[2]=true;
+					cellCheck.setNeighbors(neighbours);
+					
+					cellCheckS=map.get("(" + (ranRow + 1) + ", " + ranCol + ")");
+					neighboursS = Arrays.copyOf(cellCheckS.getNeighbors(), 4);
+					neighboursS[0]=true;
+					cellCheckS.setNeighbors(neighboursS);
+					
+					wallremoved--;
+				}
+			}
+			
+			if(ranNei==3) {
+				if(!(ranCol==0) && !(neighbours[ranNei]) ) {
+					neighbours[3]=true;
+					cellCheck.setNeighbors(neighbours);
+					
+					cellCheckW=map.get("(" + ranRow + ", " + (ranCol - 1) + ")");
+					neighboursW = Arrays.copyOf(cellCheckW.getNeighbors(), 4);
+					neighboursW[1]=true;
+					cellCheckW.setNeighbors(neighboursW);
+					
+					wallremoved--;
+				}
+			}
+			
+			if(wallremoved<0){
+				perwallrem=true;
+			}
+									
+		}
+
 	}
 	
 	public static int getRow(String idState) {
