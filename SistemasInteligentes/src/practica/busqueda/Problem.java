@@ -73,16 +73,16 @@ public class Problem {
 		boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
 		if (neighbours[3]) {
-			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", cells.get("(" + row + ", " + col + ")").getValue()));
+			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", cells.get("(" + rowO + ", " + colO + ")").getValue()));
 		}
 		if (neighbours[2]) {
-			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", cells.get("(" + row + ", " + col + ")").getValue()));
+			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", cells.get("(" + rowS + ", " + colS + ")").getValue()));
 		}
 		if (neighbours[1]) {
-			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", cells.get("(" + row + ", " + col + ")").getValue()));
+			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", cells.get("(" + rowE + ", " + colE + ")").getValue()));
 		}
 		if (neighbours[0]) {
-			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", cells.get("(" + row + ", " + col + ")").getValue()));
+			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", cells.get("(" + rowN + ", " + colN + ")").getValue()));
 		} 
 		
 		return sucesors;
