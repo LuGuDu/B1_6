@@ -23,7 +23,7 @@ public class WriteJson {
 	 */
 	public static void writeJsonLab(Labyrinth lab, File file) {
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();				
+		Gson gson = new Gson();				
 		try (FileWriter writer = new FileWriter(file.getAbsolutePath() + ".json")) {
 			gson.toJson(lab, writer);
 		} catch (IOException e) {
@@ -40,7 +40,7 @@ public class WriteJson {
 	
 	public static void writeJsonProblem(Problem prob, File file) {
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();	
+		Gson gson = new Gson();	
 		try (FileWriter writer = new FileWriter(file.getAbsolutePath() + ".json")) {
 			gson.toJson(prob, writer);
 		} catch (IOException e) {
