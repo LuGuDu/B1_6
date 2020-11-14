@@ -128,6 +128,12 @@ public class Functions {
 			System.out.println("El usuario ha cancelado el guardado");
 		}
 	}
+	
+	/**
+	 * Se encarga de generar un problema eligiendo el laberinto deseado, para despues
+	 *  elegir la casilla inicial y la final para poder llevarlo a cabo.
+	 *  
+	 */
 
 	public static void genProblem() {
 		
@@ -183,6 +189,12 @@ public class Functions {
 		}		
 	}
 	
+	/**
+	 * Se encarga de guardar el problema en un json
+	 * 
+	 * @param prob
+	 */
+	
 	public static void saveProblem(Problem prob) {
 		String name = null;
 		char a = (char) 92; // character "
@@ -208,6 +220,13 @@ public class Functions {
 		}
 	}
 	
+	/**
+	 * Se encarga de recorrer las celdas para asignar un valor aleatorio a cada una
+	 * de ellas
+	 * 
+	 * @param lab
+	 */ 
+	
 	public static void makeValue(Labyrinth lab) {
 		Map<String, Cell> map = lab.getCells();
 		for (int i = 0; i < lab.getRows(); i++) {
@@ -218,6 +237,13 @@ public class Functions {
 			}
 		}
 	}
+	
+	/**
+	 * Se encarga de eliminar paredes aleatorias de nuestro laberinto indicando 
+	 * el porcentaje de paredes a eliminar 
+	 * 
+	 * @param lab
+	 */
 	
 	public static void removeRandomWalls(Labyrinth lab) {
 		Map<String, Cell> map = lab.getCells();
@@ -309,12 +335,24 @@ public class Functions {
 
 	}
 	
+	/**
+	 * Se encarga de obtener la fila 
+	 * 
+	 * @param idState
+	 */
+	
 	public static int getRow(String idState) {
 		int x = idState.indexOf(",");
 		int row = Integer.parseInt(idState.substring(1, x));
 		return row;
 	}
 
+	/**
+	 * Se encarga de obtener la columna
+	 * 
+	 * @param idState
+	 */ 
+	
 	public static int getCol(String idState) {
 		int x = idState.indexOf(",");
 		int col = Integer.parseInt(idState.substring(x + 2, idState.length() - 1));

@@ -4,6 +4,15 @@ import java.util.ArrayList;
 
 import practica.utilidades.Functions;
 
+/**
+ * Esta clase se encarga de realizar los arboles con cada algoritmo de busqueda.
+ * Segun con cada algoritmo de busqueda, nuestra variable value se calculara de manera distinta.
+ * Tiene la clase problema, la profundidad, estrategia, lista de visiados, y borde.
+ * 
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 14/11/2020
+ */
+
 public class SearchAlgorithm {
 	public static ArrayList<Node> search(Problem problem, int depth, int strategy, ArrayList<String>visited, Border border) {
 	
@@ -44,7 +53,14 @@ public class SearchAlgorithm {
 			return null;
 		}
 	}
-
+	
+	/**
+	 * Metodo que nos permite obtener los nodos a la hora de hacer la expansion
+	 * 
+	 * @param problem, node, strategy, id, expandNodes
+	 * @return id
+	 */
+	
 	public static int expandNode(Problem problem, Node node, int strategy, int id, ArrayList<Node> expandNodes) {
 		ArrayList<Sucesor> sucesors = problem.getSucesors(node.getIdState());
 		while (!sucesors.isEmpty()) {
@@ -65,7 +81,14 @@ public class SearchAlgorithm {
 
 		return id;
 	}
-
+	
+	/**
+	 * Nos permite obtener la heuristica
+	 * 
+	 * @param problem, idState
+	 * @return heuristic
+	 */
+	
 	public static double heuristic(Problem problem, String idState) {
 		int finalRow = Functions.getRow(problem.getObjective());
 		int finalCol = Functions.getCol(problem.getObjective());
@@ -75,7 +98,13 @@ public class SearchAlgorithm {
 
 		return heuristic;
 	}
-
+	
+	/**
+	 * Metodo que nos permite obtener el valor total de value segun la estrategia
+	 * 
+	 * @param strartegy, node
+	 * @return value
+	 */ 
 	public static double calculate(int strategy, Node node) {
 		double value = 0;
 		switch (strategy) {
@@ -100,6 +129,13 @@ public class SearchAlgorithm {
 		return value;
 	}
 
+	/**
+	 * Metodo que nos devuelve el camino solucion
+	 * 
+	 * @param node
+	 * @return solution
+	 */
+	
 	public static ArrayList<Node> road(Node node) {
 		ArrayList<Node> solution = new ArrayList<Node>();
 		while (node.getFather() != null) {

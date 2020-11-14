@@ -12,7 +12,13 @@ import javax.imageio.ImageIO;
 import practica.utilidades.DrawLab;
 import practica.utilidades.Functions;
 import practica.utilidades.Constants;
-
+/**
+ * Esta clase se encarga de realizar todo lo relacionado acon dibujar en una imagen
+ * nuestro laberinto con la estrategia llevada a cabo
+ * 
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 14/11/2020
+ */
 public class DrawSolution {
 		
 		public static  String getPath(Problem prob) {
@@ -118,6 +124,15 @@ public class DrawSolution {
 			}
 			}while (!seguir);
 		}
+		
+		/**
+		 * A partir del problema llevado a cabo, se encarga de obtener el laberinto original
+		 * para asi poder dibujar la solucion, generando una vez despues la imagen correspondiente
+		 * a nuestra estreategia 
+		 * 
+		 * @param map
+		 * @return
+		 */
 		
 		public static void saveImageSolution(Problem prob, ArrayList<Node> solution, int strategy, ArrayList<String> visited, Border border) {
 			String path;

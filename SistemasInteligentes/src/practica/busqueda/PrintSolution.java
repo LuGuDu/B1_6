@@ -8,6 +8,13 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 
+/**
+ * Esta clase se encarga de guardar en un archivo nuestra solucion con la estrategia correspondiente
+ * Tiene como atributo la solucion y la estrategia
+ * 
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 14/11/2020
+ */
 public class PrintSolution {
 
 	public static void printSolution(ArrayList<Node> solution, int strategy) {
