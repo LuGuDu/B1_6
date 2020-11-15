@@ -29,11 +29,12 @@ class InvalidFileException extends Exception {
 }
 
 /**
- * Esta clase permite leer archivos .json. Pedirá que introduzcas la ruta
+ * Esta clase permite leer archivos .json. Pedirï¿½ que introduzcas la ruta
  * completa del archivo
  * 
- * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez
+ * @author David Gonzï¿½lez Bermï¿½dez, Lucas Gutiï¿½rrez Durï¿½n, David Gutiï¿½rrez
  *         Mariblanca Fecha: 16/10/2020
+
  */
 public class ReadJson {
 
@@ -52,6 +53,7 @@ public class ReadJson {
 			System.out.println("\nSeleccione la ruta de su archivo .json:");
 		} else {
 			//path = System.getProperty("user.home") + "/desktop/" + path;
+
 		}
 
 		do {
@@ -66,7 +68,7 @@ public class ReadJson {
 							File file = fcOpen.getSelectedFile();
 							path = file.getAbsolutePath();
 						} else {
-							System.out.println("Operación cancelada");
+							System.out.println("Operaciï¿½n cancelada");
 							cancel = true;
 							break;
 						}
@@ -102,8 +104,9 @@ public class ReadJson {
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 
 				System.out.println(JSE.toString());
-				System.out.println("Error sintáctico en el archivo.");
+				System.out.println("Error sintï¿½ctico en el archivo.");
 				break;
+
 			}
 			labCorrect = checkSemantic(lab);
 		} while (!labCorrect);
@@ -113,12 +116,13 @@ public class ReadJson {
 
 	/**
 	 * Esta clase permite leer archivos .json para asi poder generar el problem. Se
-	 * pedirá que introduzcas la ruta completa del archivo
+	 * pedirï¿½ que introduzcas la ruta completa del archivo
 	 * 
-	 * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez
+	 * @author David Gonzï¿½lez Bermï¿½dez, Lucas Gutiï¿½rrez Durï¿½n, David Gutiï¿½rrez
 	 *         Mariblanca Fecha: 28/10/2020
 	 */
 	public static Problem readProblem() {
+
 		String json = "";
 		String path=null;
 		boolean problemCorrect = false;
@@ -138,7 +142,7 @@ public class ReadJson {
 						File file = fcOpen.getSelectedFile();
 						path = file.getAbsolutePath();
 					} else {
-						System.out.println("Operación cancelada");
+						System.out.println("Operaciï¿½n cancelada");
 						cancel = true;
 						break;
 					}
@@ -173,7 +177,7 @@ public class ReadJson {
 			} catch (com.google.gson.JsonSyntaxException JSE) {
 
 				System.out.println(JSE.toString());
-				System.out.println("Error sintáctico en el archivo.");
+				System.out.println("Error sintÃ¡ctico en el archivo.");
 				System.out.println("Vuelva a intentar introducir la ruta: ");
 			}
 		} while (!problemCorrect);
@@ -187,7 +191,7 @@ public class ReadJson {
 	}
 
 	/**
-	 * Método que a partir de un laberinto verifica si su semántica es correcta o no
+	 * Mï¿½todo que a partir de un laberinto verifica si su semï¿½ntica es correcta o no
 	 * 
 	 * @param lab
 	 * @return
@@ -212,12 +216,12 @@ public class ReadJson {
 				boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
 				/*
-				 * * COMPROBACIÓN DE LAS CELDAS Se comprueban las n-1 celdas y sus vecinos
+				 * * COMPROBACIï¿½N DE LAS CELDAS Se comprueban las n-1 celdas y sus vecinos
 				 * adyacentes (Sur y Este). No es necesario comprobar todos los vecinos
 				 * (N,S,E,O) por cada celda.
 				 * 
 				 * El valor de semanticGood es siempre verdadero. En caso contrario, si
-				 * encontramos inconsistencias entre dos celdas, el valor de semanticGood será
+				 * encontramos inconsistencias entre dos celdas, el valor de semanticGood serï¿½
 				 * falso.
 				 * 
 				 */
@@ -263,8 +267,9 @@ public class ReadJson {
 				if (!(j == (lab.getCols() - 1) && i == (lab.getRows() - 1))) {
 
 					/*
-					 * COMPROBACION DE LA ULTIMA COLUMNA En la comprobación de la ultma columna,
+					 * COMPROBACION DE LA ULTIMA COLUMNA En la comprobaciï¿½n de la ultma columna,
 					 * solo es necesario comprobar el vecino sur
+
 					 */
 
 					if (j == (lab.getCols() - 1)) {
@@ -281,8 +286,9 @@ public class ReadJson {
 					}
 
 					/*
-					 * COMPROBACION DE LA ULTIMA FILA En la comprobación de la ultma fila, solo es
+					 * COMPROBACION DE LA ULTIMA FILA En la comprobaciï¿½n de la ultma fila, solo es
 					 * necesario comprobar el vecino este
+
 					 */
 
 					if (i == (lab.getRows() - 1)) {

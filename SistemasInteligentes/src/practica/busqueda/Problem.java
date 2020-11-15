@@ -13,8 +13,9 @@ import practica.creacion.Labyrinth;
 /**
  * Esta clase define el problema en el que queremos ir desde una celda inicial a una objetivo.
  * Tiene como atributos el inicio, el final, y el laberinto a usar
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 28/10/2020
+ * 
  */
 
 public class Problem {
@@ -54,6 +55,7 @@ public class Problem {
 		this.lab = lab;
 	}
 	
+
 	/**
 	 * Metodo que nos permite obtener los sucesores de nuestro nodo dado
 	 * el id estado, comprobando sus vecinos
@@ -63,11 +65,12 @@ public class Problem {
 	 */
 	
 	public ArrayList<Sucesor> getSucesors(String idEstado) {
+
 		ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 		Map<String, Cell> cells = lab.getCells();
 		Cell cellCheck = null;
-		int row = Functions.getRow(idEstado);
-		int col = Functions.getCol(idEstado);
+		int row = Functions.getRow(idState);
+		int col = Functions.getCol(idState);
 		int rowN = row - 1;
 		int colN = col;
 		int rowE = row;

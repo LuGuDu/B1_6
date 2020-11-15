@@ -13,8 +13,9 @@ import practica.busqueda.*;
 
 /**
  * Clase principal donde se pueden probar las funcionalidades del sistema
- * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * @author David GonzÃ¡lez BermÃºdez, Lucas GutiÃ©rrez DurÃ¡n, David GutiÃ©rrez Mariblanca
  * Fecha: 16/10/2020
+ * 
  */
 public class Principal {
 
@@ -28,7 +29,8 @@ public class Principal {
 
 		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
 		do {
-			System.out.println("\nÂ¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
+
+			System.out.println("\nÃ‚Â¿QuÃ© es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
 					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Generar problema" + "\n5. Salir del programa");
 
 			do {
@@ -47,7 +49,7 @@ public class Principal {
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				catch(InputMismatchException e) {
-					System.out.println("Error: No ha introducido un carácter numérico");
+					System.out.println("Error: No ha introducido un carÃ¡cter numÃ©rico");
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				sc.nextLine();
@@ -68,14 +70,14 @@ public class Principal {
 				break;
 			case 2:
 			/*2Âº OPCION
- 			* Se generá un laberinto eligiendo tamaño de columnas y tamaño de filas, posteriormente
+ 			* Se generÃ¡ un laberinto eligiendo tamaÃ±o de columnas y tamaÃ±o de filas, posteriormente
 			* se generara el laberinto correspondiente.
 			*/	
 				Functions.genLab();
 				break;
 			case 3:
 			/*3Âº OPCION
- 			* Se leera el archivo que contiene el problema, para una vez despues generar los nodos
+ 			* Se leera el archivo que contiene el problema, para una vez despues generar los nodes
 			* correspondientes, y obtener asi los sucesores y la frontera. Tambien se comprobara la inconsistencia
 			* del laberinto.
 			* 
@@ -88,24 +90,26 @@ public class Principal {
 				Border border = new Border();
 				
 				Problem pro = ReadJson.readProblem();
+
 				System.out.println("\t"+pro);
 				
 				for(int i = 1; i<6; i++) {				
 					double startTime = System.nanoTime();
 					ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, i, visited, border);
 					double finalTime = System.nanoTime();
-					System.out.println("El algoritmo de búsqueda tarda " + (finalTime-startTime) + " nanosegundos.");
+					System.out.println("El algoritmo de bÃºsqueda tarda " + (finalTime-startTime) + " nanosegundos.");
 					PrintSolution.printSolution(solution, i);
 					DrawSolution.saveImageSolution(pro, solution, i, visited, border);
 					visited.clear();
 				}
+
 				
 				break;
 				
 			case 4:
-			/*4Âº OPCION
-	 		* Se generará un problema a gusto del usuario permitiendole elegir el nodo inicial, el nodo objetivo
-	 		* y el problema donde se realizará la busqueda de la solución.
+			/*4Ã‚Âº OPCION
+	 		* Se generarÃ¡ un problema a gusto del usuario permitiendole elegir el nodo inicial, el nodo objetivo
+	 		* y el problema donde se realizarÃ¡ la busqueda de la soluciÃ³n.
 			*/
 				Functions.genProblem();
 				break;

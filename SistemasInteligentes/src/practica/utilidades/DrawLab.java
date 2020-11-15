@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * Clase encargada de dibujar un laberinto a partir de un objeto Labyrinth y generar el archivo
  * correspondiente con esa imagen
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 16/10/2020
  */
 public class DrawLab {
@@ -24,19 +24,20 @@ public class DrawLab {
 	private static int length;
 	private static int tcell;
 	/**
-	 * MÈtodo principal que va generando el dibujo de todas las celdas y al final llama al
-	 * mÈtodo que genera el archivo, devuelve el objeto BufferedImage image ya que tendr· 
+	 * M√©todo principal que va generando el dibujo de todas las celdas y al final llama al
+	 * m√©todo que genera el archivo, devuelve el objeto BufferedImage image ya que tendr√° 
 	 * que ser usado por la clase paint
 	 * @param lab
 	 * @param name
 	 * @return
 	 */
 	public static BufferedImage drawLab(Labyrinth lab, String name) {
-		
+    
 		tcell = Constants.TCELL;
 		weidth=((lab.getCols() * tcell) + (tcell*2));
 		length=((lab.getRows() * tcell) + (tcell*2));
 		
+
 		BufferedImage image = new BufferedImage(weidth, length, BufferedImage.TYPE_INT_ARGB);
 		int counter = 0;
 		Cell[] cellArray = new Cell[(lab.getRows()) * (lab.getCols())];
@@ -54,7 +55,7 @@ public class DrawLab {
 	}
 
 	/**
-	 * MÈtodo que dibuja cada uno de los lados de las celdas y lo aÒade a image
+	 * M√©todo que dibuja cada uno de los lados de las celdas y lo a√±ade a image
 	 * @param image
 	 * @param cell
 	 * @param row
@@ -81,7 +82,7 @@ public class DrawLab {
 	}
 	
 	/**
-	 * MÈtodo que elige el color que tiene que tener la celda segun el valor que contiene
+	 * M√©todo que elige el color que tiene que tener la celda segun el valor que contiene
 	 * @param image
 	 * @param cell
 	 * @param row
@@ -116,7 +117,7 @@ public class DrawLab {
 	}
 	
 	/**
-	 * Este mÈtodo genera un archivo .jpg con la imagen del laberinto y un archivo .json con el laberinto
+	 * Este m√©todo genera un archivo .jpg con la imagen del laberinto y un archivo .json con el laberinto
 	 * en formato de texto.
 	 * @param image
 	 * @param name
