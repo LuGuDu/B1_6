@@ -100,7 +100,13 @@ public class Node {
 	public void setValue(double value) {
 		this.value = value;
 	}
-
+	
+	/*
+	 * Tanto el metodo getRow() como el metodo getCol() se encargan de obtener las filas
+	 * y las columnas de forma manual, dado el id estado
+	 * 
+	 */
+	
 	public int getRow() {
 		int x = idState.indexOf(",");
 		int row = Integer.parseInt(idState.substring(1, x));
@@ -112,10 +118,18 @@ public class Node {
 		int col = Integer.parseInt(idState.substring(x + 2, idState.length() - 1));
 		return col;
 	}
+	
+	public String getFatherId(){
+		String idFather = null;
+		if(father != null) {
+			idFather = Integer.toString(father.getId());
+		} else idFather = "None";
+		return idFather;
+	}
 
 	@Override
 	public String toString() {
-		return "Node [id=" + id + ", cost=" + cost + ", idState=" + idState + ", idFather=" + father + ", action="
+		return "Node [id=" + id + ", cost=" + cost + ", idState=" + idState + ", action="
 				+ action + ", depth=" + depth + ", heuristic=" + heuristic + ", value=" + value + "]";
 	}
 	

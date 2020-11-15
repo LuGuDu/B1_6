@@ -25,26 +25,13 @@ public class Problem {
 	private String objective;
 	@SerializedName("MAZE")
 	private String maze;
-	private Labyrinth lab;
+	private static Labyrinth lab;
+	private String path;
 	
 	public Problem () {
-		
+		this.lab = new Labyrinth();
 	}
 	
-	public Problem (String initial, String objective, String maze) {
-		this.initial = initial;
-		this.objective = objective;
-		this.maze = maze;
-	}
-	
-	public Labyrinth getLab() {
-		return lab;
-	}
-
-	public void setLab(Labyrinth lab) {
-		this.lab = lab;
-	}
-
 	public Problem (String initial, String objective, String maze, Labyrinth lab) {
 		this.initial = initial;
 		this.objective = objective;
@@ -52,7 +39,33 @@ public class Problem {
 		this.lab = lab;
 	}
 	
-	public ArrayList<Sucesor> getSucesors(String idState) {
+	public Labyrinth getLab() {
+		return lab;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+	
+	public void setPath(String path) {
+		this.path=path;
+	}
+
+	public void setLab(Labyrinth lab) {
+		this.lab = lab;
+	}
+	
+
+	/**
+	 * Metodo que nos permite obtener los sucesores de nuestro nodo dado
+	 * el id estado, comprobando sus vecinos
+	 * 
+	 * @param idEstado
+	 * @return sucesors
+	 */
+	
+	public ArrayList<Sucesor> getSucesors(String idEstado) {
+
 		ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 		Map<String, Cell> cells = lab.getCells();
 		Cell cellCheck = null;
@@ -70,18 +83,18 @@ public class Problem {
 		cellCheck = cells.get("(" + row + ", " + col + ")");
 		boolean[] neighbours = Arrays.copyOf(cellCheck.getNeighbors(), 4);
 
-		if (neighbours[0]) {
-			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", 1));
-		} 
-		if (neighbours[1]) {
-			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", 1));
-		} 
-		if (neighbours[2]) {
-			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", 1));
-		} 
 		if (neighbours[3]) {
-			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", 1));
+			sucesors.add(new Sucesor("O", "(" + rowO + ", " + colO + ")", cells.get("(" + rowO + ", " + colO + ")").getValue()));
 		}
+		if (neighbours[2]) {
+			sucesors.add(new Sucesor("S", "(" + rowS + ", " + colS + ")", cells.get("(" + rowS + ", " + colS + ")").getValue()));
+		}
+		if (neighbours[1]) {
+			sucesors.add(new Sucesor("E", "(" + rowE + ", " + colE + ")", cells.get("(" + rowE + ", " + colE + ")").getValue()));
+		}
+		if (neighbours[0]) {
+			sucesors.add(new Sucesor("N", "(" + rowN + ", " + colN + ")", cells.get("(" + rowN + ", " + colN + ")").getValue()));
+		} 
 		
 		return sucesors;
 	}
@@ -114,5 +127,5 @@ public class Problem {
 	public String toString() {
 		return "Problema [initial=" + initial + ", objective=" + objective + ", maze=" + maze + "]";
 	}
-	
+
 }

@@ -3,39 +3,43 @@ package practica.busqueda;
 /**
  * Esta clase almacena el sucesor de nuestro nodo.
  * Tiene mov, el id del Estado y el cost.
- * @author David Gonz·lez Berm˙dez, Lucas GutiÈrrez Dur·n, David GutiÈrrez Mariblanca
+ * @author David Gonz√°lez Berm√∫dez, Lucas Guti√©rrez Dur√°n, David Guti√©rrez Mariblanca
  * Fecha: 28/10/2020
  * 
  */
 
 public class Sucesor {
 	private String mov;
-	private String idStatus;
+
+	private String idState;
+
 	private int cost;
 	
 	public Sucesor () {
 		
 	}
 	
-	public Sucesor (String mov, String idStatus, int cost) {
+
+	public Sucesor (String mov, String idState, int cost) {
 		this.mov = mov;
-		this.idStatus = idStatus;
+		this.idState = idState;
 		this.cost = cost;
 	}
 
-	public String getidStatus() {
-		return idStatus;
+	public String getIdState() {
+		return idState;
 	}
 
-	public void setidStatus(String idStatus) {
-		this.idStatus = idStatus;
+	public void setIdState(String idState) {
+		this.idState = idState;
 	}
 
-	public int getcost() {
+	public int getCost() {
 		return cost;
 	}
 
-	public void setcost(int cost) {
+	public void setCost(int cost) {
+
 		this.cost = cost;
 	}
 
@@ -49,8 +53,9 @@ public class Sucesor {
 
 	@Override
 	public String toString() {
-		return "Sucesor [mov=" + mov + ", idStatus=" + idStatus + ", cost=" + cost + "]";
+
+		return "Sucesor [mov=" + mov + ", idState=" + idState + ", cost=" + cost + "]";
+
 	}
-	
-	
+
 }
