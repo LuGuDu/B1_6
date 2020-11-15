@@ -78,6 +78,10 @@ public class Principal {
  			* Se leera el archivo que contiene el problema, para una vez despues generar los nodos
 			* correspondientes, y obtener asi los sucesores y la frontera. Tambien se comprobara la inconsistencia
 			* del laberinto.
+			* 
+			* Generara el problema usando cada uno de los algoritmos de busqueda correspondientes, y calculara el tiempo
+			* de ejecuccion de cada uno
+			* 
 			*/
 				// COMPROBACIONES
 				ArrayList<String> visited = new ArrayList<String>();
