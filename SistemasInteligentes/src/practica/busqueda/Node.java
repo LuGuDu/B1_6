@@ -99,7 +99,13 @@ public class Node {
 	public void setValue(double value) {
 		this.value = value;
 	}
-
+	
+	/*
+	 * Tanto el metodo getRow() como el metodo getCol() se encargan de obtener las filas
+	 * y las columnas de forma manual, dado el id estado
+	 * 
+	 */
+	
 	public int getRow() {
 		int x = idState.indexOf(",");
 		int row = Integer.parseInt(idState.substring(1, x));

@@ -14,6 +14,19 @@ import practica.utilidades.Functions;
  */
 
 public class SearchAlgorithm {
+	/**
+	 * Nos permite realizar el arbol correspondiente con su respectivo algoritmo de
+	 * busqueda, estableciendo al nodo todos los atributos necesarios
+	 * 
+	 * @param problem
+	 * @param depth
+	 * @param strategy
+	 * @param visited
+	 * @param border
+	 * 
+	 * @return node
+	 * 
+	 */
 	public static ArrayList<Node> search(Problem problem, int depth, int strategy, ArrayList<String>visited, Border border) {
 	
 		boolean isSolution = false;
@@ -55,7 +68,8 @@ public class SearchAlgorithm {
 	}
 	
 	/**
-	 * Metodo que nos permite obtener los nodos a la hora de hacer la expansion
+	 * Metodo que nos permite obtener los nodos hijos a la hora de 
+	 * expandir un nodo de la frontera
 	 * 
 	 * @param problem, node, strategy, id, expandNodes
 	 * @return id

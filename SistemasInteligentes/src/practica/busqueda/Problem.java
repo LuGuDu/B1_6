@@ -54,6 +54,14 @@ public class Problem {
 		this.lab = lab;
 	}
 	
+	/**
+	 * Metodo que nos permite obtener los sucesores de nuestro nodo dado
+	 * el id estado, comprobando sus vecinos
+	 * 
+	 * @param idEstado
+	 * @return sucesors
+	 */
+	
 	public ArrayList<Sucesor> getSucesors(String idEstado) {
 		ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 		Map<String, Cell> cells = lab.getCells();

@@ -80,6 +80,14 @@ public class DrawLab {
 		}
 	}
 	
+	/**
+	 * Método que elige el color que tiene que tener la celda segun el valor que contiene
+	 * @param image
+	 * @param cell
+	 * @param row
+	 * @param col
+	 */
+	
 	private static void drawCell(BufferedImage image, Cell cell, int row, int col, int tcell) {
 		Graphics g = image.getGraphics();
 		int value = cell.getValue();

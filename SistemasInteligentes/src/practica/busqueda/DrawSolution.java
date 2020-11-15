@@ -60,8 +60,8 @@ public class DrawSolution {
 		}
 		
 		/**
-		 * Nos permite dibujar los nodos de la frontera segun el valor correspondiente
-		 * que tengan
+		 * Metodo que nos permite dibujar los nodos de la frontera, los visitados, y la solución
+		 * de nuestro problema segun el valor correspondiente
 		 * 
 		 * @param image, solution, visited, border
 		 * @return image

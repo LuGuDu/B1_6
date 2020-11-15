@@ -4,6 +4,14 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
+/**
+ * Esta clase se encarga de filtrar a los JFileChooser la visualización
+ * de archivos .json
+ * 
+ * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * Fecha: 15/11/2020
+ */
+
 public class ImageFilter extends FileFilter {
 
 	@Override

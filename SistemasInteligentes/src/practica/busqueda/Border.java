@@ -6,8 +6,8 @@ import java.util.*;
 
 /**
  * Esta clase representa la frontera de nuestro arbol, se 
- * encarga de ordenar los nodos hoja que hay en el.
- * Tiene los metodos necesarios para sacar y meter los nodos correspondientes, y para obtener yç
+ * encarga de ordenar los nodos hoja que hay en el segun el valor, la fila y la columna.
+ * Tiene los metodos necesarios para sacar y meter los nodos correspondientes, y para obtener y 
  * establecer la frontera
  * 
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca

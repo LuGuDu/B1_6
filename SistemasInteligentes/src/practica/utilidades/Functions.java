@@ -336,7 +336,7 @@ public class Functions {
 	}
 	
 	/**
-	 * Se encarga de obtener la fila 
+	 * Se encarga de obtener la fila dado el id del estado
 	 * 
 	 * @param idState
 	 */
@@ -348,7 +348,7 @@ public class Functions {
 	}
 
 	/**
-	 * Se encarga de obtener la columna
+	 * Se encarga de obtener la columna dado el id del estado 
 	 * 
 	 * @param idState
 	 */ 

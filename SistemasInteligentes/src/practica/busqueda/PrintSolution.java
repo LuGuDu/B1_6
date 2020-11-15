@@ -16,7 +16,14 @@ import java.util.Deque;
  * Fecha: 14/11/2020
  */
 public class PrintSolution {
-
+	
+	/**
+	 * Nos permite guardar nuestra solucion segun la estrategia correspondiente
+	 * 
+	 * @param solution
+	 * @param strategy
+	 * 
+	 */
 	public static void printSolution(ArrayList<Node> solution, int strategy) {
 		
 		String path = System.getProperty("user.home")+"/Desktop";	
