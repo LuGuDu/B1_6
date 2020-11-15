@@ -5,12 +5,13 @@ import java.util.LinkedList;
 import java.util.*;
 
 /**
- * Esta clase representa la frontier de nuestro arbol, se 
- * encarga de ordenar los nodes hoja que hay en el.
- * Tiene un comparator para la ordenacion, y una cola de prioridad frontier donde
- * se almacenan
+ * Esta clase representa la frontera de nuestro arbol, se 
+ * encarga de ordenar los nodos hoja que hay en el.
+ * Tiene los metodos necesarios para sacar y meter los nodos correspondientes, y para obtener yç
+ * establecer la frontera
+ * 
  * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
- * Fecha: 28/10/2020
+ * Fecha: 14/11/2020
  */
 
 public class Border {
