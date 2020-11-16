@@ -27,7 +27,6 @@ public class PrintSolution {
 	public static void printSolution(ArrayList<Node> solution, int strategy) {
 
 		String path = System.getProperty("user.home") + "/Desktop";
-		double value;
 		Deque<Node> nodesInverse = new ArrayDeque<Node>();
 		for (Node n : solution) {
 			nodesInverse.push(n);
