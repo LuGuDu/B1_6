@@ -13,7 +13,7 @@ import practica.busqueda.*;
 
 /**
  * Clase principal donde se pueden probar las funcionalidades del sistema
- * @author David González Bermúdez, Lucas Gutiérrez Durán, David Gutiérrez Mariblanca
+ * @author David González Bermúdez, Lucas Guti�rrez Durán, David Guti�rrez Mariblanca
  * Fecha: 16/10/2020
  * 
  */
@@ -30,7 +30,7 @@ public class Principal {
 		System.out.println("|||PRACTICA DEL LABORATORIO DE INTELIGENTES|||");
 		do {
 
-			System.out.println("\nÂ¿Qué es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
+			System.out.println("\n�Qu� es lo que quieres hacer?" + "\n1. Leer laberinto desde archivo .Json"
 					+ "\n2. Generar laberinto aleatorio" + "\n3. Leer problema" + "\n4. Generar problema" + "\n5. Salir del programa");
 
 			do {
@@ -49,7 +49,7 @@ public class Principal {
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				catch(InputMismatchException e) {
-					System.out.println("Error: No ha introducido un carácter numérico");
+					System.out.println("Error: No ha introducido un carácter num�rico");
 					System.out.print("Introduzca una de las opciones disponibles: ");
 				}
 				sc.nextLine();
