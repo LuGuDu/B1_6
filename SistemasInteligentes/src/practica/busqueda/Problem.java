@@ -64,7 +64,7 @@ public class Problem {
 	 * @return sucesors
 	 */
 	
-	public ArrayList<Sucesor> getSucesors(String idEstado) {
+	public ArrayList<Sucesor> getSucesors(String idState) {
 
 		ArrayList<Sucesor> sucesors = new ArrayList<Sucesor>();
 		Map<String, Cell> cells = lab.getCells();

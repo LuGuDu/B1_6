@@ -30,7 +30,7 @@ public class Border {
 	
 	public void push(Node node) {
 		frontier.offer(node);
-		Collections.sort(frontier,Comparator.comparing(Node::getValue).thenComparing(Node::getRow).thenComparing(Node::getCol));
+		Collections.sort(frontier,Comparator.comparing(Node::getValue).thenComparing(Node::getRow).thenComparing(Node::getCol).thenComparing(Node::getId));
 	}
 
 	public Node pop() {
