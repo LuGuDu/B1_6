@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -40,7 +41,7 @@ public class ReadJson {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static Labyrinth readJson(String path){
+	public static Labyrinth readJson(String path) throws Exception{
 
 		String json = "";
 
@@ -77,14 +78,8 @@ public class ReadJson {
 					String fileExtension = path.substring(path.lastIndexOf(".") + 1);
 					if (!fileExtension.equals("json"))
 						throw new InvalidFileException();
-					BufferedReader br = new BufferedReader(new FileReader(path));
 					seguir = true;
-					String line = "";
-					while ((line = br.readLine()) != null) {
-						json += line;
-					}
-
-					br.close();
+					json = readFileAsString(path);
 
 				} catch (InvalidFileException e) {
 					System.out.println(e.getMessage());
@@ -120,8 +115,9 @@ public class ReadJson {
 	 * 
 	 * @author David Gonz�lez Berm�dez, Lucas Guti�rrez Dur�n, David Guti�rrez
 	 *         Mariblanca Fecha: 28/10/2020
+	 * @throws Exception 
 	 */
-	public static Problem readProblem() {
+	public static Problem readProblem() throws Exception {
 
 		String json = "";
 		String path=null;
@@ -149,14 +145,8 @@ public class ReadJson {
 					String fileExtension = path.substring(path.lastIndexOf(".") + 1);
 					if (!fileExtension.equals("json"))
 						throw new InvalidFileException();
-					BufferedReader br = new BufferedReader(new FileReader(path));
 					follow = true;
-					String line = "";
-					while ((line = br.readLine()) != null) {
-						json += line;
-					}
-
-					br.close();
+					json = readFileAsString(path);
 
 				} catch (InvalidFileException e) {
 					System.out.println(e.getMessage());
@@ -308,4 +298,8 @@ public class ReadJson {
 
 		return semanticGood;
 	}
+	public static String readFileAsString(String file)throws Exception
+    {
+        return new String(Files.readAllBytes(Paths.get(file)));
+    }
 }

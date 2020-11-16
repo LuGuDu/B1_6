@@ -233,7 +233,6 @@ public class Functions {
 			for (int j = 0; j < lab.getCols(); j++) {
 				Cell cell = map.get("(" + i + ", " + j + ")");
 				cell.setValue((int)(Math.random()*4));
-				//map.replace("(" + i + ", " + j + ")", cell);
 			}
 		}
 	}

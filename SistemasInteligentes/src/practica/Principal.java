@@ -21,7 +21,7 @@ public class Principal {
 
 	static Scanner sc = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		int value = 0;
 		boolean done = false;
@@ -95,7 +95,7 @@ public class Principal {
 				
 				for(int i = 1; i<6; i++) {				
 					double startTime = System.nanoTime();
-					ArrayList<Node> solution = SearchAlgorithm.search(pro, 500, i, visited, border);
+					ArrayList<Node> solution = SearchAlgorithm.search(pro, 50000, i, visited, border);
 					double finalTime = System.nanoTime();
 					System.out.println("El algoritmo de búsqueda tarda " + (finalTime-startTime) + " nanosegundos.");
 					PrintSolution.printSolution(solution, i);
