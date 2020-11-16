@@ -25,7 +25,7 @@ public class Problem {
 	private String objective;
 	@SerializedName("MAZE")
 	private String maze;
-	private static Labyrinth lab;
+	private Labyrinth lab;
 	private String path;
 	
 	public Problem () {
